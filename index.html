@@ -1,515 +1,675 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tunisia Experience | The Challenge</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f2bd36">
+<title>Hibo's Tunisian Adventure</title>
+
 <style>
-:root{
- --red:#c83e32;--blue:#123e59;--turq:#287d83;
- --gold:#e5b75c;--sand:#f6ead4;--cream:#fffaf1;
- --ink:#20333a;--green:#477c55;--white:#fff;
+:root {
+  --yellow:#f4c542;
+  --gold:#d99c16;
+  --blue:#176b91;
+  --deep:#123d56;
+  --lightblue:#dff3f7;
+  --cream:#fff9e9;
+  --orange:#ed9142;
+  --ink:#27343b;
+  --white:#fff;
+  --green:#397c5a;
+  --red:#b84b42;
+  --shadow:0 12px 35px rgba(34,53,61,.12);
 }
 *{box-sizing:border-box}
 body{
- margin:0;background:var(--cream);color:var(--ink);
- font-family:Arial,sans-serif;line-height:1.55;
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%,#fff1bd 0,transparent 25%),
+    radial-gradient(circle at 90% 20%,#d7f1f5 0,transparent 25%),
+    var(--cream);
+  font-family:Georgia,"Times New Roman",serif;
 }
-button,select{font:inherit}
+button,input{font:inherit}
 button{cursor:pointer}
 header{
- background:var(--blue);color:white;padding:15px 5%;
- display:flex;justify-content:space-between;align-items:center;
- border-bottom:5px solid var(--gold);
+  background:linear-gradient(120deg,#f7d35d,#f0b933 55%,#e9a52b);
+  padding:15px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  border-bottom:5px solid var(--blue);
 }
-.logo{font-weight:900;letter-spacing:3px}
-.header-small{font-size:12px;color:#f2dba9;letter-spacing:2px}
-main{max-width:900px;margin:auto;padding:20px 15px 60px}
+.brand{font-size:20px;font-weight:bold;color:var(--deep)}
+.brand small{display:block;font:11px Arial;letter-spacing:2px}
+.header-right{font:12px Arial;color:var(--deep);text-align:right}
+main{max-width:940px;margin:0 auto;padding:24px 16px 60px}
+.screen{display:none;animation:appear .35s ease}
+.screen.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .hero{
- min-height:350px;border-radius:25px;overflow:hidden;
- background:linear-gradient(90deg,rgba(10,40,55,.88),rgba(10,40,55,.12)),
- url("https://commons.wikimedia.org/wiki/Special:FilePath/Tunisia-3029B%20%287846578812%29.jpg?width=1400");
- background-size:cover;background-position:center;
- color:white;padding:45px 30px;display:flex;flex-direction:column;
- justify-content:center;box-shadow:0 12px 35px #183b4b30;
+  background:linear-gradient(135deg,#fff3c8,#e4f5f5);
+  border:2px solid #e8c65c;
+  border-radius:26px;
+  padding:25px;
+  box-shadow:var(--shadow);
+  text-align:center;
+  overflow:hidden;
 }
-.kicker{color:var(--gold);font-size:12px;font-weight:bold;letter-spacing:3px}
-h1{font:normal clamp(48px,10vw,82px)/.98 Georgia,serif;margin:15px 0}
-.hero p{max-width:440px;font-size:17px}
+.camel{font-size:92px;line-height:1.1;filter:drop-shadow(0 5px 2px #b98d3c)}
+h1{font-size:clamp(32px,7vw,58px);color:var(--deep);margin:10px 0}
+h2{color:var(--deep);font-size:clamp(25px,5vw,36px);margin:8px 0 14px}
+h3{color:var(--blue)}
+p{line-height:1.65}
+.subtitle{font:14px Arial;letter-spacing:3px;text-transform:uppercase;color:var(--blue)}
 .card{
- background:white;border:1px solid #eadcc7;border-radius:22px;
- padding:25px;margin-top:20px;box-shadow:0 10px 30px #183b4b12;
+  background:white;border:1px solid #eadfbf;border-radius:20px;
+  padding:22px;margin:18px 0;box-shadow:var(--shadow)
 }
-h2{font:normal 32px Georgia,serif;margin:4px 0 12px;color:var(--blue)}
-h3{margin:5px 0}
-.muted{color:#68777c;font-size:14px}
 .btn{
- border:0;border-radius:12px;padding:14px 20px;
- background:var(--red);color:white;font-weight:800;
- box-shadow:0 5px 0 #922b24;
+  border:0;border-radius:13px;padding:14px 20px;
+  background:var(--blue);color:white;font-weight:bold;
+  font: bold 15px Arial;transition:.2s;
 }
-.btn:active{transform:translateY(3px);box-shadow:none}
-.btn.blue{background:var(--blue);box-shadow:0 5px 0 #092b40}
-.btn.gold{background:var(--gold);color:#382b17;box-shadow:0 5px 0 #b38a3c}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-select{padding:13px;border-radius:10px;border:1px solid #c8c0b4;width:100%;background:white}
-label{font-weight:bold;display:block;margin:15px 0 7px}
-.hidden{display:none!important}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn.yellow{background:var(--yellow);color:var(--deep)}
+.btn.orange{background:var(--orange);color:#39270e}
+.btn.light{background:var(--lightblue);color:var(--deep)}
+.btn.danger{background:var(--red)}
+.btn.small{padding:9px 12px;font-size:13px}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+input{
+  width:100%;padding:13px;border:2px solid #d7e4e5;
+  border-radius:12px;margin:7px 0 12px;background:#fff;
+}
+label{font: bold 13px Arial;color:var(--deep)}
+.player-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.player-chip{
+  background:#fff7d9;border:1px solid #e9cb68;
+  padding:12px;border-radius:12px;font-weight:bold;text-align:center
+}
+.progress-wrap{background:#e5e9e7;height:9px;border-radius:20px;overflow:hidden;margin:15px 0}
+.progress{height:100%;width:0;background:linear-gradient(90deg,var(--yellow),var(--blue));transition:.3s}
 .tag{
- display:inline-block;padding:5px 12px;border-radius:50px;
- background:#e8f1ed;color:#376b4b;font-size:11px;
- font-weight:900;letter-spacing:1px;
+  display:inline-block;background:#e1f1f4;color:var(--blue);
+  padding:6px 11px;border-radius:30px;font: bold 11px Arial;
+  letter-spacing:1px;text-transform:uppercase
 }
-.progress{height:9px;background:#eee4d6;border-radius:10px;overflow:hidden;margin:15px 0}
-.progress span{display:block;height:100%;background:var(--red);width:0;transition:.3s}
-.meta{display:flex;justify-content:space-between;color:#69787d;font-size:13px}
-.lesson{background:#f8f0e3;padding:18px;border-left:5px solid var(--gold);border-radius:10px;margin:18px 0}
-.fact{background:#fff0cd;border:1px dashed #c79a3e;border-radius:15px;padding:18px;margin-top:15px}
-.fact small{font-weight:bold;color:#8b6827;letter-spacing:2px}
-.fact h3{font:normal 23px Georgia,serif}
-.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
-.photo{position:relative;border-radius:15px;overflow:hidden;min-height:160px;background:#ddd}
-.photo img{width:100%;height:100%;min-height:160px;object-fit:cover;display:block;transition:.4s}
-.photo:hover img{transform:scale(1.06)}
-.photo span{position:absolute;bottom:0;left:0;right:0;padding:25px 12px 10px;
- color:white;font-weight:bold;background:linear-gradient(transparent,#000a)}
-.options{display:grid;gap:11px;margin-top:20px}
+.lesson-image{
+  width:100%;max-height:290px;object-fit:cover;border-radius:16px;
+  margin:12px 0;border:4px solid #fff1c3
+}
 .option{
- border:2px solid #e9dfd1;background:#fffaf3;border-radius:13px;
- padding:15px;text-align:left;font-weight:bold;color:var(--ink);
+  display:block;width:100%;text-align:left;margin:9px 0;
+  padding:15px;border:2px solid #dce7e6;border-radius:13px;
+  background:#fff;color:var(--ink);font-size:15px;
 }
-.option:hover{border-color:var(--turq);background:#f0f8f6}
-.option.correct{border-color:var(--green);background:#e9f5e9}
-.option.wrong{border-color:var(--red);background:#fff0ed}
-.feedback{padding:15px;border-radius:12px;margin-top:15px}
-.good{background:#e9f5e9;color:#285c35}
-.bad{background:#fff0ed;color:#8b3027}
-.musicbox{
- background:linear-gradient(135deg,#123e59,#287d83);
- color:white;border-radius:18px;padding:22px;margin-top:15px;
+.option:hover{border-color:var(--blue);background:#f0f9fa}
+.option.correct{background:#e2f5e8;border-color:var(--green)}
+.option.wrong{background:#fbe8e5;border-color:var(--red)}
+.feedback{padding:14px;border-radius:12px;background:#fff4d5;margin-top:14px;line-height:1.5}
+.score-line{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #eee;padding:11px 0}
+.score-line:last-child{border:0}
+.rank{font-size:23px;font-weight:bold;color:var(--gold);min-width:34px}
+.big-number{font-size:42px;font-weight:bold;color:var(--blue)}
+.music-box{
+  background:linear-gradient(135deg,#173f58,#176b91);
+  color:white;border-radius:20px;padding:25px;text-align:center
 }
-.musicbox h3{font:normal 25px Georgia,serif}
-audio{width:100%;margin:12px 0}
-.musiclinks{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.musiclinks a{
- color:var(--blue);background:#f4ead9;border-radius:12px;
- padding:13px;text-decoration:none;font-weight:bold;
-}
-.score{font:normal 55px Georgia,serif;color:var(--red)}
-.footer{text-align:center;color:#7b8588;font-size:12px;margin-top:30px}
-@media(max-width:550px){
- .hero{min-height:300px;padding:28px 22px}
- .card{padding:19px}
- .photo-grid,.musiclinks{grid-template-columns:1fr}
- header{padding:13px}
- .header-small{font-size:9px}
- .actions .btn{width:100%}
+.music-box h2{color:#ffe28a}
+.music-note{font-size:48px}
+.vote-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.vote-buttons button{min-height:72px}
+.mini{font:12px Arial;color:#66757a}
+footer{text-align:center;padding:20px;color:#738087;font:12px Arial}
+a{color:var(--blue)}
+@media(max-width:540px){
+  header{padding:12px}
+  .brand{font-size:16px}
+  .hero{padding:19px 14px}
+  .card{padding:17px}
+  .vote-buttons{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
-
 <header>
- <div class="logo">TUNISIA EXPERIENCE</div>
- <div class="header-small">THE ULTIMATE CHALLENGE</div>
+  <div class="brand">HIBO'S ADVENTURE <small>A JOURNEY THROUGH TUNISIA</small></div>
+  <div class="header-right">SUN • SEA • HISTORY<br>AND A LITTLE CHAOS</div>
 </header>
 
 <main>
 
-<section class="hero">
- <div class="kicker">NOT A HISTORY CLASS. PROMISE.</div>
- <h1>Welcome<br>to Tunisia.</h1>
- <p>
- Six chapters. Unexpected facts. Music challenges.
- A little competition. A lot of discoveries.
- </p>
+<!-- WELCOME -->
+<section id="welcome" class="screen active">
+  <div class="hero">
+    <div class="camel">🐪</div>
+    <div class="subtitle">Your Tunisian adventure begins here</div>
+    <h1>Marhba bikom!</h1>
+    <p>Welcome, travellers! I'm Hibo, your guide to Tunisia.</p>
+    <p>I will show you my country: its history, music, food, language and secrets. You will listen, speak, compete and discover.</p>
+    <p><strong>One warning:</strong> I am a camel. I have a lot of patience, but not for people who don't pay attention.</p>
+    <div class="actions">
+      <button class="btn yellow" onclick="showScreen('setup')">Start the journey</button>
+      <button class="btn light" onclick="resumeGame()">Continue saved game</button>
+    </div>
+    <p class="mini">Your progress is saved automatically on this device.</p>
+  </div>
+  <div class="card">
+    <h3>What awaits you?</h3>
+    <div class="player-list">
+      <div class="player-chip">History & Culture</div>
+      <div class="player-chip">Tunisian Music</div>
+      <div class="player-chip">Language Battles</div>
+      <div class="player-chip">Food & Traditions</div>
+      <div class="player-chip">18 Quiz Questions</div>
+      <div class="player-chip">Final Leaderboard</div>
+    </div>
+  </div>
 </section>
 
-<section id="start" class="card">
- <span class="tag">THE RULES</span>
- <h2>Ready to explore?</h2>
- <p>
- Learn something, laugh a little, and collect points.
- Every chapter teaches you something before asking questions.
- Nobody needs to know anything in advance.
- </p>
- <p><b>18 questions + 3 music challenges.</b></p>
- <p class="muted">
- Correct answer: 10 points. Music challenge: up to 10 bonus points.
- No points for wrong answers. No time pressure.
- </p>
- <label for="player">Choose your name</label>
- <select id="player">
-  <option value="">Choose your name</option>
-  <option>Elisa</option>
-  <option>Riya</option>
-  <option>Anna</option>
-  <option>Daniel</option>
-  <option>Zahra</option>
- </select>
- <div class="actions">
-  <button class="btn" id="startBtn">LET'S GO</button>
- </div>
+<!-- SETUP -->
+<section id="setup" class="screen">
+  <div class="card">
+    <span class="tag">Before we travel</span>
+    <h2>Who's at the table?</h2>
+    <p>Enter the names of the players. You can play together using one phone or computer. Pass it around when it is someone's turn.</p>
+    <div id="nameFields">
+      <label>Player 1</label><input id="p0" placeholder="Enter a name" maxlength="18">
+      <label>Player 2</label><input id="p1" placeholder="Enter a name" maxlength="18">
+      <label>Player 3</label><input id="p2" placeholder="Enter a name" maxlength="18">
+      <label>Player 4</label><input id="p3" placeholder="Enter a name" maxlength="18">
+      <label>Player 5 (optional)</label><input id="p4" placeholder="Enter a name" maxlength="18">
+      <label>Player 6 (optional)</label><input id="p5" placeholder="Enter a name" maxlength="18">
+    </div>
+    <div class="actions">
+      <button class="btn yellow" onclick="startNewGame()">Let's go!</button>
+      <button class="btn light" onclick="showScreen('welcome')">Back</button>
+    </div>
+    <p class="mini">At least two players are recommended. Naziha is the host and does not need to enter her name.</p>
+  </div>
 </section>
 
-<section id="chapter" class="card hidden">
- <div class="meta">
-  <span id="chapterNumber"></span>
-  <span id="score1"></span>
- </div>
- <div class="progress"><span id="chapterProgress"></span></div>
- <div class="kicker" id="chapterKicker"></div>
- <h2 id="chapterTitle"></h2>
- <div class="photo-grid" id="photos"></div>
- <div class="lesson" id="lesson"></div>
- <div class="fact">
-  <small>RANDOM FACT — DID YOU KNOW?</small>
-  <h3 id="factTitle"></h3>
-  <p id="factText"></p>
-  <button class="btn gold" id="newFact">Give me another fact</button>
- </div>
- <div class="actions">
-  <button class="btn" id="startQuiz">LET'S TEST THAT BRAIN</button>
- </div>
+<!-- DASHBOARD -->
+<section id="dashboard" class="screen">
+  <div class="hero">
+    <div class="camel">🐪</div>
+    <h2>Follow me, travellers!</h2>
+    <p id="welcomePlayers"></p>
+    <p>Six destinations. New discoveries. And a competition that may ruin a friendship or two.</p>
+    <div class="actions"><button class="btn yellow" onclick="beginChapter(0)">Enter the first destination</button></div>
+  </div>
+  <div class="card">
+    <h3>Current leaderboard</h3>
+    <div id="dashboardScores"></div>
+  </div>
 </section>
 
-<section id="quiz" class="card hidden">
- <div class="meta">
-  <span id="questionNumber"></span>
-  <span id="score2"></span>
- </div>
- <div class="progress"><span id="quizProgress"></span></div>
- <div class="kicker">THE CHALLENGE</div>
- <h2 id="question"></h2>
- <div class="options" id="answers"></div>
- <div id="feedback" class="hidden"></div>
- <div class="actions">
-  <button class="btn" id="next" disabled>CONTINUE</button>
- </div>
+<!-- LESSON -->
+<section id="lesson" class="screen">
+  <span class="tag" id="chapterTag">Destination 1</span>
+  <h2 id="chapterTitle"></h2>
+  <img id="chapterImage" class="lesson-image" alt="Tunisia">
+  <div class="card">
+    <h3 id="lessonHeading"></h3>
+    <p id="lessonText"></p>
+    <div class="feedback" id="funFact"></div>
+    <div class="actions"><button class="btn yellow" onclick="startChapterQuiz()">I'm ready for the challenge</button></div>
+  </div>
 </section>
 
-<section id="music" class="card hidden">
- <span class="tag">MUSIC CHALLENGE</span>
- <h2>Can your ears recognise Tunisia?</h2>
- <p>
- Listen to this short archival recording.
- You have to identify what kind of musical tradition you are hearing.
- </p>
- <div class="musicbox">
-  <div class="kicker">ARCHIVE RECORDING · 1931</div>
-  <h3>A sound from another time</h3>
-  <p class="muted" style="color:#e4eeee">
-   Listen carefully. You can replay the extract.
-  </p>
-  <audio id="audio" controls preload="none">
-   <source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Art-song_Maqam_Mezmum_%281931%29.ogg" type="audio/ogg">
-   Your browser does not support audio.
-  </audio>
-  <button class="btn gold" id="playClip">Play a 12-second challenge</button>
- </div>
- <div id="musicQuestion" class="hidden">
-  <h3>What are you listening to?</h3>
-  <div class="options" id="musicAnswers"></div>
-  <div id="musicFeedback" class="hidden"></div>
- </div>
- <div class="actions">
-  <button class="btn" id="musicNext" disabled>CONTINUE</button>
- </div>
+<!-- QUIZ -->
+<section id="quiz" class="screen">
+  <span class="tag" id="quizChapter"></span>
+  <div class="progress-wrap"><div class="progress" id="quizProgress"></div></div>
+  <div class="card">
+    <p class="mini" id="questionNumber"></p>
+    <h2 id="questionText"></h2>
+    <p id="whoseTurn"></p>
+    <div id="options"></div>
+    <div id="answerFeedback"></div>
+    <div class="actions"><button id="nextQuestion" class="btn yellow" onclick="nextQuestion()" style="display:none">Next</button></div>
+  </div>
 </section>
 
-<section id="result" class="card hidden">
- <span class="tag">MISSION COMPLETED</span>
- <h2>Well played, <span id="resultName"></span>!</h2>
- <div class="score"><span id="finalScore"></span></div>
- <p>Points collected</p>
- <p id="resultMessage"></p>
- <p><b>Correct answers:</b> <span id="correctCount"></span></p>
- <div class="lesson">
-  <h3>Your Tunisian discoveries</h3>
-  You have travelled through history, food, language, music and landscapes.
-  But this is only the beginning.
- </div>
- <form id="resultForm" action="https://formspree.io/f/xoeeprzg" method="POST">
-  <input type="hidden" name="player" id="formPlayer">
-  <input type="hidden" name="score" id="formScore">
-  <input type="hidden" name="correct_answers" id="formCorrect">
-  <input type="hidden" name="game" value="Tunisia Experience">
-  <button class="btn" id="send" type="submit">SEND MY SCORE TO THE HOST</button>
-  <p class="muted" id="status">Your score will be sent to the host.</p>
- </form>
- <div class="actions">
-  <button class="btn blue" id="musicLinksBtn">EXPLORE TUNISIAN MUSIC</button>
- </div>
+<!-- MUSIC -->
+<section id="music" class="screen">
+  <div class="music-box">
+    <div class="music-note">♫</div>
+    <span class="tag">Listening challenge</span>
+    <h2>Can you hear Tunisia?</h2>
+    <p>Close your eyes. Listen carefully. Let the music take you somewhere else.</p>
+    <audio id="tunisianAudio" preload="none"
+      src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Art-song_Maqam_Mezmum_%281931%29.ogg">
+    </audio>
+    <button class="btn yellow" onclick="playMusic()">Play the music</button>
+    <p class="mini" style="color:#e2f2f5">The clip will play for about 12 seconds. Tap play if your browser asks for permission.</p>
+  </div>
+  <div class="card">
+    <p id="musicTurn"></p>
+    <h3>What kind of music are you listening to?</h3>
+    <div id="musicOptions"></div>
+    <div id="musicFeedback"></div>
+    <div class="actions"><button id="musicNext" class="btn yellow" style="display:none" onclick="beginSpeaking()">Continue</button></div>
+  </div>
+  <div class="card">
+    <h3>Explore more Tunisian sounds</h3>
+    <p>After the challenge, explore these musical worlds together:</p>
+    <p><a href="https://www.youtube.com/results?search_query=Tunisian+Mezoued+music" target="_blank" rel="noopener">Listen to Mezoued</a></p>
+    <p><a href="https://www.youtube.com/results?search_query=Tunisian+Malouf+music" target="_blank" rel="noopener">Discover Malouf</a></p>
+    <p><a href="https://www.youtube.com/results?search_query=Tunisian+Stambeli+music" target="_blank" rel="noopener">Discover Stambeli</a></p>
+  </div>
 </section>
 
-<section id="musicLinks" class="card hidden">
- <h2>Explore the sound of Tunisia</h2>
- <p class="muted">Open a musical journey and discover different styles.</p>
- <div class="musiclinks">
-  <a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Tunisian+mezoued+music">Mezoued — popular music</a>
-  <a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Tunisian+malouf+music">Malouf — Andalusian roots</a>
-  <a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Tunisian+stambeli+music">Stambeli — Afro-Tunisian tradition</a>
-  <a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=modern+Tunisian+rap+music">Modern Tunisian music</a>
- </div>
+<!-- SPEAKING -->
+<section id="speaking" class="screen">
+  <span class="tag">Talk to the table</span>
+  <h2 id="speakingTitle">The speaking challenge</h2>
+  <div class="card">
+    <div class="camel" style="font-size:55px;text-align:center">🐪</div>
+    <h3 id="speakingPrompt"></h3>
+    <p id="speakingInstructions"></p>
+    <p id="speakerTurn"></p>
+    <div class="feedback">
+      <strong>Table jury:</strong><br>
+      Listen to the player. Discuss their answer. Then the host chooses the score.
+    </div>
+    <div class="actions">
+      <button class="btn light" onclick="awardSpeaking(0)">0 points</button>
+      <button class="btn orange" onclick="awardSpeaking(5)">5 points</button>
+      <button class="btn yellow" onclick="awardSpeaking(10)">10 points</button>
+    </div>
+    <p class="mini">The host decides the score after hearing the table's opinion.</p>
+  </div>
 </section>
 
-<div class="footer">A night of discoveries · Made with curiosity</div>
+<!-- FINAL -->
+<section id="final" class="screen">
+  <div class="hero">
+    <div class="camel">🐪</div>
+    <div class="subtitle">The journey is complete</div>
+    <h1>Bravo, travellers!</h1>
+    <p>You've explored Tunisia with me. Now let's see who paid attention.</p>
+  </div>
+  <div class="card">
+    <h2>Final leaderboard</h2>
+    <div id="finalScores"></div>
+    <div id="winnerMessage" class="feedback"></div>
+  </div>
+  <div class="card">
+    <h3>Send the results</h3>
+    <p>The host can submit the final scores. This sends the results to the game organiser.</p>
+    <div id="submitStatus" class="mini"></div>
+    <div class="actions">
+      <button class="btn yellow" id="submitButton" onclick="submitResults()">Send final results</button>
+      <button class="btn light" onclick="showScreen('dashboard')">View scores</button>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Hibo's final words</h3>
+    <p>«You came as visitors. I hope you leave with a little piece of Tunisia in your heart. And perhaps a little respect for camels.»</p>
+    <div class="actions"><button class="btn danger" onclick="newGameConfirm()">Start a new game</button></div>
+  </div>
+</section>
+
+<footer>
+  Made with sunshine, sea and a stubborn camel.<br>
+  Hibo's Tunisian Adventure
+</footer>
 </main>
 
 <script>
-const chapters=[
+const STORAGE_KEY = "hibo_tunisian_adventure_v2";
+
+const chapters = [
 {
- title:"Tunisia: Small Country, Big Personality",
- kicker:"CHAPTER 01 · THE BASICS",
- lesson:`<p>Tunisia is in North Africa, between Algeria and Libya. It faces the Mediterranean Sea. Its capital is Tunis.</p>
- <p>The north is greener and mountainous. The south reaches the Sahara. The country is small compared with many neighbours, but its history is enormous.</p>`,
- photos:[
- ["Sidi Bou Said","https://commons.wikimedia.org/wiki/Special:FilePath/Tunisia-3029B%20%287846578812%29.jpg?width=700"],
- ["The Mediterranean","https://commons.wikimedia.org/wiki/Special:FilePath/Sidi_Bou_Said_Allee.jpg?width=700"]
- ],
+ title:"Welcome to Tunisia",
+ heading:"A country between the Mediterranean and the Sahara",
+ text:"Tunisia is in North Africa, between Algeria and Libya. Its capital is Tunis. The country has Mediterranean beaches, ancient cities, mountains, salt lakes and the Sahara Desert. Tunisia is part of the Maghreb, the north-western region of Africa.",
+ image:"https://commons.wikimedia.org/wiki/Special:FilePath/Tunisia-3029B%20%287846578812%29.jpg?width=1000",
+ fact:"Tunisia is the northernmost country in Africa. From its northern coast, you can look across the Mediterranean Sea towards Europe.",
  questions:[
- ["Tunisia is located in which part of Africa?",["North","South","West"],0,"North Africa. Geography: surprisingly useful at parties."],
- ["What is the capital of Tunisia?",["Sousse","Tunis","Sfax"],1,"Tunis is the capital. Sousse and Sfax are important cities too."],
- ["Which country is NOT a neighbour of Tunisia?",["Algeria","Libya","Egypt"],2,"Egypt is further east. Tunisia borders Algeria and Libya."]
+  ["What is the capital of Tunisia?",["Sfax","Tunis","Sousse","Gabès"],1,"Tunis is the capital and the country's largest city."],
+  ["Which two countries border Tunisia?",["Egypt and Sudan","Algeria and Libya","Morocco and Algeria","Libya and Chad"],1,"Tunisia shares land borders with Algeria and Libya."],
+  ["Which sea is north of Tunisia?",["Red Sea","Black Sea","Mediterranean Sea","Arabian Sea"],2,"The Mediterranean shapes much of Tunisia's coastal life."]
  ]
 },
 {
- title:"Carthage: Rome's Complicated Ex",kicker:"CHAPTER 02 · HISTORY",
- lesson:`<p>Ancient Carthage was founded by Phoenician settlers. It became a major Mediterranean power and rival of Rome.</p>
- <p>Hannibal, its famous general, crossed the Alps with his army during the Second Punic War. Rome destroyed Carthage in 146 BCE.</p>`,
- photos:[
- ["Ancient Carthage","https://commons.wikimedia.org/wiki/Special:FilePath/Carthage_Tunisia.jpg?width=700"],
- ["El Jem amphitheatre","https://commons.wikimedia.org/wiki/Special:FilePath/Amphitheatre%2C_El_Jem%2C_Tunisia.jpg?width=700"]
- ],
+ title:"Carthage and History",
+ heading:"Empires, explorers and extraordinary stories",
+ text:"The ancient city of Carthage was founded by Phoenician settlers. It became a powerful Mediterranean trading centre and rival of Rome. Hannibal, its famous general, crossed the Alps with an army that included elephants. Later, the region became part of the Roman Empire. Tunisia became independent from France in 1956.",
+ image:"https://commons.wikimedia.org/wiki/Special:FilePath/Amphitheatre%2C_El_Jem%2C_Tunisia.jpg?width=1000",
+ fact:"Hannibal's crossing of the Alps with war elephants is one of the most famous military journeys in ancient history.",
  questions:[
- ["Who was Hannibal?",["A Carthaginian general","A Roman chef","A Greek pop star"],0,"A Carthaginian general. Sadly, no evidence of a pop career."],
- ["What did Hannibal famously cross?",["The Atlantic","The Alps","The Sahara on a camel"],1,"He crossed the Alps with his army and war elephants."],
- ["Carthage was destroyed by Rome in...",["146 BCE","1492 CE","Yesterday, probably"],0,"146 BCE. A major turning point in Mediterranean history."]
+  ["Who was Hannibal?",["A Roman emperor","A Carthaginian general","A Greek philosopher","A Tunisian poet"],1,"Hannibal was the famous Carthaginian military commander."],
+  ["Which ancient power was Carthage's great rival?",["Rome","Persia","China","Egypt"],0,"The Punic Wars were fought between Rome and Carthage."],
+  ["In which year did Tunisia gain independence from France?",["1881","1918","1956","1969"],2,"Tunisia became independent on 20 March 1956."]
  ]
 },
 {
- title:"Food: Handle With Respect",kicker:"CHAPTER 03 · FOOD",
- lesson:`<p>Tunisian food includes couscous, brik, lablabi, ojja and many regional dishes. Harissa is a famous chilli paste, but not every family makes it the same way.</p>
- <p>Couscous is shared across the Maghreb. Food traditions are part of the region's history and everyday life.</p>`,
- photos:[
- ["Tunisian food","https://commons.wikimedia.org/wiki/Special:FilePath/Couscous_Tunisien.jpg?width=700"],
- ["Traditional sweets","https://commons.wikimedia.org/wiki/Special:FilePath/Tunisian_sweets.jpg?width=700"]
- ],
+ title:"Tunisian Food",
+ heading:"A table full of flavour",
+ text:"Tunisian cuisine mixes Mediterranean, Amazigh, Arab and other influences. Couscous is a beloved staple. Brik is a thin pastry often filled with egg and tuna. Harissa is a spicy chilli paste used in many dishes. Food is often a social experience, shared with family and guests.",
+ image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1100&q=85",
+ fact:"Harissa is so important to Tunisian food culture that it has been recognised by UNESCO as intangible cultural heritage.",
  questions:[
- ["Harissa is...",["A chilli paste","A dessert","A type of camel"],0,"Chilli paste. The camel option was tempting, admittedly."],
- ["Brik is usually...",["A thin pastry","A musical instrument","A kind of hat"],0,"A thin, crisp pastry, often filled with egg and other ingredients."],
- ["What is the best way to eat very spicy harissa?",["Challenge your destiny","Respect your limits","Call the fire brigade first"],1,"Enjoy it at your own pace. Food is not a survival competition."]
+  ["What is harissa?",["A sweet cake","A spicy chilli paste","A type of bread","A fruit drink"],1,"Harissa is a spicy paste made mainly with chilli peppers."],
+  ["What is brik?",["A thin pastry","A soup","A cheese","A type of tea"],0,"Brik is a thin pastry, often folded around a savoury filling."],
+  ["Which dish is made from tiny steamed grains?",["Pizza","Couscous","Risotto","Lasagne"],1,"Couscous is made from small grains of semolina."]
  ]
 },
 {
- title:"Tunisian: A Language With Personality",kicker:"CHAPTER 04 · LANGUAGE",
- lesson:`<p>Arabic is Tunisia's official language. Tunisian Arabic, called Tounsi, is widely spoken in daily life. French is also commonly used.</p>
- <p>Aslema means hello. Labes? asks how someone is. Aaychek is a way to say thank you. Bslama means goodbye.</p>`,
- photos:[
- ["Tunis medina","https://commons.wikimedia.org/wiki/Special:FilePath/Medina_of_Tunis.jpg?width=700"],
- ["Traditional architecture","https://commons.wikimedia.org/wiki/Special:FilePath/Tunis_Medina.jpg?width=700"]
- ],
+ title:"The Tunisian Language",
+ heading:"A language full of character",
+ text:"Tunisian Arabic, often called Tounsi, is the everyday spoken variety of Arabic in Tunisia. It includes influences from Amazigh, Arabic, French, Italian and other languages. The way people speak can vary between regions. A few words can open a door to a conversation.",
+ image:"https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1100&q=85",
+ fact:"Tounsi is full of borrowed words. Tunisia's history can sometimes be heard in everyday vocabulary.",
  questions:[
- ["What does Aslema mean?",["Hello","I'm hungry","Where is the toilet?"],0,"Hello. A very useful word to start a conversation."],
- ["What does Bslama mean?",["Goodbye","Good morning","Bring me couscous"],0,"Goodbye. The couscous request is for another occasion."],
- ["Tounsi is...",["Tunisian Arabic","A dance","A city in Italy"],0,"Tounsi is the everyday spoken variety of Arabic in Tunisia."]
+  ["What does 'Aslema' mean?",["Goodbye","Hello","Please","Good night"],1,"Aslema is a common Tunisian greeting."],
+  ["What does 'Labes?' usually mean?",["Are you okay?","Where are you?","How old are you?","What time is it?"],0,"Labes? is a friendly way to ask how someone is."],
+  ["What does 'Bslama' mean?",["Thank you","Welcome","Goodbye","Delicious"],2,"Bslama is a way to say goodbye."]
  ]
 },
 {
- title:"Turn Up the Volume",kicker:"CHAPTER 05 · MUSIC",
- lesson:`<p>Mezoued is a lively popular style associated with a bagpipe-like instrument. Malouf has Andalusian roots. Stambeli is an Afro-Tunisian musical and spiritual tradition.</p>
- <p>Tunisia also has modern pop, rap, electronic music and rock. A culture is not a museum: it keeps changing.</p>`,
- photos:[
- ["Tunisian celebration","https://commons.wikimedia.org/wiki/Special:FilePath/Tunisian_music.jpg?width=700"],
- ["Traditional instrument","https://commons.wikimedia.org/wiki/Special:FilePath/Mezoued.jpg?width=700"]
- ],
+ title:"Music and Traditions",
+ heading:"Listen to the rhythm of Tunisia",
+ text:"Tunisian music is diverse. Malouf is a classical tradition with Andalusian roots. Mezoued is a popular style associated with a bagpipe-like instrument and lively rhythms. Stambeli is a spiritual musical tradition with deep African roots. Modern Tunisian artists combine local sounds with global influences.",
+ image:"https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1100&q=85",
+ fact:"The mezoued is a traditional bagpipe-like instrument, often made with a goatskin air bag and pipes.",
  questions:[
- ["Which style is associated with a bagpipe-like instrument?",["Mezoued","Malouf","Opera"],0,"Mezoued. You may now impress someone at a dinner party."],
- ["Malouf has strong roots in...",["Andalusian music","Country music","K-pop"],0,"Malouf is connected to Andalusian musical traditions."],
- ["Is Tunisian music only traditional?",["Yes, absolutely","No, modern music is also popular","Only whale songs"],1,"Modern Tunisian music includes rap, pop and many other styles."]
+  ["Which style is associated with a bagpipe-like instrument?",["Mezoued","Malouf","Jazz","Opera"],0,"The mezoued instrument gives the musical style its name."],
+  ["Which tradition has Andalusian roots?",["Stambeli","Malouf","Heavy metal","Reggae"],1,"Malouf developed through musical traditions linked to Al-Andalus."],
+  ["What is Stambeli particularly associated with?",["Spiritual and ritual music","Electronic dance music","Opera","Military marches"],0,"Stambeli is a spiritual tradition with strong African roots."]
  ]
 },
 {
- title:"The Tunisia You Didn't Expect",kicker:"CHAPTER 06 · PLACES",
- lesson:`<p>El Jem has a spectacular Roman amphitheatre. Matmata is known for traditional underground homes. Kairouan is a historic centre founded in 670 CE. Djerba is an island with a distinctive cultural landscape.</p>
- <p>Tunisia is more than beaches: it has Roman ruins, medinas, desert oases, islands and mountain landscapes.</p>`,
- photos:[
- ["El Jem","https://commons.wikimedia.org/wiki/Special:FilePath/Amphitheatre%2C_El_Jem%2C_Tunisia.jpg?width=700"],
- ["Sidi Bou Said","https://commons.wikimedia.org/wiki/Special:FilePath/Sidi_Bou_Said_Allee.jpg?width=700"]
- ],
+ title:"Hidden Tunisia",
+ heading:"A country of unexpected places",
+ text:"Tunisia is full of remarkable places. El Jem has one of the best-preserved Roman amphitheatres in the world. Kairouan is an important historic city. Djerba is an island known for its cultural heritage. Matmata is famous for traditional underground homes built into the earth.",
+ image:"https://commons.wikimedia.org/wiki/Special:FilePath/Sidi_Bou_Said_Allee.jpg?width=1000",
+ fact:"The amphitheatre of El Jem could hold tens of thousands of spectators. It is one of Tunisia's most impressive Roman monuments.",
  questions:[
- ["What is Matmata famous for?",["Underground homes","Skyscrapers","Ski resorts"],0,"Underground homes help people adapt to the hot, dry climate."],
- ["What is Djerba?",["An island","A mountain","A Roman emperor"],0,"An island off Tunisia's southeastern coast."],
- ["El Jem is famous for its...",["Roman amphitheatre","Eiffel Tower","Viking ship"],0,"A magnificent Roman amphitheatre, one of the best-known monuments in Tunisia."]
+  ["Where can you find a famous Roman amphitheatre?",["Djerba","El Jem","Matmata","Tabarka"],1,"El Jem is famous for its enormous Roman amphitheatre."],
+  ["Which place is known for underground homes?",["Matmata","Tunis","Sousse","Bizerte"],0,"Matmata is known for its traditional troglodyte homes."],
+  ["Which city is especially important in Islamic history?",["Kairouan","Monastir","Hammamet","Nabeul"],0,"Kairouan is one of the most important historic Islamic cities in North Africa."]
  ]
 }
 ];
 
-const facts=[
-["A tiny country with a huge history","Tunisia has been home to Phoenician, Roman, Arab, Ottoman and other historical influences."],
-["Harissa is UNESCO heritage","The traditions around Tunisian harissa were recognised by UNESCO in 2022."],
-["Djerba made the list","Djerba was added to the UNESCO World Heritage List in 2023."],
-["Hannibal had elephants","His Alpine crossing during the Second Punic War is one of the most famous military campaigns in history."],
-["The blue village","Sidi Bou Said is famous for its white walls and blue doors and windows."],
-["A city of learning","Kairouan was founded in 670 CE and became a major centre of Islamic scholarship."],
-["Underground architecture","Traditional homes in Matmata are built around underground courtyards."],
-["Couscous is international","Couscous traditions are shared across several North African countries."],
-["The Sahara is enormous","The Sahara is the largest hot desert in the world."],
-["Tunisia has Roman mosaics","The country preserves remarkable Roman mosaics, including examples at the Bardo Museum."],
-["Aaychek","A common Tunisian way to say thank you."],
-["A musical mix","Tunisian music includes Arab, Amazigh, African, Andalusian and Mediterranean influences."]
+const speakingChallenges = [
+ {
+  title:"The pronunciation battle",
+  prompt:"Say: ASLEMA",
+  instructions:"This means 'Hello'. Each player must pronounce the word out loud. The table listens and decides how clear and understandable the pronunciation was."
+ },
+ {
+  title:"Teach the table",
+  prompt:"Teach everyone one Tunisian word.",
+  instructions:"Choose a word you learned during the journey. Explain its meaning and teach the pronunciation. The others must repeat it."
+ },
+ {
+  title:"The cultural storyteller",
+  prompt:"Tell the table one thing you discovered about Tunisia.",
+  instructions:"You have 30 seconds. Explain something interesting without simply reading the screen. The table judges clarity, creativity and knowledge."
+ }
 ];
 
-let player="",score=0,correct=0,index=0,answered=false,musicDone=false;
-const $=id=>document.getElementById(id);
-function show(id){
- ["start","chapter","quiz","music","result","musicLinks"].forEach(s=>$(s).classList.toggle("hidden",s!==id));
+let game = {
+ players:[],
+ chapter:0,
+ question:0,
+ scores:{},
+ answered:false,
+ musicDone:false,
+ speakingIndex:0,
+ speakingDone:[],
+ finished:false,
+ lastScreen:"welcome"
+};
+
+function saveGame(){
+ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(game));}catch(e){}
 }
-function update(){
- $("score1").textContent="Score: "+score;
- $("score2").textContent="Score: "+score;
+function loadGame(){
+ try{
+  const data=localStorage.getItem(STORAGE_KEY);
+  if(data){game=JSON.parse(data);return true;}
+ }catch(e){}
+ return false;
 }
-function renderChapter(){
- let n=Math.floor(index/3),c=chapters[n];
- $("chapterNumber").textContent="Chapter "+(n+1)+" of 6";
- $("chapterProgress").style.width=(index/18*100)+"%";
- $("chapterKicker").textContent=c.kicker;
- $("chapterTitle").textContent=c.title;
- $("lesson").innerHTML=c.lesson;
- $("photos").innerHTML=c.photos.map(p=>`
-  <div class="photo">
-   <img src="${p[1]}" alt="${p[0]}" loading="lazy"
-    onerror="this.parentElement.style.display='none'">
-   <span>${p[0]}</span>
-  </div>`).join("");
- randomFact();
+function showScreen(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ game.lastScreen=id;
+ saveGame();
+ window.scrollTo({top:0,behavior:"smooth"});
 }
-function randomFact(){
- let f=facts[Math.floor(Math.random()*facts.length)];
- $("factTitle").textContent=f[0];
- $("factText").textContent=f[1];
+function startNewGame(){
+ const names=[];
+ for(let i=0;i<6;i++){
+  const value=document.getElementById("p"+i).value.trim();
+  if(value)names.push(value);
+ }
+ if(names.length<2){alert("Please enter at least two player names.");return;}
+ game={
+  players:names,chapter:0,question:0,scores:{},answered:false,
+  musicDone:false,speakingIndex:0,speakingDone:[],finished:false,lastScreen:"dashboard"
+ };
+ names.forEach(n=>game.scores[n]=0);
+ saveGame();
+ updateDashboard();
+ showScreen("dashboard");
+}
+function resumeGame(){
+ if(loadGame() && game.players && game.players.length){
+  if(game.finished){renderFinal();showScreen("final");}
+  else{
+   const target=game.lastScreen||"dashboard";
+   if(target==="quiz")renderQuestion();
+   if(target==="lesson")beginChapter(game.chapter);
+   if(target==="dashboard")updateDashboard();
+   showScreen(target);
+  }
+ }else{
+  alert("There is no saved game yet. Start a new adventure!");
+  showScreen("setup");
+ }
+}
+function updateDashboard(){
+ document.getElementById("welcomePlayers").textContent="Travellers: "+game.players.join(", ");
+ document.getElementById("dashboardScores").innerHTML=scoreHTML();
+}
+function scoreHTML(){
+ return [...game.players].sort((a,b)=>game.scores[b]-game.scores[a])
+ .map((p,i)=>`<div class="score-line"><span><strong>${i+1}.</strong> ${escapeHTML(p)}</span><strong>${game.scores[p]} points</strong></div>`).join("");
+}
+function escapeHTML(str){
+ return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function beginChapter(index){
+ game.chapter=index;
+ game.question=0;
+ game.answered=false;
+ const c=chapters[index];
+ document.getElementById("chapterTag").textContent="Destination "+(index+1)+" of 6";
+ document.getElementById("chapterTitle").textContent=c.title;
+ document.getElementById("lessonHeading").textContent=c.heading;
+ document.getElementById("lessonText").textContent=c.text;
+ document.getElementById("chapterImage").src=c.image;
+ document.getElementById("chapterImage").onerror=function(){this.style.display="none";};
+ document.getElementById("funFact").innerHTML="<strong>Hibo's little secret:</strong> "+escapeHTML(c.fact);
+ showScreen("lesson");
+}
+function startChapterQuiz(){
+ game.question=0;
+ renderQuestion();
+ showScreen("quiz");
+}
+function currentPlayer(){
+ return game.players[(game.chapter*3+game.question)%game.players.length];
 }
 function renderQuestion(){
- let c=chapters[Math.floor(index/3)];
- let q=c.questions[index%3];
- answered=false;
- $("questionNumber").textContent="Question "+(index+1)+" of 18";
- $("quizProgress").style.width=(index/18*100)+"%";
- $("question").textContent=q[0];
- $("feedback").className="hidden";
- $("next").disabled=true;
- $("next").textContent=index===17?"MUSIC CHALLENGE":"CONTINUE";
- $("answers").innerHTML="";
- q[1].forEach((a,i)=>{
-  let b=document.createElement("button");
-  b.className="option";b.textContent=a;
-  b.onclick=()=>answer(i,q,b);
-  $("answers").appendChild(b);
- });
+ const c=chapters[game.chapter];
+ const q=c.questions[game.question];
+ game.answered=false;
+ document.getElementById("quizChapter").textContent=c.title;
+ document.getElementById("questionNumber").textContent="Question "+(game.chapter*3+game.question+1)+" of 18";
+ document.getElementById("quizProgress").style.width=((game.chapter*3+game.question)/18*100)+"%";
+ document.getElementById("questionText").textContent=q[0];
+ document.getElementById("whoseTurn").innerHTML="<strong>Player answering:</strong> "+escapeHTML(currentPlayer());
+ document.getElementById("answerFeedback").innerHTML="";
+ document.getElementById("nextQuestion").style.display="none";
+ document.getElementById("options").innerHTML=q[1].map((option,i)=>
+  `<button class="option" onclick="answerQuestion(${i})">${String.fromCharCode(65+i)}. ${escapeHTML(option)}</button>`
+ ).join("");
+ saveGame();
 }
-function answer(i,q,button){
- if(answered)return;
- answered=true;
- [...$("answers").children].forEach((b,n)=>{
+function answerQuestion(choice){
+ if(game.answered)return;
+ game.answered=true;
+ const c=chapters[game.chapter],q=c.questions[game.question];
+ const buttons=[...document.querySelectorAll("#options button")];
+ buttons.forEach((b,i)=>{
   b.disabled=true;
-  if(n===q[2])b.classList.add("correct");
+  if(i===q[2])b.classList.add("correct");
+  if(i===choice && choice!==q[2])b.classList.add("wrong");
  });
- let good=i===q[2];
- if(good){score+=10;correct++;button.classList.add("correct");}
- else button.classList.add("wrong");
- $("feedback").className="feedback "+(good?"good":"bad");
- $("feedback").innerHTML=`<b>${good?"Correct! +10 points":"Not quite!"}</b><br>${q[3]}`;
- $("next").disabled=false;
- update();
+ const player=currentPlayer();
+ if(choice===q[2]){
+  game.scores[player]+=10;
+  document.getElementById("answerFeedback").innerHTML=`<div class="feedback"><strong>Correct! +10 points.</strong><br>${escapeHTML(q[3])}<br><br>Hibo: "Excellent! Perhaps you are not just here for the food."</div>`;
+ }else{
+  document.getElementById("answerFeedback").innerHTML=`<div class="feedback"><strong>Not quite. 0 points.</strong><br>The correct answer is: <strong>${escapeHTML(q[1][q[2]])}</strong>.<br>${escapeHTML(q[3])}<br><br>Hibo: "A little knowledge is a dangerous thing. Luckily, we are learning."</div>`;
+ }
+ document.getElementById("nextQuestion").style.display="inline-block";
+ saveGame();
 }
 function nextQuestion(){
- if(!answered)return;
- index++;
- if(index===18){show("music");return;}
- if(index%3===0){show("chapter");renderChapter();}
- else{show("quiz");renderQuestion();}
-}
-function finish(){
- $("resultName").textContent=player;
- $("finalScore").textContent=score;
- $("correctCount").textContent=correct+" / 18";
- $("resultMessage").textContent=score>=160?
- "Outstanding! You are officially a Tunisia enthusiast.":
- score>=110?"Very impressive. You discovered quite a lot.":
- "A good start. Tunisia has plenty more stories for you.";
- $("formPlayer").value=player;
- $("formScore").value=score;
- $("formCorrect").value=correct;
- show("result");
-}
-$("startBtn").onclick=()=>{
- player=$("player").value;
- if(!player){alert("Choose your name first!");return;}
- score=0;correct=0;index=0;musicDone=false;
- update();show("chapter");renderChapter();
-};
-$("newFact").onclick=randomFact;
-$("startQuiz").onclick=()=>{show("quiz");renderQuestion();};
-$("next").onclick=nextQuestion;
-
-let clipTimer;
-$("playClip").onclick=()=>{
- const a=$("audio");
- a.currentTime=0;
- a.play();
- clearTimeout(clipTimer);
- clipTimer=setTimeout(()=>a.pause(),12000);
- $("musicQuestion").classList.remove("hidden");
-};
-const musicOptions=[
- "A traditional Tunisian art-song recording",
- "A modern electronic dance track",
- "A French military march",
- "A Japanese pop song"
-];
-musicOptions.forEach((v,i)=>{
- let b=document.createElement("button");
- b.className="option";b.textContent=v;
- b.onclick=()=>{
-  if(musicDone)return;
-  musicDone=true;
-  [...$("musicAnswers").children].forEach((x,n)=>{
-   x.disabled=true;
-   if(n===0)x.classList.add("correct");
-  });
-  const good=i===0;
-  if(good)score+=10;
-  $("musicFeedback").className="feedback "+(good?"good":"bad");
-  $("musicFeedback").innerHTML=good?
-   "<b>Excellent ears! +10 bonus points.</b><br>This is an archival traditional Tunisian art-song recording, Maqam Mezmum, from 1931.":
-   "<b>Not this time!</b><br>This is an archival traditional Tunisian art-song recording, Maqam Mezmum, from 1931.";
-  $("musicNext").disabled=false;
-  update();
- };
- $("musicAnswers").appendChild(b);
-});
-$("musicNext").onclick=finish;
-
-$("resultForm").onsubmit=async e=>{
- e.preventDefault();
- const b=$("send"),s=$("status");
- b.disabled=true;b.textContent="SENDING...";
- try{
-  const r=await fetch(e.target.action,{
-   method:"POST",body:new FormData(e.target),
-   headers:{Accept:"application/json"}
-  });
-  if(!r.ok)throw new Error();
-  b.textContent="SCORE SENT!";
-  s.textContent="Your result has reached the host. Thank you for playing!";
- }catch(err){
-  b.disabled=false;b.textContent="TRY AGAIN";
-  s.textContent="Could not send automatically. Please tell the host your score: "+score;
+ if(!game.answered)return;
+ if(game.question<2){
+  game.question++;
+  renderQuestion();
+ }else if(game.chapter<5){
+  beginChapter(game.chapter+1);
+ }else{
+  showMusic();
  }
-};
-$("musicLinksBtn").onclick=()=>show("musicLinks");
+}
+function showMusic(){
+ const player=game.players[18%game.players.length];
+ document.getElementById("musicTurn").innerHTML="<strong>Listening challenge for:</strong> "+escapeHTML(player);
+ document.getElementById("musicOptions").innerHTML=[
+  "A traditional Tunisian art-song",
+  "A modern electronic dance track",
+  "A classical Indian raga",
+  "A Spanish flamenco song"
+ ].map((s,i)=>`<button class="option" onclick="answerMusic(${i})">${s}</button>`).join("");
+ document.getElementById("musicFeedback").innerHTML="";
+ document.getElementById("musicNext").style.display="none";
+ showScreen("music");
+}
+function playMusic(){
+ const audio=document.getElementById("tunisianAudio");
+ audio.currentTime=0;
+ audio.play().then(()=>{
+  setTimeout(()=>{audio.pause();},12000);
+ }).catch(()=>alert("Your browser could not play the audio. Please try again or check your internet connection."));
+}
+function answerMusic(choice){
+ if(game.musicDone)return;
+ game.musicDone=true;
+ const player=game.players[18%game.players.length];
+ const correct=choice===0;
+ if(correct)game.scores[player]+=10;
+ [...document.querySelectorAll("#musicOptions button")].forEach((b,i)=>{
+  b.disabled=true;
+  if(i===0)b.classList.add("correct");
+  if(i===choice && !correct)b.classList.add("wrong");
+ });
+ document.getElementById("musicFeedback").innerHTML=correct?
+  `<div class="feedback"><strong>Correct! +10 points.</strong><br>This is a traditional Tunisian art-song recording.</div>`:
+  `<div class="feedback"><strong>Not quite. 0 points.</strong><br>The clip is a traditional Tunisian art-song recording.</div>`;
+ document.getElementById("musicNext").style.display="inline-block";
+ saveGame();
+}
+function beginSpeaking(){
+ game.speakingIndex=0;
+ game.speakingDone=[];
+ renderSpeaking();
+ showScreen("speaking");
+}
+function renderSpeaking(){
+ const s=speakingChallenges[game.speakingIndex];
+ document.getElementById("speakingTitle").textContent=s.title;
+ document.getElementById("speakingPrompt").textContent=s.prompt;
+ document.getElementById("speakingInstructions").textContent=s.instructions;
+ const player=game.players[game.speakingIndex%game.players.length];
+ document.getElementById("speakerTurn").innerHTML="<strong>Speaker:</strong> "+escapeHTML(player);
+}
+function awardSpeaking(points){
+ const player=game.players[game.speakingIndex%game.players.length];
+ game.scores[player]+=points;
+ game.speakingDone.push({player,points});
+ game.speakingIndex++;
+ saveGame();
+ if(game.speakingIndex<speakingChallenges.length){
+  renderSpeaking();
+ }else{
+  game.finished=true;
+  renderFinal();
+  showScreen("final");
+ }
+}
+function renderFinal(){
+ const sorted=[...game.players].sort((a,b)=>game.scores[b]-game.scores[a]);
+ document.getElementById("finalScores").innerHTML=sorted.map((p,i)=>
+ `<div class="score-line"><span class="rank">${i+1}</span><span style="flex:1"><strong>${escapeHTML(p)}</strong></span><strong>${game.scores[p]} pts</strong></div>`
+ ).join("");
+ const top=game.scores[sorted[0]];
+ const winners=sorted.filter(p=>game.scores[p]===top);
+ document.getElementById("winnerMessage").innerHTML=
+ winners.length===1?
+ `<strong>${escapeHTML(winners[0])} is the winner!</strong><br>Hibo is impressed. Don't let it go to your head.`:
+ `<strong>It's a tie!</strong><br>${winners.map(escapeHTML).join(", ")} share the top spot. Hibo refuses to choose.`;
+ saveGame();
+}
+async function submitResults(){
+ const button=document.getElementById("submitButton");
+ const status=document.getElementById("submitStatus");
+ button.disabled=true;
+ status.textContent="Sending results...";
+ const payload={
+  event:"Hibo's Tunisian Adventure",
+  date:new Date().toISOString(),
+  players:game.players.map(name=>({name,score:game.scores[name]})),
+  totalQuestions:19,
+  speakingChallenges:game.speakingDone
+ };
+ try{
+  const response=await fetch("https://formspree.io/f/xoeeprzg",{
+   method:"POST",
+   headers:{"Content-Type":"application/json","Accept":"application/json"},
+   body:JSON.stringify(payload)
+  });
+  if(!response.ok)throw new Error("Submission failed");
+  status.textContent="Results sent successfully. Thank you, travellers!";
+  button.textContent="Results sent";
+ }catch(error){
+  status.textContent="Could not send the results. Check your internet connection and try again.";
+  button.disabled=false;
+ }
+}
+function newGameConfirm(){
+ if(!confirm("Start a completely new game? The current saved game will be replaced."))return;
+ localStorage.removeItem(STORAGE_KEY);
+ game={players:[],chapter:0,question:0,scores:{},answered:false,musicDone:false,speakingIndex:0,speakingDone:[],finished:false,lastScreen:"welcome"};
+ showScreen("setup");
+}
 </script>
 </body>
 </html>
