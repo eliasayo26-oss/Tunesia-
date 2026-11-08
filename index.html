@@ -1,315 +1,385 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f4b942">
-<title>Hibo's Tunisian Adventure</title>
+<meta name="theme-color" content="#103f55">
+<title>Hibo — A Journey Through Tunisia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --sand:#f8edda;--cream:#fffaf1;--yellow:#f4b942;--orange:#e87536;
-  --blue:#176b87;--deep:#123e50;--red:#c84b43;--green:#527b55;
-  --ink:#263b40;--muted:#718084;--white:#fff;
-  --shadow:0 12px 35px #25404b18;
+  --sea:#103f55;--blue:#176d83;--turquoise:#56a9a5;
+  --gold:#e9b94f;--sand:#f2d99c;--cream:#fffaf0;
+  --paper:#f7f0e3;--terracotta:#b96548;--ink:#203b43;
+  --muted:#74868a;--line:#e7dece;--green:#477b62;
+  --red:#a94e45;--shadow:0 16px 45px #183c4a12;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--sand);color:var(--ink);font-family:"DM Sans",sans-serif}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}
 button,input{font:inherit}
 button{cursor:pointer;border:0}
+button:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
 .hidden{display:none!important}
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 5%;background:#fffaf1eF;position:sticky;top:0;z-index:5;backdrop-filter:blur(12px);border-bottom:1px solid #eadfcf}
-.brand{font-family:"Playfair Display",serif;font-size:22px;font-weight:800;color:var(--deep)}
-.brand span{color:var(--orange)}
-.top-actions{display:flex;gap:8px;align-items:center}
-.pill{border-radius:30px;padding:9px 14px;background:#f2e5d0;color:var(--deep);font-size:12px;font-weight:800}
-main{max-width:1120px;margin:auto;padding:30px 20px 70px}
-.hero{position:relative;overflow:hidden;border-radius:30px;background:linear-gradient(125deg,#123e50,#176b87 65%,#3b8993);color:white;padding:44px 40px;min-height:330px;display:flex;align-items:center;box-shadow:var(--shadow)}
-.hero:before,.hero:after{content:"";position:absolute;border:1px solid #ffffff28;border-radius:50%;width:300px;height:300px;right:-80px;top:-100px}
-.hero:after{width:220px;height:220px;right:30px;top:180px}
-.hero-copy{max-width:610px;position:relative;z-index:1}
-.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:800;color:#ffd98d}
-h1,h2,h3{font-family:"Playfair Display",serif}
-h1{font-size:clamp(38px,6vw,66px);line-height:1.03;margin:15px 0}
-.hero p{max-width:510px;line-height:1.7;color:#e0edf0}
-.hero-art{position:absolute;right:7%;bottom:0;width:270px;max-width:34%;z-index:1}
-.section{margin-top:28px}
-.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
-.section-title h2{margin:0;font-size:28px;color:var(--deep)}
-.muted{color:var(--muted);font-size:13px;line-height:1.6}
-.panel{background:var(--cream);border:1px solid #eadfcf;border-radius:22px;padding:24px;box-shadow:var(--shadow)}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-.card{background:var(--cream);border:1px solid #eadfcf;border-radius:20px;padding:20px;box-shadow:var(--shadow)}
-.btn{padding:13px 19px;border-radius:13px;font-weight:800;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:#fffaf0ed;backdrop-filter:blur(14px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.brand{font-family:"Playfair Display",serif;font-size:23px;font-weight:800;letter-spacing:.5px;color:var(--sea)}
+.brand span{color:var(--terracotta)}
+.topright{display:flex;gap:10px;align-items:center}
+.status{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--green);background:#e6efe8;padding:9px 12px;border-radius:30px}
+main{max-width:1180px;margin:auto;padding:28px 22px 70px}
+h1,h2,h3,h4{font-family:"Playfair Display",serif;color:var(--sea)}
+h1{font-size:clamp(42px,7vw,76px);line-height:1.02;margin:15px 0}
+h2{font-size:30px;margin:0 0 12px}
+h3{font-size:21px;margin:0 0 10px}
+p{line-height:1.75}
+.muted{color:var(--muted);font-size:13px;line-height:1.7}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:800;color:var(--terracotta)}
+.hero{position:relative;overflow:hidden;border-radius:30px;min-height:430px;padding:58px 6%;display:flex;align-items:center;background:linear-gradient(115deg,#0d3549 0%,#17677c 58%,#348b8d 100%);color:white;box-shadow:var(--shadow)}
+.hero:before{content:"";position:absolute;width:460px;height:460px;border:1px solid #ffffff26;border-radius:50%;right:-100px;top:-200px}
+.hero:after{content:"";position:absolute;width:310px;height:310px;border:1px solid #ffffff24;border-radius:50%;right:60px;bottom:-220px}
+.hero-copy{max-width:670px;position:relative;z-index:2}
+.hero h1{color:white}
+.hero p{color:#d9e9e8;max-width:560px;font-size:15px}
+.hero .eyebrow{color:var(--gold)}
+.hero-art{position:absolute;right:5%;bottom:0;width:270px;max-width:30%;z-index:1;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.btn{padding:13px 19px;border-radius:12px;font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
 .btn:hover{transform:translateY(-2px)}
-.primary{background:var(--yellow);color:#3b3020}
-.secondary{background:var(--blue);color:white}
-.light{background:#f0e5d4;color:var(--deep)}
-.danger{background:#f6dfdc;color:#a3322c}
-.dark{background:var(--deep);color:white}
-.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
-input{width:100%;padding:14px 15px;border:1px solid #dfd2bf;border-radius:12px;background:white;outline:none;margin:8px 0 14px}
-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #176b8718}
-label{font-size:12px;font-weight:800;color:var(--deep)}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.notice{padding:13px 15px;background:#fff2d6;border-radius:12px;color:#72521b;font-size:13px;line-height:1.5;margin:14px 0}
-.error{background:#f9e3df;color:#8e3029}
-.success{background:#e4f0e2;color:#315e35}
-.world{display:flex;gap:15px;align-items:center}
-.world-icon{width:55px;height:55px;flex:none;border-radius:17px;display:grid;place-items:center;font-size:25px;background:#f4e2bd}
-.world h3{font-size:19px;margin:0 0 5px}
-.world p{font-size:12px;color:var(--muted);margin:0;line-height:1.5}
-.progress{height:8px;background:#eadfce;border-radius:20px;overflow:hidden;margin-top:14px}
-.progress div{height:100%;background:var(--orange);width:0;transition:.3s}
-.hibo-box{display:flex;gap:18px;align-items:center;background:#fff2d6;border-radius:20px;padding:17px;margin:20px 0}
-.hibo-box svg{width:90px;flex:none}
-.hibo-box p{margin:0;line-height:1.6;font-size:14px}
-.hibo-name{font-weight:900;color:#a64d25}
-.room-code{font-size:28px;letter-spacing:5px;font-weight:900;color:var(--blue)}
+.primary{background:var(--gold);color:#43351c}
+.secondary{background:var(--sea);color:white}
+.light{background:#eee5d5;color:var(--sea)}
+.white{background:var(--cream);color:var(--sea)}
+.danger{background:#f5e2de;color:#9b4039}
+.outline{background:transparent;border:1px solid #ffffff66;color:white}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}
+.panel{background:var(--cream);border:1px solid var(--line);border-radius:22px;padding:25px;box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.section{margin-top:25px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:15px}
+.section-head h2{margin:0}
+input{width:100%;padding:14px;border:1px solid #ddd2c1;border-radius:11px;background:white;color:var(--ink);margin:8px 0 15px;outline:none}
+input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #176d8318}
+label{font-size:11px;font-weight:800;letter-spacing:.6px;color:var(--sea);text-transform:uppercase}
+.notice{padding:13px 15px;border-radius:12px;background:#fff0cf;color:#70531d;font-size:13px;line-height:1.6;margin:14px 0}
+.notice.error{background:#f8e4df;color:#963d36}
+.notice.success{background:#e5f0e7;color:#356447}
+.pill{display:inline-block;padding:8px 12px;border-radius:30px;background:#eee5d5;color:var(--sea);font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
 .player-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.player-tag{background:#e9f0ed;border-radius:30px;padding:8px 12px;font-size:12px;font-weight:800}
-.game-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
-.chapter-image{width:100%;height:230px;object-fit:cover;border-radius:18px;margin:15px 0}
-.lesson-text{font-size:15px;line-height:1.85}
-.fact{border-left:4px solid var(--yellow);padding:12px 15px;background:#fff5df;border-radius:0 12px 12px 0;margin:16px 0;line-height:1.6}
-.answer{width:100%;text-align:left;padding:15px;border:1px solid #e5d9c8;border-radius:13px;background:white;margin:7px 0;color:var(--ink);font-weight:600}
-.answer:hover{border-color:var(--blue);background:#f0f8f8}
-.answer.selected{border:2px solid var(--blue);background:#eaf4f5}
-.answer.correct{border:2px solid var(--green);background:#e8f2e7}
-.answer.wrong{border:2px solid var(--red);background:#f8e8e5}
-.leader-row{display:flex;justify-content:space-between;align-items:center;padding:13px 5px;border-bottom:1px solid #eee2d2}
+.player-tag{background:#eaf0eb;padding:9px 13px;border-radius:30px;font-size:12px;font-weight:700}
+.room-code{font-size:35px;letter-spacing:7px;font-weight:800;color:var(--blue);margin:8px 0}
+.chapter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.chapter-card{border:1px solid var(--line);background:white;border-radius:16px;padding:17px;min-height:135px}
+.chapter-card .number{font-size:10px;color:var(--terracotta);font-weight:900;letter-spacing:2px}
+.chapter-card h3{font-size:18px;margin:9px 0 5px}
+.chapter-card p{font-size:11px;color:var(--muted);margin:0;line-height:1.5}
+.hibo-card{display:flex;align-items:center;gap:16px;background:#fff0d1;border:1px solid #f0dfb8;border-radius:19px;padding:15px 18px;margin:20px 0}
+.hibo-card svg{width:100px;flex:none}
+.hibo-card p{font-size:14px;line-height:1.7;margin:0;color:#4d4639}
+.hibo-card strong{color:var(--terracotta)}
+.speech{font-family:"Playfair Display",serif;font-size:17px}
+.gamehead{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.progress{height:7px;background:#e6ddce;border-radius:30px;overflow:hidden;margin:15px 0 22px}
+.progress div{height:100%;background:linear-gradient(90deg,var(--terracotta),var(--gold));transition:width .4s}
+.chapter-hero{height:270px;border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(120deg,#174c5b,#398e91);margin:15px 0 22px}
+.chapter-hero img{width:100%;height:100%;object-fit:cover;display:block}
+.chapter-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0b293a66,transparent 70%)}
+.lesson{font-size:15px;line-height:1.9}
+.lesson p{margin:0 0 14px}
+.lesson strong{color:var(--sea)}
+.fact{padding:17px 18px;border-left:4px solid var(--gold);background:#fff3d9;border-radius:0 13px 13px 0;margin:20px 0;line-height:1.7;font-size:13px}
+.fact b{color:#9c572f}
+.option{display:block;width:100%;text-align:left;padding:15px 16px;background:white;border:1px solid var(--line);border-radius:12px;margin:9px 0;color:var(--ink);font-weight:600;transition:.15s}
+.option:hover{border-color:var(--blue);background:#f0f7f5}
+.option.selected{border:2px solid var(--blue);background:#eaf3f2}
+.option.correct{border:2px solid var(--green);background:#e8f1e9}
+.option.wrong{border:2px solid var(--red);background:#f8e9e5}
+.feedback{padding:14px;border-radius:12px;margin-top:14px;font-size:13px;line-height:1.6}
+.feedback.good{background:#e7f1e8;color:#315d40}
+.feedback.bad{background:#f8e6e1;color:#8f3e37}
+.leader-row{display:flex;align-items:center;justify-content:space-between;padding:13px 4px;border-bottom:1px solid var(--line);gap:12px}
 .leader-row:last-child{border:0}
-.rank{font-weight:900;color:var(--orange);width:30px}
-.score{font-weight:900;color:var(--blue)}
-.footer{text-align:center;color:#8a928e;font-size:11px;padding:25px}
-.modal-back{position:fixed;inset:0;background:#102c37a8;z-index:20;display:grid;place-items:center;padding:20px}
-.modal{background:var(--cream);border-radius:22px;padding:25px;max-width:420px;width:100%;box-shadow:var(--shadow)}
+.rank{display:inline-block;width:29px;color:var(--terracotta);font-weight:900}
+.score{font-weight:900;color:var(--blue);white-space:nowrap}
+.word-card{background:#f2eadb;border-radius:18px;padding:24px;text-align:center;margin:18px 0}
+.word-big{font-family:"Playfair Display",serif;font-size:clamp(30px,6vw,46px);color:var(--sea);margin:5px 0}
+.pron-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0}
+.vote{background:white;border:1px solid var(--line);border-radius:12px;padding:13px 5px;font-size:18px;font-weight:900;color:var(--sea)}
+.vote small{display:block;font-size:9px;font-weight:700;color:var(--muted);margin-top:4px}
+.vote.selected{background:var(--sea);color:white;border-color:var(--sea)}
+.vote.selected small{color:#d9e9e8}
+.scoreboard{background:#f4eddf;border-radius:16px;padding:16px}
+.footer{text-align:center;color:#879496;font-size:10px;letter-spacing:1.5px;padding:28px}
+.modal-back{position:fixed;inset:0;background:#102e3bd9;z-index:30;display:grid;place-items:center;padding:20px}
+.modal{width:min(440px,100%);background:var(--cream);border-radius:22px;padding:26px;box-shadow:var(--shadow)}
 .modal h2{margin-top:0}
-.small{font-size:11px;color:var(--muted)}
-@media(max-width:700px){
- .hero{padding:30px 24px;min-height:360px;align-items:flex-start}
- .hero-art{width:175px;max-width:40%;right:3%}
- .hero-copy{max-width:100%}
- .hero p{max-width:85%}
- .grid{grid-template-columns:1fr}
- .panel{padding:18px}
- .topbar{padding:13px 4%}
- .brand{font-size:18px}
+.small{font-size:11px;color:var(--muted);line-height:1.6}
+.tagline{color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:800}
+.end-ribbon{padding:20px;border-radius:16px;background:linear-gradient(120deg,#123f54,#287d88);color:white}
+.end-ribbon h2{color:white}
+@media(max-width:760px){
+ .topbar{height:62px;padding:0 4%}.brand{font-size:19px}
+ main{padding:18px 13px 55px}
+ .hero{min-height:430px;padding:32px 24px;align-items:flex-start}
+ .hero-art{width:170px;max-width:39%;right:0}
+ .hero-copy{max-width:100%}.hero p{max-width:85%}
+ .grid,.three{grid-template-columns:1fr}
+ .chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .panel{padding:19px}
+ .pron-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+ .vote{padding:12px 2px}
+ .hibo-card svg{width:76px}
 }
 </style>
 </head>
 <body>
 
 <header class="topbar">
-  <div class="brand">HIBO <span>·</span> Tunisia</div>
-  <div class="top-actions">
-    <span class="pill" id="connection">Connecting…</span>
-    <button class="btn light" id="musicButton" onclick="toggleMusic()">♫ Music</button>
+  <div class="brand">HIBO <span>✦</span> TUNISIA</div>
+  <div class="topright">
+    <span class="status" id="connection">Connecting</span>
   </div>
 </header>
 
 <main>
-  <section id="home">
-    <div class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow">A journey through Tunisia</div>
-        <h1>One country.<br>Six worlds.<br>Endless stories.</h1>
-        <p>Meet Hibo, your slightly dramatic camel guide. Discover Tunisia through its history, music, food, language and hidden places.</p>
-        <button class="btn primary" onclick="showSetup()">Start the adventure →</button>
-      </div>
-      <svg class="hero-art" viewBox="0 0 300 300" role="img" aria-label="Hibo the camel">
-        <ellipse cx="150" cy="270" rx="110" ry="15" fill="#0d2e3a" opacity=".25"/>
-        <path d="M66 225 Q45 205 63 174 Q83 146 117 163 Q140 130 167 160 Q192 139 216 166 L237 211 Q245 232 221 239 L83 239Z" fill="#d99b55"/>
-        <path d="M118 166 Q115 119 139 95 Q153 81 165 99 Q178 115 169 151 L158 174Z" fill="#d99b55"/>
-        <path d="M143 101 Q119 82 108 96 Q119 116 143 116Z" fill="#bd7840"/>
-        <path d="M157 100 Q177 78 193 94 Q181 116 160 116Z" fill="#bd7840"/>
-        <path d="M139 96 Q148 64 170 72 Q189 78 181 104 L171 131 L143 126Z" fill="#e5ad68"/>
-        <path d="M160 73 Q176 54 192 69 Q202 81 188 98 L177 109Z" fill="#e5ad68"/>
-        <ellipse cx="183" cy="94" rx="24" ry="17" fill="#e5ad68"/>
-        <ellipse cx="202" cy="100" rx="13" ry="10" fill="#f0c18a"/>
-        <circle cx="181" cy="86" r="3.5" fill="#263b40"/>
-        <circle cx="182" cy="85" r="1" fill="white"/>
-        <path d="M190 108 Q201 115 210 106" fill="none" stroke="#8e4c31" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M105 230 L99 272 M132 235 L130 273 M198 235 L205 272 M222 230 L235 270" stroke="#a96b3b" stroke-width="13" stroke-linecap="round"/>
-        <path d="M92 274 L111 274 M121 275 L140 275 M196 274 L214 274 M225 273 L245 273" stroke="#563c32" stroke-width="7" stroke-linecap="round"/>
-        <path d="M87 172 Q110 146 134 164 Q153 143 175 166" fill="none" stroke="#f7d28f" stroke-width="7"/>
-        <path d="M146 139 Q162 128 176 143" stroke="#fff0c8" stroke-width="5" fill="none"/>
-        <circle cx="212" cy="79" r="5" fill="#f4b942"/>
-        <path d="M214 60 L218 49 L222 61 L233 65 L222 69 L218 81 L214 69 L203 65Z" fill="#f4b942"/>
-      </svg>
-    </div>
-
-    <div class="section grid">
-      <div class="panel">
-        <h2>Welcome, traveller.</h2>
-        <p class="muted">Create a room as Game Master, or join a room with a code. Your progress is saved automatically.</p>
-        <div class="actions">
-          <button class="btn primary" onclick="showSetup()">Create a game</button>
-          <button class="btn secondary" onclick="showJoin()">Join a game</button>
-        </div>
-        <div id="resumeArea" class="hidden">
-          <div class="notice success">An unfinished adventure was found on this device.</div>
-          <button class="btn dark" onclick="resumeGame()">Resume adventure</button>
-          <button class="btn light" onclick="forgetLocal()">Forget this device</button>
-        </div>
-      </div>
-      <div class="panel">
-        <h2>Six worlds to explore</h2>
-        <p class="muted">From ancient Carthage to the blue streets of Sidi Bou Said. Learn a little, laugh a little, and discover a lot.</p>
-        <div class="player-list">
-          <span class="player-tag">History</span><span class="player-tag">Music</span>
-          <span class="player-tag">Food</span><span class="player-tag">Culture</span>
-          <span class="player-tag">Tounsi</span><span class="player-tag">Places</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="setup" class="hidden">
-    <div class="panel">
-      <button class="btn light" onclick="goHome()">← Back</button>
-      <h2>Create your adventure</h2>
-      <p class="muted">You will be the Game Master. Share the room code with everyone else.</p>
-      <label>Your name</label>
-      <input id="hostName" maxlength="18" placeholder="Your name">
-      <button class="btn primary" onclick="createRoom()">Create room</button>
-      <div id="setupMessage" class="notice hidden"></div>
-    </div>
-  </section>
-
-  <section id="join" class="hidden">
-    <div class="panel">
-      <button class="btn light" onclick="goHome()">← Back</button>
-      <h2>Join the adventure</h2>
-      <label>Your name</label>
-      <input id="playerName" maxlength="18" placeholder="Your name">
-      <label>Room code</label>
-      <input id="roomInput" maxlength="6" placeholder="ABC123" style="text-transform:uppercase">
-      <button class="btn secondary" onclick="joinRoom()">Join room</button>
-      <div id="joinMessage" class="notice hidden"></div>
-    </div>
-  </section>
-
-  <section id="lobby" class="hidden">
-    <div class="hero" style="min-height:210px">
-      <div class="hero-copy">
-        <div class="eyebrow">Your expedition is gathering</div>
-        <h1 style="font-size:43px">The caravan awaits.</h1>
-        <p>Hibo is checking the supplies. Apparently, he packed snacks for himself.</p>
-      </div>
-    </div>
-    <div class="section grid">
-      <div class="panel">
-        <div class="muted">ROOM CODE</div>
-        <div class="room-code" id="roomCodeDisplay">------</div>
-        <button class="btn light" onclick="copyRoomCode()">Copy code</button>
-        <h3>Travellers</h3>
-        <div id="lobbyPlayers" class="player-list"></div>
-        <div class="actions" id="hostLobbyActions">
-          <button class="btn primary" onclick="startGame()">Start adventure</button>
-        </div>
-        <p class="small" id="lobbyHint">Waiting for the Game Master…</p>
-      </div>
-      <div class="panel">
-        <h2>Hibo says…</h2>
-        <div class="hibo-box">
-          <div id="hiboSmall"></div>
-          <p id="hiboLobbyText">Welcome to Tunisia! I hope you brought curiosity. And water. Mostly water.</p>
-        </div>
-        <p class="muted">The Game Master controls the adventure. Everyone follows the same chapter together.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="game" class="hidden">
-    <div class="game-head">
-      <div>
-        <div class="eyebrow" style="color:var(--orange)">Hibo's field journal</div>
-        <h2 id="chapterHeading" style="margin:5px 0">Chapter</h2>
-        <div class="muted" id="chapterSub"></div>
-      </div>
-      <div class="pill" id="phasePill">LESSON</div>
-    </div>
-    <div class="progress"><div id="gameProgress"></div></div>
-
-    <div class="hibo-box">
-      <div id="hiboGame"></div>
-      <p id="hiboMessage">Ready? Let's explore.</p>
-    </div>
-
-    <div class="panel" id="lessonPanel">
-      <div class="eyebrow" style="color:var(--orange)">Discover</div>
-      <h2 id="lessonTitle"></h2>
-      <img id="chapterImage" class="chapter-image" src="" alt="Tunisia">
-      <div id="lessonText" class="lesson-text"></div>
-      <div class="fact" id="chapterFact"></div>
-      <div class="actions" id="lessonActions"></div>
-    </div>
-
-    <div class="panel hidden" id="quizPanel">
-      <div class="muted" id="questionNumber"></div>
-      <h2 id="questionText"></h2>
-      <div id="answers"></div>
-      <div class="notice hidden" id="answerFeedback"></div>
-      <div class="actions" id="quizActions"></div>
-    </div>
-
-    <div class="section grid">
-      <div class="panel">
-        <h3>Caravan leaderboard</h3>
-        <div id="leaderboard"></div>
-      </div>
-      <div class="panel">
-        <h3>Hibo's travel notes</h3>
-        <p class="muted">Talk to the people around you. Share a fact, tell a story, ask a question. This adventure is better when it becomes a real conversation.</p>
-        <div class="fact">Challenge idea: explain one thing you learned today without using the words in the lesson.</div>
-      </div>
-    </div>
-    <div class="section panel hidden" id="hostPanel">
-      <h3>Game Master controls</h3>
-      <p class="muted">Only the host should use these controls.</p>
+<section id="home">
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">A journey through Tunisia</div>
+      <h1>More than<br>you imagine.</h1>
+      <p>Six chapters, five travellers, one very proud camel. Discover Tunisia through stories, language, history, food, music and a little friendly competition.</p>
       <div class="actions">
-        <button class="btn secondary" onclick="hostNext()">Next step →</button>
-        <button class="btn light" onclick="showRestartConfirm()">Restart game</button>
-        <button class="btn danger" onclick="showDeleteConfirm()">Delete game</button>
+        <button class="btn primary" onclick="showPage('setup')">Create an expedition →</button>
+        <button class="btn outline" onclick="showPage('join')">Join with a code</button>
       </div>
     </div>
-  </section>
+    <div class="hero-art" id="heroHibo"></div>
+  </div>
 
-  <section id="finished" class="hidden">
-    <div class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow">The journey is complete</div>
-        <h1>You've crossed Tunisia.</h1>
-        <p>Six worlds, new discoveries and a caravan full of memories. Hibo is proud. He will deny it, obviously.</p>
-      </div>
-      <div class="hero-art" style="font-size:100px;text-align:center">✦</div>
-    </div>
-    <div class="section grid">
-      <div class="panel">
-        <h2>Final leaderboard</h2>
-        <div id="finalLeaderboard"></div>
-      </div>
-      <div class="panel">
-        <h2>One more journey?</h2>
-        <p class="muted">You can play again with the same room and the same travellers, or delete this game completely.</p>
-        <div class="actions" id="finishedHostActions">
-          <button class="btn primary" onclick="showRestartConfirm()">Play again</button>
-          <button class="btn danger" onclick="showDeleteConfirm()">Delete game</button>
-        </div>
-        <p class="small" id="finishedPlayerText">Ask the Game Master to start another adventure.</p>
+  <div class="section grid">
+    <div class="panel">
+      <div class="eyebrow">The expedition</div>
+      <h2>Welcome, traveller.</h2>
+      <p class="muted">Create a room as Game Master, or join an existing expedition. Your scores and progress are saved online.</p>
+      <div id="resumeArea" class="hidden">
+        <div class="notice success">An expedition was saved on this device.</div>
+        <button class="btn secondary" onclick="resumeGame()">Resume expedition</button>
       </div>
     </div>
-  </section>
+    <div class="panel">
+      <div class="eyebrow">Meet your guide</div>
+      <h2>Hibo has opinions.</h2>
+      <p class="muted">He is kind, curious and very proud of Tunisia. He loves good questions, hates invented facts and considers himself the most elegant camel in North Africa.</p>
+      <div class="hibo-card">
+        <div id="homeHibo"></div>
+        <p class="speech">"Slay, habibti. Welcome to Tunisia. And please, respect the history. I have standards."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div><div class="eyebrow">The itinerary</div><h2>Six worlds. One country.</h2></div>
+    </div>
+    <div class="chapter-grid" id="chapterPreview"></div>
+  </div>
+</section>
+
+<section id="setup" class="hidden">
+  <div class="panel">
+    <button class="btn light" onclick="showPage('home')">← Back</button>
+    <div class="eyebrow" style="margin-top:20px">Game Master</div>
+    <h2>Create your expedition</h2>
+    <p class="muted">You control the chapters, reveal the answers and close the pronunciation votes. The five travellers join with your room code.</p>
+    <label>Your name</label>
+    <input id="hostName" maxlength="20" placeholder="Naziha">
+    <button class="btn primary" onclick="createRoom()">Create room →</button>
+    <div id="setupMessage" class="notice hidden"></div>
+  </div>
+</section>
+
+<section id="join" class="hidden">
+  <div class="panel">
+    <button class="btn light" onclick="showPage('home')">← Back</button>
+    <div class="eyebrow" style="margin-top:20px">Join the caravan</div>
+    <h2>Your seat is waiting.</h2>
+    <label>Your name</label>
+    <input id="playerName" maxlength="20" placeholder="Your name">
+    <label>Six-character room code</label>
+    <input id="roomInput" maxlength="6" placeholder="ABC123" style="text-transform:uppercase">
+    <button class="btn secondary" onclick="joinRoom()">Join expedition →</button>
+    <div id="joinMessage" class="notice hidden"></div>
+  </div>
+</section>
+
+<section id="lobby" class="hidden">
+  <div class="hero" style="min-height:235px;padding:32px">
+    <div class="hero-copy">
+      <div class="tagline">The caravan is gathering</div>
+      <h1 style="font-size:clamp(35px,6vw,52px)">Almost ready.</h1>
+      <p>Hibo has checked the supplies. He has also checked the snacks. Twice.</p>
+    </div>
+    <div class="hero-art" id="lobbyHibo"></div>
+  </div>
+  <div class="section grid">
+    <div class="panel">
+      <div class="eyebrow">Your room code</div>
+      <div class="room-code" id="roomCodeDisplay">------</div>
+      <button class="btn light" onclick="copyRoomCode()">Copy code</button>
+      <h3 style="margin-top:22px">The travellers</h3>
+      <div class="player-list" id="lobbyPlayers"></div>
+      <div class="notice" id="lobbyCount">Waiting for the travellers...</div>
+      <div id="lobbyHostControls">
+        <button class="btn primary" onclick="startGame()">Start the journey →</button>
+      </div>
+      <p class="small" id="lobbyHint">The Game Master will start when everyone is ready.</p>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">A word from your guide</div>
+      <h2>Hibo says…</h2>
+      <div class="hibo-card">
+        <div id="lobbyHiboSmall"></div>
+        <p class="speech">"Five travellers? Excellent. I hope at least one of you knows how to read a map. I certainly don't."</p>
+      </div>
+      <p class="muted">The Game Master controls the shared adventure. Everyone sees the same chapter and the same questions.</p>
+    </div>
+  </div>
+</section>
+
+<section id="game" class="hidden">
+  <div class="gamehead">
+    <div>
+      <div class="eyebrow">Hibo's field journal</div>
+      <h2 id="chapterHeading">Chapter</h2>
+      <div class="muted" id="chapterSub"></div>
+    </div>
+    <span class="pill" id="phasePill">DISCOVER</span>
+  </div>
+  <div class="progress"><div id="gameProgress"></div></div>
+
+  <div class="hibo-card">
+    <div id="gameHibo"></div>
+    <p class="speech" id="hiboMessage">Ready, travellers?</p>
+  </div>
+
+  <div class="panel" id="lessonPanel">
+    <div class="eyebrow">01 · Discover</div>
+    <h2 id="lessonTitle"></h2>
+    <div class="chapter-hero"><img id="chapterImage" src="" alt="A view of Tunisia"></div>
+    <div class="lesson" id="lessonText"></div>
+    <div class="fact" id="chapterFact"></div>
+    <div id="extraActivity"></div>
+    <div class="actions" id="lessonActions"></div>
+  </div>
+
+  <div class="panel hidden" id="quizPanel">
+    <div class="eyebrow">02 · Test your knowledge</div>
+    <div class="muted" id="questionNumber"></div>
+    <h2 id="questionText"></h2>
+    <div id="answers"></div>
+    <div id="answerFeedback" class="hidden"></div>
+    <div class="actions" id="quizActions"></div>
+  </div>
+
+  <div class="panel hidden" id="pronPanel">
+    <div class="eyebrow">03 · The Tounsi pronunciation challenge</div>
+    <h2>Say it like you mean it.</h2>
+    <p class="muted">One traveller pronounces the word aloud. Everyone else listens and gives a score from 1 to 5. Be fair, be kind, and no revenge voting. Hibo is watching.</p>
+    <div class="word-card">
+      <div class="muted" id="pronTurnLabel">Traveller's turn</div>
+      <div class="word-big" id="pronWord">Aslema</div>
+      <div id="pronMeaning" class="muted"></div>
+      <p id="pronGuide" class="small"></p>
+    </div>
+    <div id="pronStatus" class="notice"></div>
+    <div id="votingArea">
+      <h3 id="voteTitle">Rate the pronunciation</h3>
+      <div class="pron-grid" id="voteButtons">
+        <button class="vote" onclick="castVote(1)">1<small>Try again</small></button>
+        <button class="vote" onclick="castVote(2)">2<small>Getting there</small></button>
+        <button class="vote" onclick="castVote(3)">3<small>Good</small></button>
+        <button class="vote" onclick="castVote(4)">4<small>Very good</small></button>
+        <button class="vote" onclick="castVote(5)">5<small>Slay!</small></button>
+      </div>
+      <p class="small" id="voteHint">The speaker cannot vote for themselves. Your vote is private until the Game Master reveals the result.</p>
+    </div>
+    <div class="scoreboard">
+      <h3>Votes received</h3>
+      <div id="voteCount" class="muted">No votes yet.</div>
+      <div id="pronResult" class="hidden"></div>
+    </div>
+    <div class="actions" id="pronHostActions"></div>
+  </div>
+
+  <div class="section grid">
+    <div class="panel">
+      <div class="eyebrow">The caravan</div>
+      <h3>Live leaderboard</h3>
+      <div id="leaderboard"></div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">A little reminder</div>
+      <h3>Play together.</h3>
+      <p class="muted">Discuss your answers. Help each other remember. The best discoveries often happen between questions.</p>
+      <div class="fact">Bonus points can be awarded by the Game Master for a brilliant explanation, teamwork or a particularly good question.</div>
+    </div>
+  </div>
+
+  <div class="section panel hidden" id="hostPanel">
+    <div class="eyebrow">Expedition controls</div>
+    <h3>Game Master desk</h3>
+    <p class="muted">Only the Game Master should use these controls.</p>
+    <div class="actions">
+      <button class="btn secondary" onclick="hostNext()">Next step →</button>
+      <button class="btn light" onclick="showBonusModal()">Award bonus points</button>
+      <button class="btn light" onclick="showRestartConfirm()">Restart game</button>
+      <button class="btn danger" onclick="showDeleteConfirm()">Delete room</button>
+    </div>
+  </div>
+</section>
+
+<section id="finished" class="hidden">
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="tagline">The journey is complete</div>
+      <h1>You made it.</h1>
+      <p>Six chapters, new words, stories, flavours and discoveries. Tunisia has a few more secrets, but Hibo will save those for another day.</p>
+    </div>
+    <div class="hero-art" id="finishHibo"></div>
+  </div>
+  <div class="section grid">
+    <div class="panel">
+      <div class="eyebrow">Final results</div>
+      <h2>The caravan leaderboard</h2>
+      <div id="finalLeaderboard"></div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">A final word</div>
+      <h2>Hibo's verdict</h2>
+      <div class="hibo-card">
+        <div id="finalHiboSmall"></div>
+        <p class="speech">"You arrived as tourists. You leave with a little more knowledge. Not bad, humans. Not bad at all."</p>
+      </div>
+      <div id="punishmentSecret" class="notice">The last-place traveller has a little surprise waiting. Hibo refuses to reveal it. He is enjoying this far too much.</div>
+      <div id="finishedHostActions">
+        <button class="btn primary" onclick="showRestartConfirm()">Play again</button>
+        <button class="btn danger" onclick="showDeleteConfirm()">Delete room</button>
+      </div>
+      <p class="small" id="finishedPlayerText">Ask the Game Master to start another expedition.</p>
+    </div>
+  </div>
+</section>
 </main>
 
-<div class="modal-back hidden" id="confirmModal">
+<div class="modal-back hidden" id="modal">
   <div class="modal">
+    <div class="eyebrow">Hibo needs a decision</div>
     <h2 id="modalTitle">Are you sure?</h2>
     <p class="muted" id="modalText"></p>
+    <div id="modalExtra"></div>
     <div class="actions">
       <button class="btn light" onclick="closeModal()">Cancel</button>
       <button class="btn danger" id="modalConfirm">Confirm</button>
@@ -317,9 +387,9 @@ label{font-size:12px;font-weight:800;color:var(--deep)}
   </div>
 </div>
 
-<footer class="footer">HIBO'S TUNISIAN ADVENTURE · Made for curious minds</footer>
+<footer class="footer">HIBO'S TUNISIAN ADVENTURE · MADE WITH CURIOSITY AND A LITTLE ATTITUDE</footer>
 
-<audio id="music" loop>
+<audio id="historicAudio" preload="none">
   <source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Art-song_Maqam_Mezmum_%281931%29.ogg" type="audio/ogg">
 </audio>
 
@@ -328,407 +398,608 @@ label{font-size:12px;font-weight:800;color:var(--deep)}
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyASD1pxaYKoFRGsMviLXbWj1GCVy364nVM",
-  authDomain: "hibo-tunisia.firebaseapp.com",
-  databaseURL: "https://hibo-tunisia-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "hibo-tunisia",
-  storageBucket: "hibo-tunisia.firebasestorage.app",
-  messagingSenderId: "911212558983",
-  appId: "1:911212558983:web:a4911d3dc35b7ba45b9622",
-  measurementId: "G-G5N4Y7Y53B"
+/* -------------------------------------------------------
+   FIREBASE
+------------------------------------------------------- */
+const firebaseConfig={
+ apiKey:"AIzaSyASD1pxaYKoFRGsMviLXbWj1GCVy364nVM",
+ authDomain:"hibo-tunisia.firebaseapp.com",
+ databaseURL:"https://hibo-tunisia-default-rtdb.europe-west1.firebasedatabase.app",
+ projectId:"hibo-tunisia",
+ storageBucket:"hibo-tunisia.firebasestorage.app",
+ messagingSenderId:"911212558983",
+ appId:"1:911212558983:web:a4911d3dc35b7ba45b9622",
+ measurementId:"G-G5N4Y7Y53B"
 };
-
 firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.database();
+const auth=firebase.auth();
+const db=firebase.database();
 
-let user = null;
-let roomCode = null;
-let roomData = null;
-let myName = "";
-let isHost = false;
-let roomListener = null;
-let musicOn = false;
-let selectedAnswer = null;
-
-const chapters = [
+/* -------------------------------------------------------
+   GAME CONTENT
+------------------------------------------------------- */
+const chapters=[
 {
- title:"The Carthaginian Legacy",subtitle:"History · From Carthage to independence",
- icon:"🏛",
- image:"https://commons.wikimedia.org/wiki/Special:FilePath/Carthage_Tunisia.jpg?width=1000",
- lessonTitle:"A city that challenged Rome",
- text:`<p>Long before modern Tunisia existed, the Phoenicians founded Carthage, traditionally dated to 814 BCE. Its location near modern Tunis made it a powerful Mediterranean trading centre.</p><p>Carthage became famous for its sailors, merchants and military strength. Its most celebrated general was Hannibal, who crossed the Alps with an army that included war elephants to fight Rome during the Second Punic War.</p><p>Centuries later, the region became part of the Roman world. Tunisia still preserves extraordinary Roman remains, including the amphitheatre of El Jem.</p><p>In 1956, Tunisia gained independence from France. Habib Bourguiba became the country's first president.</p>`,
- fact:"Hannibal's crossing of the Alps in 218 BCE is one of the most famous military journeys in history. The elephants became legendary — although the mountains were not exactly designed for elephant tourism.",
+ title:"The Carthaginian Legacy",
+ subtitle:"History · From Carthage to independence",
+ image:"https://commons.wikimedia.org/wiki/Special:FilePath/Amphitheatre%2C_El_Jem%2C_Tunisia.jpg",
+ lessonTitle:"A small country with a very long memory",
+ text:`
+ <p>Long before modern Tunisia existed, the Phoenicians founded <strong>Carthage</strong>, traditionally dated to 814 BCE. Its position on the Mediterranean made it a major trading and naval power.</p>
+ <p>One of its most famous generals was <strong>Hannibal Barca</strong>. During the Second Punic War, he led an army across the Alps in 218 BCE. The army included war elephants. Yes, elephants. Imagine organising that journey without a group chat.</p>
+ <p>After the Punic Wars, Carthage became part of the Roman world. The region later experienced many different rulers and influences, including Byzantine, Arab, Ottoman and French periods.</p>
+ <p>Tunisia became independent from France on <strong>20 March 1956</strong>. Habib Bourguiba became the country's first president in 1957, when the monarchy was abolished and the republic was proclaimed.</p>
+ <p>History is not just a list of dates. It is a way to understand how a country became what it is today.</p>`,
+ fact:"Hannibal's crossing of the Alps is one of the most famous military manoeuvres of antiquity. Historians still debate the exact route he took.",
+ hibo:"Hannibal crossed the Alps with elephants. I cross a room when someone says there is no more couscous. We all have our battles.",
  questions:[
-  {q:"Which ancient city was founded by Phoenicians in present-day Tunisia?",a:["Carthage","Athens","Alexandria","Sparta"],c:0},
-  {q:"Which general crossed the Alps with elephants?",a:["Julius Caesar","Hannibal","Alexander the Great","Scipio"],c:1},
-  {q:"In which year did Tunisia gain independence from France?",a:["1945","1956","1962","1975"],c:1}
+  {q:"Which ancient city was founded in present-day Tunisia by Phoenicians?",a:["Carthage","Athens","Sparta","Alexandria"],c:0,why:"Carthage was founded by Phoenician settlers and became a major Mediterranean power."},
+  {q:"Which Carthaginian general crossed the Alps with elephants?",a:["Julius Caesar","Hannibal Barca","Scipio Africanus","Alexander the Great"],c:1,why:"Hannibal led his army across the Alps in 218 BCE during the Second Punic War."},
+  {q:"When did Tunisia gain independence from France?",a:["1945","20 March 1956","1962","1975"],c:1,why:"Tunisia became independent on 20 March 1956. The date is celebrated as Independence Day."},
+  {q:"When was the Tunisian Republic proclaimed?",a:["1957","1956","1965","1970"],c:0,why:"The monarchy was abolished and the republic was proclaimed in 1957."}
  ],
- hibo:"I respect Hannibal. Crossing the Alps with elephants? I struggle to cross a room when someone has moved my snacks."
+ pronunciation:{word:"Aslema",meaning:"Hello / greetings",guide:"Try: ass-LEH-ma. The exact sound varies with accent and speaker.",hibo:"A greeting is a small thing that opens a big door. Go on, say it with confidence."}
 },
 {
- title:"The Sound of Tunisia",subtitle:"Music · Rhythm, memory and identity",
- icon:"♫",
- image:"https://commons.wikimedia.org/wiki/Special:FilePath/Tunisian_musicians.jpg?width=1000",
- lessonTitle:"A country with many rhythms",
- text:`<p>Tunisian music is a meeting place of different histories. Arab-Andalusian traditions, local North African rhythms and modern influences all contribute to its sound.</p><p><b>Malouf</b> is a traditional urban musical style connected to the Arab-Andalusian heritage. It is known for its structured melodies and poetic lyrics.</p><p><b>Mezoued</b> is a popular Tunisian music tradition associated with a bagpipe-like instrument called the mezoued. Its lively sound is often heard at celebrations and social gatherings.</p><p><b>Stambeli</b> is a spiritual musical tradition with deep African roots, featuring rhythmic percussion and ceremonial elements.</p>`,
- fact:"The mezoued is not just an instrument: its sound is strongly associated with popular Tunisian identity and celebrations.",
+ title:"The Language of the People",
+ subtitle:"Tounsi · Words, sounds and expressions",
+ image:"https://commons.wikimedia.org/wiki/Special:FilePath/Sidi_Bou_Said_Allee.jpg",
+ lessonTitle:"Tounsi: a language with many influences",
+ text:`
+ <p><strong>Tounsi</strong> is the everyday spoken Arabic variety used in Tunisia. It belongs to the Arabic dialect continuum and has been shaped by the country's long history.</p>
+ <p>Its vocabulary and sounds reflect contact with Amazigh languages, French, Italian, Turkish and other languages. This is one reason why Tunisian conversations can sound different from one region to another.</p>
+ <p>Online, Tounsi is often written using Latin letters and numbers. For example, the number <strong>3</strong> is commonly used to represent the Arabic letter ع. The number <strong>7</strong> can represent ح.</p>
+ <p>Some useful expressions:</p>
+ <ul>
+ <li><strong>Aslema</strong> — Hello.</li>
+ <li><strong>Labes?</strong> — Are you okay? / How are you?</li>
+ <li><strong>Labes, hamdoulah</strong> — I'm fine, thank God.</li>
+ <li><strong>Yaishek</strong> — Thank you / please, depending on context.</li>
+ <li><strong>Beslema</strong> — Goodbye.</li>
+ <li><strong>Chnowa?</strong> — What?</li>
+ </ul>
+ <p>Transliteration is not perfectly standardised. The same word may be written in different ways. Listening to native speakers is the best way to learn pronunciation.</p>`,
+ fact:"Tunisian online writing often uses numbers as a practical way to represent Arabic sounds that do not have a direct equivalent in the Latin alphabet.",
+ hibo:"Tounsi is not a secret code. Although, if you learn it, you may finally understand what your Tunisian relatives are saying in the kitchen.",
  questions:[
-  {q:"Which instrument gives Mezoued music its name?",a:["A flute","A bagpipe-like instrument","A violin","A drum"],c:1},
-  {q:"Malouf is strongly connected to which heritage?",a:["Arab-Andalusian","Nordic","Japanese","Celtic"],c:0},
-  {q:"Which tradition has spiritual and African roots?",a:["Stambeli","Opera","Flamenco","Jazz"],c:0}
+  {q:"What does 'Aslema' mean?",a:["Hello","Good night","Please sit down","Goodbye"],c:0,why:"Aslema is a common Tunisian greeting."},
+  {q:"What does 'Labes?' usually ask?",a:["Are you okay?","Where is the train?","What time is it?","Are you hungry?"],c:0,why:"Labes is used to ask how someone is doing."},
+  {q:"In Tunisian online writing, what can the number 3 represent?",a:["ع","م","ب","س"],c:0,why:"The number 3 is commonly used for the Arabic letter ع."},
+  {q:"What does 'Beslema' mean?",a:["Goodbye","Good morning","Thank you","Welcome"],c:0,why:"Beslema is a common way to say goodbye."}
  ],
- hibo:"Music is the shortest road between two people. Also, the best excuse to dance badly. I am an expert."
+ pronunciation:{word:"Yaishek",meaning:"Thank you / please",guide:"Often written yaay-shek or yaa-eeshek. Listen to a Tunisian speaker when possible; accents vary.",hibo:"This is a useful word. Learn it well. You may need it after I give you the next quiz."}
 },
 {
- title:"A Taste of Tunisia",subtitle:"Food · Flavours, spices and hospitality",
- icon:"♨",
- image:"https://commons.wikimedia.org/wiki/Special:FilePath/Tunisian_cuisine.jpg?width=1000",
- lessonTitle:"More than couscous",
- text:`<p>Tunisian food is famous for its bold flavours, aromatic spices and generous use of olive oil. Food is an important part of hospitality and family life.</p><p><b>Couscous</b> is one of the country's best-known dishes. It is often served with vegetables, chickpeas and a sauce that can be mild or spicy.</p><p><b>Brik</b> is a thin pastry usually filled with egg, tuna, parsley or other ingredients, then fried until crisp.</p><p><b>Harissa</b> is a spicy paste made mainly from red peppers, garlic and spices. It is a key ingredient in many Tunisian meals.</p>`,
- fact:"Harissa is so important to Tunisian food culture that Tunisia's harissa tradition was recognised by UNESCO as intangible cultural heritage in 2022.",
+ title:"Culture & Everyday Life",
+ subtitle:"Culture · Hospitality, crafts and identity",
+ image:"https://commons.wikimedia.org/wiki/Special:FilePath/Tunisia-3029B%20%287846578812%29.jpg",
+ lessonTitle:"A mosaic, not a stereotype",
+ text:`
+ <p>Tunisian culture has been shaped by Amazigh, Arab, Mediterranean, African, Ottoman and European influences. These histories overlap; they do not erase one another.</p>
+ <p><strong>Hospitality</strong> is important in many Tunisian families. Sharing tea, coffee, food and conversation can be a way to welcome a guest. Customs vary between regions, families and generations.</p>
+ <p>Traditional crafts include ceramics, weaving, carpets, embroidery, leatherwork and metalwork. The <strong>jebba</strong> is a traditional garment worn by men, especially on formal occasions and celebrations.</p>
+ <p>Tunisia is also home to a rich Amazigh heritage. It is important to remember that Tunisian identity is diverse, and not every person or family has the same customs or background.</p>
+ <p>A country is not a costume, a dish or a single tradition. It is made of people, memories and everyday life.</p>`,
+ fact:"The blue-and-white architecture of Sidi Bou Said has become one of Tunisia's most recognisable images, but the country has many different architectural styles.",
+ hibo:"A Tunisian guest rarely leaves hungry. Sometimes they leave with leftovers, advice, three phone numbers and a cousin they didn't know they had.",
  questions:[
-  {q:"What is harissa mainly made from?",a:["Red peppers and spices","Apples and cinnamon","Milk and flour","Olives and lemon"],c:0},
-  {q:"What is brik?",a:["A sweet cake","A filled thin pastry","A soup","A type of tea"],c:1},
-  {q:"Which dish is made with steamed semolina?",a:["Couscous","Pizza","Sushi","Risotto"],c:0}
+  {q:"Which garment is traditionally associated with Tunisian men's formal clothing?",a:["Jebba","Kimono","Kilt","Poncho"],c:0,why:"The jebba is a traditional garment worn by men, often for formal occasions."},
+  {q:"Which description best represents Tunisian culture?",a:["A mix of many historical influences","Exactly the same in every region","Only Mediterranean","Without regional differences"],c:0,why:"Tunisian culture reflects many influences and varies between regions and communities."},
+  {q:"Which of these is a traditional craft found in Tunisia?",a:["Ceramics","Ice sculpture only","Nordic wood carving only","Origami only"],c:0,why:"Ceramics, weaving, embroidery and metalwork are among Tunisia's craft traditions."},
+  {q:"Why is it inaccurate to describe one custom as universal to all Tunisians?",a:["Customs vary by family and region","Everyone has identical habits","Traditions never change","There are no regional differences"],c:0,why:"Like every country, Tunisia contains different communities, regions and generations."}
  ],
- hibo:"I came for the culture. I stayed for the couscous. Let us be honest about our priorities."
+ pronunciation:{word:"Marhbé",meaning:"Welcome",guide:"A common welcoming expression. Try mar-HBA, with a light final sound.",hibo:"Welcome is a beautiful word. It is even better when there is food involved. Just saying."}
 },
 {
- title:"Everyday Tunisia",subtitle:"Culture · People, customs and hospitality",
- icon:"✿",
- image:"https://commons.wikimedia.org/wiki/Special:FilePath/Sidi_Bou_Said_Allee.jpg?width=1000",
- lessonTitle:"The art of welcoming",
- text:`<p>Tunisian culture is diverse, shaped by Amazigh, Arab, Mediterranean, Ottoman, African and European influences.</p><p>Hospitality is an important value. Guests are often welcomed with food, conversation and mint tea or coffee. Sharing a meal can be a way of showing respect and friendship.</p><p>Traditional clothing varies by region and occasion. The <b>jebba</b> is a traditional garment worn by men, especially during celebrations. Local crafts include ceramics, carpets, embroidery and metalwork.</p><p>As in every country, customs vary between families, generations and regions. There is no single way to be Tunisian.</p>`,
- fact:"Tunisia's cultural identity is not one single ingredient. It is more like a mosaic: many pieces, one picture.",
+ title:"A Taste of Tunisia",
+ subtitle:"Food · Flavour, history and hospitality",
+ image:"https://commons.wikimedia.org/wiki/Special:FilePath/Tunisian_cuisine.jpg",
+ lessonTitle:"More than couscous and harissa",
+ text:`
+ <p>Tunisian food is known for its bold flavours, olive oil, spices and regional variety. Meals are often an important moment for family and hospitality.</p>
+ <p><strong>Couscous</strong> is a well-known dish made from steamed semolina, usually served with vegetables and a sauce. Recipes vary from one region and family to another.</p>
+ <p><strong>Brik</strong> is a thin pastry that is often filled with egg, tuna, parsley or other ingredients and fried until crisp.</p>
+ <p><strong>Harissa</strong> is a spicy paste made mainly from chilli peppers, garlic and spices. It is used in many Tunisian dishes. Tunisia's harissa-making tradition was added to UNESCO's Intangible Cultural Heritage list in 2022.</p>
+ <p>Other dishes and specialities include lablabi, ojja, fricassé, kafteji and many regional sweets. Food tells stories about climate, trade, family and local ingredients.</p>`,
+ fact:"Tunisia's harissa-making knowledge and practices were inscribed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity in 2022.",
+ hibo:"I have travelled across Tunisia for cultural research. Somehow, every research trip ended near a plate of brik. Very mysterious.",
  questions:[
-  {q:"Which traditional garment is associated with Tunisian men?",a:["Jebba","Kimono","Kilt","Poncho"],c:0},
-  {q:"What does hospitality often involve?",a:["Sharing food and conversation","Avoiding guests","Eating alone","Silence only"],c:0},
-  {q:"Which statement about Tunisian culture is most accurate?",a:["It has many historical influences","It is exactly the same everywhere","It has no regional differences","It has only one tradition"],c:0}
+  {q:"What is harissa mainly made from?",a:["Chilli peppers, garlic and spices","Apples and cinnamon","Milk and flour","Olives and lemon"],c:0,why:"Harissa is a spicy paste made mainly from chilli peppers, garlic and spices."},
+  {q:"What is brik?",a:["A filled thin pastry","A sweet drink","A type of soup","A musical instrument"],c:0,why:"Brik is a thin pastry, often filled and fried."},
+  {q:"What is couscous traditionally made from?",a:["Semolina","Rice","Potatoes","Cornflakes"],c:0,why:"Couscous is made from semolina granules, which are steamed."},
+  {q:"In which year was Tunisia's harissa tradition recognised by UNESCO?",a:["2022","1990","2005","2018"],c:0,why:"The Tunisian knowledge and practices of harissa were inscribed in 2022."}
  ],
- hibo:"A guest arrives, tea appears, food appears, and suddenly you are part of the family. I approve of this system."
+ pronunciation:{word:"Bessaha",meaning:"Enjoy your meal / to your health",guide:"Often pronounced bes-SAA-ha. It is said when someone is eating or enjoying something.",hibo:"Now this is an important word. If someone offers you food, you must be prepared."}
 },
 {
- title:"Speak a Little Tounsi",subtitle:"Language · A few words open doors",
- icon:"Aa",
- image:"https://commons.wikimedia.org/wiki/Special:FilePath/Tunisian_market.jpg?width=1000",
- lessonTitle:"Let's speak Tunisian Arabic",
- text:`<p>Tunisian Arabic, often called <b>Tounsi</b>, is the everyday spoken language of many Tunisians. It includes influences from Arabic, Amazigh, French, Italian and other languages.</p><p>Here are a few useful expressions:</p><ul><li><b>Aslema</b> — Hello.</li><li><b>Chnowa ahwelek?</b> — How are you?</li><li><b>Labes</b> — Fine / I'm okay.</li><li><b>Yaishek</b> — Thank you.</li><li><b>Beslema</b> — Goodbye.</li><li><b>Chokran</b> — Thank you, in standard Arabic.</li></ul><p>Pronunciation can vary. The best way to learn is to listen, repeat and ask people to teach you.</p>`,
- fact:"Tounsi is usually written in Arabic script, but online it is also often written in Latin letters and numbers. For example, 3 can represent the Arabic letter ع.",
+ title:"The Sound of Tunisia",
+ subtitle:"Music · Listening, rhythm and instruments",
+ image:"https://commons.wikimedia.org/wiki/Special:FilePath/Tunisian_musicians.jpg",
+ lessonTitle:"Listen first. Then discover.",
+ text:`
+ <p>Tunisian music carries many layers of history. Arab-Andalusian traditions, local North African rhythms, African influences and contemporary sounds all contribute to the country's musical life.</p>
+ <p><strong>Malouf</strong> is a traditional urban musical tradition connected to Arab-Andalusian heritage. It includes structured melodies and poetic singing.</p>
+ <p><strong>Mezoued</strong> is associated with a bagpipe-like instrument, also called mezoued. Its lively sound is strongly connected to popular celebrations.</p>
+ <p><strong>Stambeli</strong> is a spiritual musical tradition with deep African roots. It uses rhythmic percussion and ceremonial elements.</p>
+ <p>Now listen to a historical recording from 1931. Do not worry about recognising a genre. Listen for the sounds and instruments. What can you hear?</p>`,
+ fact:"The historical recording used in this chapter is titled 'Art-song Maqam Mezmum' and dates from 1931. The recording is a small window into an earlier musical world.",
+ hibo:"Quiet, please. This is a piece of musical history. And if you say it sounds like my uncle singing in the shower, I will remember.",
  questions:[
-  {q:"What does 'Aslema' mean?",a:["Hello","Good night","Please","Goodbye"],c:0},
-  {q:"What does 'Yaishek' mean?",a:["Thank you","Where are you?","Good morning","Welcome"],c:0},
-  {q:"What is Tounsi?",a:["Tunisian spoken Arabic","A traditional dish","A musical instrument","A city"],c:0}
+  {q:"Which instrument gives Mezoued music its name?",a:["A bagpipe-like instrument","A piano","A trumpet","A cello"],c:0,why:"The mezoued is a traditional bagpipe-like instrument associated with the music of the same name."},
+  {q:"Which instrument is a plucked string instrument often found in Arab music?",a:["Oud","Darbuka","Bendir","Mezoued"],c:0,why:"The oud is a short-necked, plucked string instrument with a deep rounded body."},
+  {q:"Which of these is a percussion instrument?",a:["Darbuka","Oud","Violin","Mezoued"],c:0,why:"The darbuka is a goblet-shaped hand drum."},
+  {q:"Malouf is especially connected to which heritage?",a:["Arab-Andalusian","Nordic","Celtic","Japanese"],c:0,why:"Malouf is associated with the Arab-Andalusian musical heritage."}
  ],
- hibo:"Your accent does not need to be perfect. If you say Aslema with a smile, you have already started well."
+ pronunciation:{word:"Mezoued",meaning:"A traditional bagpipe-like instrument and musical tradition",guide:"Try meh-ZWED. Listen for the two syllables and the final d.",hibo:"If you can pronounce this correctly, you are officially allowed to look serious at a wedding."}
 },
 {
- title:"Discover Hidden Tunisia",subtitle:"Places · Landscapes and extraordinary stories",
- icon:"⌖",
- image:"https://commons.wikimedia.org/wiki/Special:FilePath/Amphitheatre%2C_El_Jem%2C_Tunisia.jpg?width=1000",
- lessonTitle:"A small country with huge landscapes",
- text:`<p>Tunisia offers an extraordinary variety of landscapes and historic places.</p><p><b>El Jem</b> is home to a vast Roman amphitheatre, one of the best-preserved in the world. It could hold tens of thousands of spectators.</p><p><b>Sidi Bou Said</b> is famous for its white buildings, blue doors and views over the Mediterranean Sea.</p><p><b>Matmata</b> is known for its traditional underground homes, built partly below ground to help protect residents from extreme heat.</p><p><b>Djerba</b> is an island with a long history of cultural exchange, distinctive architecture and beautiful beaches.</p>`,
- fact:"The amphitheatre of El Jem is a UNESCO World Heritage Site. It is a reminder of how deeply Roman history shaped this part of North Africa.",
+ title:"Discover Tunisia",
+ subtitle:"Places & civic life · Geography, cities and the country today",
+ image:"https://commons.wikimedia.org/wiki/Special:FilePath/Amphitheatre%2C_El_Jem%2C_Tunisia.jpg",
+ lessonTitle:"From the Mediterranean to the Sahara",
+ text:`
+ <p>Tunisia may be relatively small, but its landscapes are remarkably varied. The north has green hills and Mediterranean coastlines; further south, the landscape becomes drier and the Sahara begins to shape daily life.</p>
+ <p><strong>El Jem</strong> is famous for its enormous Roman amphitheatre, a UNESCO World Heritage Site. <strong>Sidi Bou Said</strong> is known for its white buildings, blue doors and views over the sea. <strong>Matmata</strong> is known for traditional underground homes that help protect residents from heat. <strong>Djerba</strong> is an island with a long history of cultural exchange.</p>
+ <p>It is also useful to know a little about how the country works. Tunisia is a republic. Its political institutions and Constitution define how public authority is organised. Citizens have rights and responsibilities, and political life can change over time.</p>
+ <p>Politics does not have to mean arguing. Understanding institutions, elections, public services and citizens' rights helps us understand how a country works.</p>`,
+ fact:"The amphitheatre of El Jem is one of the best-preserved Roman amphitheatres in the world and forms part of a UNESCO World Heritage Site.",
+ hibo:"Tunisia has beaches, mountains, ancient ruins and the Sahara. And yet people still ask me if I have ever seen a camel. I am standing right here.",
  questions:[
-  {q:"Which place is famous for its white houses and blue doors?",a:["Sidi Bou Said","Matmata","El Jem","Tozeur"],c:0},
-  {q:"What is Matmata known for?",a:["Underground homes","Skyscrapers","Snowy mountains","Floating markets"],c:0},
-  {q:"Where can you find a famous Roman amphitheatre?",a:["El Jem","Djerba","Sfax","Bizerte"],c:0}
+  {q:"Which place is famous for white houses and blue doors?",a:["Sidi Bou Said","Matmata","El Jem","Tozeur"],c:0,why:"Sidi Bou Said is known for its white-and-blue architecture overlooking the Mediterranean."},
+  {q:"What is Matmata especially known for?",a:["Traditional underground homes","Skyscrapers","Snowy mountains","Floating markets"],c:0,why:"Some traditional homes in Matmata are dug into the ground to help manage the heat."},
+  {q:"Where is the famous Roman amphitheatre?",a:["El Jem","Djerba","Sfax","Bizerte"],c:0,why:"El Jem is home to a remarkably preserved Roman amphitheatre."},
+  {q:"What is one reason citizens learn about political institutions?",a:["To understand rights and how decisions are made","To memorise every politician","To avoid asking questions","To make everyone agree"],c:0,why:"Civic knowledge helps people understand public institutions, rights and responsibilities."}
  ],
- hibo:"I have travelled across deserts, cities and islands. My favourite place is wherever there is shade."
+ pronunciation:{word:"Tounes",meaning:"Tunisia",guide:"Try TOO-ness. It is a common spoken form for the country's name.",hibo:"You have travelled through my country. Now say its name properly. No pressure. Well, a little pressure."}
 }
 ];
 
+/* -------------------------------------------------------
+   HIBO CHARACTER
+------------------------------------------------------- */
 function hiboSVG(){
- return `<svg viewBox="0 0 120 100" aria-label="Hibo the camel" role="img">
- <path d="M15 80 Q8 64 25 54 Q38 45 52 58 Q65 42 78 57 Q93 47 103 64 L108 82Z" fill="#d99b55"/>
- <path d="M45 58 Q40 34 54 23 Q65 13 74 28 L68 60Z" fill="#d99b55"/>
- <path d="M57 25 Q43 10 35 20 Q42 34 58 34Z M68 24 Q82 9 91 20 Q82 34 68 34Z" fill="#bd7840"/>
- <ellipse cx="80" cy="39" rx="23" ry="16" fill="#e5ad68"/>
- <ellipse cx="99" cy="47" rx="12" ry="9" fill="#f0c18a"/>
- <circle cx="78" cy="33" r="3" fill="#263b40"/>
- <path d="M86 54 Q96 59 104 51" fill="none" stroke="#8e4c31" stroke-width="2" stroke-linecap="round"/>
- <path d="M34 79 L31 96 M55 80 L54 96 M88 80 L91 96" stroke="#a96b3b" stroke-width="8" stroke-linecap="round"/>
- <path d="M24 97 L38 97 M48 97 L62 97 M85 97 L99 97" stroke="#563c32" stroke-width="5" stroke-linecap="round"/>
- <path d="M31 57 Q44 42 57 57 Q68 42 81 57" fill="none" stroke="#f7d28f" stroke-width="5"/>
+ return `<svg viewBox="0 0 220 210" role="img" aria-label="Hibo the camel">
+ <ellipse cx="108" cy="194" rx="77" ry="9" fill="#0b2c3c" opacity=".18"/>
+ <path d="M36 160 Q26 137 49 120 Q67 104 87 123 Q105 91 127 119 Q148 102 168 127 L184 167 Q185 181 166 183 L52 183Z" fill="#d59a58"/>
+ <path d="M80 127 Q75 91 91 70 Q107 49 122 71 Q134 89 122 133Z" fill="#d59a58"/>
+ <path d="M94 72 Q72 48 58 62 Q70 83 96 85Z" fill="#bd7846"/>
+ <path d="M119 70 Q141 47 157 63 Q145 84 120 85Z" fill="#bd7846"/>
+ <path d="M93 67 Q96 35 123 32 Q151 30 153 58 L139 104 L103 103Z" fill="#e4ad6d"/>
+ <ellipse cx="147" cy="88" rx="33" ry="25" fill="#e4ad6d"/>
+ <ellipse cx="174" cy="102" rx="19" ry="14" fill="#f1c48c"/>
+ <ellipse cx="139" cy="79" rx="5" ry="6" fill="#203b43"/>
+ <circle cx="140" cy="77" r="1.8" fill="white"/>
+ <path d="M153 112 Q166 121 179 110" stroke="#895039" stroke-width="3" fill="none" stroke-linecap="round"/>
+ <path d="M57 171 L52 202 M91 176 L91 202 M147 175 L151 202 M170 170 L179 202" stroke="#a96e41" stroke-width="12" stroke-linecap="round"/>
+ <path d="M42 203 L62 203 M81 203 L102 203 M140 203 L160 203 M169 203 L190 203" stroke="#604437" stroke-width="6" stroke-linecap="round"/>
+ <path d="M48 122 Q70 99 90 121 Q107 99 129 120" fill="none" stroke="#f6d28e" stroke-width="7"/>
+ <path d="M137 50 L144 34 L151 50 L167 56 L151 62 L144 78 L137 62 L121 56Z" fill="#e9b94f"/>
+ <circle cx="180" cy="64" r="4" fill="#e9b94f"/>
  </svg>`;
 }
+["heroHibo","homeHibo","lobbyHibo","lobbyHiboSmall","gameHibo","finishHibo","finalHiboSmall"].forEach(id=>{
+ const el=document.getElementById(id);if(el)el.innerHTML=hiboSVG();
+});
 
-function setMessage(id,msg,isError=false){
- const el=document.getElementById(id);
- el.textContent=msg;
- el.classList.remove("hidden","error","success");
- if(isError)el.classList.add("error");
-}
-function hideMessage(id){document.getElementById(id).classList.add("hidden")}
-function show(id){
+/* -------------------------------------------------------
+   APP STATE
+------------------------------------------------------- */
+let user=null,roomCode=null,roomData=null,myName="",isHost=false;
+let roomListener=null;
+let selectedChoice=null;
+let currentVote=null;
+
+function showPage(id){
  ["home","setup","join","lobby","game","finished"].forEach(x=>document.getElementById(x).classList.add("hidden"));
  document.getElementById(id).classList.remove("hidden");
  window.scrollTo({top:0,behavior:"smooth"});
 }
-function goHome(){show("home")}
-function showSetup(){show("setup")}
-function showJoin(){show("join")}
-
-auth.onAuthStateChanged(async u=>{
- if(!u){
-  try{await auth.signInAnonymously()}catch(e){
-   document.getElementById("connection").textContent="Offline";
-   console.error(e);
-  }
-  return;
- }
- user=u;
- document.getElementById("connection").textContent="Connected";
- checkSavedSession();
-});
-auth.getRedirectResult().catch(()=>{});
-
-function checkSavedSession(){
- const saved=localStorage.getItem("hiboAdventureSession");
- if(saved){
-  try{
-   const s=JSON.parse(saved);
-   if(s.roomCode){
-    document.getElementById("resumeArea").classList.remove("hidden");
-   }
-  }catch(e){localStorage.removeItem("hiboAdventureSession")}
- }
+function message(id,text,error=false){
+ const el=document.getElementById(id);el.textContent=text;
+ el.classList.remove("hidden","error","success");
+ if(error)el.classList.add("error");
 }
+function safe(s){
+ return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function roomRef(){return db.ref("rooms/"+roomCode)}
 function saveSession(){
  localStorage.setItem("hiboAdventureSession",JSON.stringify({
   roomCode,uid:user.uid,name:myName,host:isHost
  }));
 }
-function forgetLocal(){
- localStorage.removeItem("hiboAdventureSession");
- document.getElementById("resumeArea").classList.add("hidden");
-}
+function clearSession(){localStorage.removeItem("hiboAdventureSession")}
+function randomCode(){return Math.random().toString(36).slice(2,8).toUpperCase()}
+
+auth.onAuthStateChanged(async u=>{
+ if(!u){
+  try{await auth.signInAnonymously()}
+  catch(e){document.getElementById("connection").textContent="Offline";console.error(e)}
+  return;
+ }
+ user=u;
+ document.getElementById("connection").textContent="Connected";
+ const saved=localStorage.getItem("hiboAdventureSession");
+ if(saved){
+  try{if(JSON.parse(saved).roomCode)document.getElementById("resumeArea").classList.remove("hidden")}
+  catch(e){clearSession()}
+ }
+});
 function resumeGame(){
  const s=JSON.parse(localStorage.getItem("hiboAdventureSession")||"{}");
- if(!s.roomCode){goHome();return}
- roomCode=s.roomCode;myName=s.name||"Traveller";isHost=s.host||false;
+ if(!s.roomCode||!user)return;
+ roomCode=s.roomCode;myName=s.name||"Traveller";
  attachRoomListener();
 }
-function roomRef(){return db.ref("rooms/"+roomCode)}
-function randomCode(){return Math.random().toString(36).substring(2,8).toUpperCase()}
+function forgetSession(){clearSession();document.getElementById("resumeArea").classList.add("hidden")}
 
+/* -------------------------------------------------------
+   ROOM CREATION AND JOINING
+------------------------------------------------------- */
 async function createRoom(){
- if(!user)return setMessage("setupMessage","Connecting to the game server. Try again in a moment.",true);
+ if(!user)return message("setupMessage","Connecting to Firebase. Try again in a moment.",true);
  myName=document.getElementById("hostName").value.trim()||"Game Master";
- isHost=true;
- roomCode=randomCode();
+ isHost=true;roomCode=randomCode();
  const data={
   hostId:user.uid,hostName:myName,status:"lobby",
   chapter:0,phase:"lesson",question:0,
-  players:{[user.uid]:{name:myName,score:0,joinedAt:Date.now()}},
-  answers:{},createdAt:Date.now()
+  players:{},answers:{},pronVotes:{},pronResults:{},bonusLog:{},
+  createdAt:Date.now()
  };
  try{
   await roomRef().set(data);
   saveSession();attachRoomListener();
- }catch(e){setMessage("setupMessage","Could not create the room: "+e.message,true)}
+ }catch(e){message("setupMessage","Could not create the room: "+e.message,true)}
 }
-
 async function joinRoom(){
- if(!user)return setMessage("joinMessage","Connecting to the game server. Try again in a moment.",true);
+ if(!user)return message("joinMessage","Connecting to Firebase. Try again.",true);
  myName=document.getElementById("playerName").value.trim()||"Traveller";
  roomCode=document.getElementById("roomInput").value.trim().toUpperCase();
- if(roomCode.length!==6)return setMessage("joinMessage","Please enter the six-character room code.",true);
+ if(roomCode.length!==6)return message("joinMessage","Enter the six-character room code.",true);
  try{
   const snap=await roomRef().once("value");
-  if(!snap.exists())return setMessage("joinMessage","This room does not exist. Check the code.",true);
+  if(!snap.exists())return message("joinMessage","This room does not exist. Check the code.",true);
   const data=snap.val();
-  if(data.status==="deleted")return setMessage("joinMessage","This game has been deleted.",true);
+  if(data.status==="deleted")return message("joinMessage","This expedition has ended.",true);
+  if(data.status==="finished")return message("joinMessage","This expedition is finished. Ask the host to restart it.",true);
+  const existing=data.players?.[user.uid];
+  const count=Object.keys(data.players||{}).length;
+  if(!existing&&count>=5)return message("joinMessage","The caravan is full. There are already five travellers.",true);
   isHost=data.hostId===user.uid;
-  await roomRef().child("players/"+user.uid).update({
-   name:myName,joinedAt:Date.now()
-  });
+  if(!isHost){
+   await roomRef().child("players/"+user.uid).update({
+    name:myName,joinedAt:existing?.joinedAt||Date.now(),
+    score:existing?.score||0
+   });
+  }
   saveSession();attachRoomListener();
- }catch(e){setMessage("joinMessage","Could not join: "+e.message,true)}
+ }catch(e){message("joinMessage","Could not join: "+e.message,true)}
 }
-
 function attachRoomListener(){
  if(roomListener)roomRef().off("value",roomListener);
  roomListener=snap=>{
   if(!snap.exists()){
-   roomData=null;forgetLocal();show("home");
-   alert("This game no longer exists.");
-   return;
+   roomData=null;clearSession();showPage("home");
+   alert("This room no longer exists.");return;
   }
   roomData=snap.val();
   isHost=roomData.hostId===user.uid;
   renderRoom();
  };
- roomRef().on("value",roomListener,err=>{
-  console.error(err);document.getElementById("connection").textContent="Connection issue";
+ roomRef().on("value",roomListener,e=>{
+  console.error(e);document.getElementById("connection").textContent="Connection issue";
  });
 }
-
 function renderRoom(){
  if(!roomData)return;
  const players=Object.values(roomData.players||{});
  document.getElementById("roomCodeDisplay").textContent=roomCode;
- document.getElementById("lobbyPlayers").innerHTML=players.map(p=>`<span class="player-tag">${escapeHTML(p.name)}</span>`).join("");
- document.getElementById("hostLobbyActions").classList.toggle("hidden",!isHost);
- document.getElementById("lobbyHint").textContent=isHost?"Share the code, then start when everyone is ready.":"Waiting for the Game Master to start…";
- document.getElementById("hiboSmall").innerHTML=hiboSVG();
- if(roomData.status==="lobby"){show("lobby");return}
- if(roomData.status==="finished"){renderFinal();show("finished");return}
- if(roomData.status==="playing"){renderGame();show("game")}
-}
-
-function escapeHTML(s){
- return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ document.getElementById("lobbyPlayers").innerHTML=players.map(p=>`<span class="player-tag">${safe(p.name)}</span>`).join("");
+ document.getElementById("lobbyCount").textContent=`${players.length} of 5 travellers have joined.`;
+ document.getElementById("lobbyHostControls").classList.toggle("hidden",!isHost);
+ document.getElementById("lobbyHint").textContent=isHost?"Share the code. Start when everyone is ready.":"Waiting for the Game Master...";
+ if(roomData.status==="lobby"){showPage("lobby");return}
+ if(roomData.status==="finished"){renderFinal();showPage("finished");return}
+ if(roomData.status==="playing"){renderGame();showPage("game")}
 }
 function copyRoomCode(){
- navigator.clipboard?.writeText(roomCode).then(()=>alert("Room code copied: "+roomCode)).catch(()=>alert("Room code: "+roomCode));
+ if(navigator.clipboard?.writeText){
+  navigator.clipboard.writeText(roomCode).then(()=>alert("Room code copied: "+roomCode)).catch(()=>alert("Room code: "+roomCode));
+ }else alert("Room code: "+roomCode);
 }
 async function startGame(){
  if(!isHost)return;
+ const count=Object.keys(roomData.players||{}).length;
+ if(count<2&&!confirm("There is only one traveller. Start anyway?"))return;
  await roomRef().update({status:"playing",chapter:0,phase:"lesson",question:0});
 }
-function currentChapter(){return chapters[Number(roomData.chapter)||0]}
+
+/* -------------------------------------------------------
+   GAME DISPLAY
+------------------------------------------------------- */
+function chapterIndex(){return Number(roomData.chapter)||0}
+function currentChapter(){return chapters[chapterIndex()]}
+function playerEntries(){
+ return Object.entries(roomData.players||{}).sort((a,b)=>(a[1].joinedAt||0)-(b[1].joinedAt||0));
+}
+function currentSpeaker(){
+ const players=playerEntries();
+ if(!players.length)return null;
+ return players[chapterIndex()%players.length];
+}
 function renderGame(){
- const ch=currentChapter();
- if(!ch)return;
- const chapterIndex=Number(roomData.chapter)||0;
- const phase=roomData.phase||"lesson";
- const qIndex=Number(roomData.question)||0;
+ const ch=currentChapter();if(!ch)return;
+ const ci=chapterIndex(),phase=roomData.phase||"lesson",qi=Number(roomData.question)||0;
  document.getElementById("chapterHeading").textContent=ch.title;
  document.getElementById("chapterSub").textContent=ch.subtitle;
- document.getElementById("phasePill").textContent=phase==="lesson"?"DISCOVER":"QUIZ";
- document.getElementById("gameProgress").style.width=((chapterIndex+(phase==="quiz"?0.5:0))/6*100)+"%";
- document.getElementById("hiboGame").innerHTML=hiboSVG();
- document.getElementById("hiboMessage").textContent=ch.hibo;
+ document.getElementById("phasePill").textContent=phase==="lesson"?"DISCOVER":phase==="quiz"?"KNOWLEDGE QUIZ":"TOUNSI CHALLENGE";
+ document.getElementById("gameProgress").style.width=((ci+(phase==="lesson"?0:phase==="quiz"?.35:.75))/chapters.length*100)+"%";
+ document.getElementById("hiboMessage").textContent=phase==="lesson"?ch.hibo:
+  phase==="quiz"?"Time to prove you were listening. Hibo remembers everything. Mostly food, but everything.":
+  "Pronunciation time! Be kind, but do not give a five just because someone has nice shoes.";
  document.getElementById("lessonPanel").classList.toggle("hidden",phase!=="lesson");
  document.getElementById("quizPanel").classList.toggle("hidden",phase!=="quiz");
+ document.getElementById("pronPanel").classList.toggle("hidden",phase!=="pronunciation");
  document.getElementById("hostPanel").classList.toggle("hidden",!isHost);
 
- if(phase==="lesson"){
-  document.getElementById("lessonTitle").textContent=ch.lessonTitle;
-  document.getElementById("chapterImage").src=ch.image;
-  document.getElementById("chapterImage").onerror=function(){this.style.display="none"};
-  document.getElementById("chapterImage").onload=function(){this.style.display="block"};
-  document.getElementById("lessonText").innerHTML=ch.text;
-  document.getElementById("chapterFact").innerHTML="<b>Did you know?</b> "+ch.fact;
-  document.getElementById("lessonActions").innerHTML=isHost
-   ?'<button class="btn primary" onclick="hostNext()">Start the quiz →</button>'
-   :'<span class="muted">Read the lesson. The Game Master will start the quiz.</span>';
- }else{
-  const q=ch.questions[qIndex];
-  if(!q)return;
-  document.getElementById("questionNumber").textContent=`QUESTION ${qIndex+1} OF ${ch.questions.length}`;
-  document.getElementById("questionText").textContent=q.q;
-  const myAnswer=roomData.answers?.[user.uid]?.[chapterIndex+"_"+qIndex];
-  document.getElementById("answers").innerHTML=q.a.map((a,i)=>{
-   let cls="answer";
-   if(myAnswer){if(i===q.c)cls+=" correct";else if(i===myAnswer.choice)cls+=" wrong"}
-   return `<button class="${cls}" ${myAnswer?"disabled":""} onclick="submitAnswer(${i})">${String.fromCharCode(65+i)}. ${escapeHTML(a)}</button>`;
-  }).join("");
-  const feedback=document.getElementById("answerFeedback");
-  if(myAnswer){
-   feedback.classList.remove("hidden","error","success");
-   feedback.classList.add(myAnswer.correct?"success":"error");
-   feedback.textContent=myAnswer.correct?"Correct! +10 points. Hibo approves.":`Not quite. The correct answer is: ${q.a[q.c]}.`;
-  }else feedback.classList.add("hidden");
-  document.getElementById("quizActions").innerHTML=isHost
-   ?'<span class="muted">The Game Master controls when the group moves on.</span>'
-   :'<span class="muted">Your answer is saved automatically.</span>';
- }
+ if(phase==="lesson")renderLesson(ch);
+ if(phase==="quiz")renderQuiz(ch,ci,qi);
+ if(phase==="pronunciation")renderPronunciation(ch,ci);
  renderLeaderboard();
+}
+function renderLesson(ch){
+ document.getElementById("lessonTitle").textContent=ch.lessonTitle;
+ const img=document.getElementById("chapterImage");
+ img.style.display="block";img.src=ch.image;
+ img.onerror=()=>{img.style.display="none"};
+ document.getElementById("lessonText").innerHTML=ch.text;
+ document.getElementById("chapterFact").innerHTML="<b>HIBO'S FIELD NOTE</b><br>"+ch.fact;
+ const extra=document.getElementById("extraActivity");
+ if(ch.title==="The Sound of Tunisia"){
+  extra.innerHTML=`<div class="fact"><b>Historical listening room · 1931</b><br>Listen to the recording. Then discuss what you hear. Can you identify a voice, strings or percussion?<br><br><button class="btn secondary" onclick="playHistoric()">Play the 1931 recording</button> <button class="btn light" onclick="stopHistoric()">Stop</button><p class="small">Art-song Maqam Mezmum · Historical Tunisian recording. Audio playback depends on the browser.</p></div>`;
+ }else extra.innerHTML="";
+ document.getElementById("lessonActions").innerHTML=isHost
+  ?'<button class="btn primary" onclick="hostNext()">I am ready for the quiz →</button>'
+  :'<span class="muted">Explore the lesson. The Game Master will start the quiz.</span>';
+}
+function playHistoric(){
+ const a=document.getElementById("historicAudio");
+ a.play().catch(()=>alert("The recording could not be played. Try opening the audio link directly."));
+}
+function stopHistoric(){const a=document.getElementById("historicAudio");a.pause();a.currentTime=0}
+function renderQuiz(ch,ci,qi){
+ const q=ch.questions[qi];if(!q)return;
+ document.getElementById("questionNumber").textContent=`QUESTION ${qi+1} OF ${ch.questions.length}`;
+ document.getElementById("questionText").textContent=q.q;
+ const answer=roomData.answers?.[user.uid]?.[ci+"_"+qi];
+ document.getElementById("answers").innerHTML=q.a.map((a,i)=>{
+  let cls="option";
+  if(answer){if(i===q.c)cls+=" correct";else if(i===answer.choice)cls+=" wrong"}
+  return `<button class="${cls}" ${answer?"disabled":""} onclick="submitAnswer(${i})">${String.fromCharCode(65+i)} · ${safe(a)}</button>`;
+ }).join("");
+ const feedback=document.getElementById("answerFeedback");
+ if(answer){
+  feedback.className="feedback "+(answer.correct?"good":"bad");
+  feedback.innerHTML=(answer.correct?"Correct! +10 points. ":"Not quite. ")+"<strong>"+safe(q.a[q.c])+"</strong><br>"+safe(q.why);
+ }else{
+  feedback.className="hidden";
+  feedback.textContent="";
+ }
+ document.getElementById("quizActions").innerHTML=isHost
+  ?`<span class="muted">The Game Master moves to the next question when ready.</span>`
+  :'<span class="muted">Your answer is saved. You cannot change it.</span>';
 }
 async function submitAnswer(choice){
  if(!roomData||roomData.phase!=="quiz")return;
- const ci=Number(roomData.chapter)||0,qi=Number(roomData.question)||0;
- const q=chapters[ci].questions[qi];
- const key=ci+"_"+qi;
- const existing=roomData.answers?.[user.uid]?.[key];
- if(existing)return;
+ const ci=chapterIndex(),qi=Number(roomData.question)||0;
+ const q=chapters[ci].questions[qi],key=ci+"_"+qi;
+ if(roomData.answers?.[user.uid]?.[key])return;
  const correct=choice===q.c;
- const answer={choice,correct,at:Date.now()};
  const updates={};
- updates["answers/"+user.uid+"/"+key]=answer;
+ updates["answers/"+user.uid+"/"+key]={choice,correct,at:Date.now()};
  if(correct){
-  const player=roomData.players?.[user.uid]||{name:myName,score:0};
-  updates["players/"+user.uid+"/score"]=(Number(player.score)||0)+10;
+  const score=Number(roomData.players?.[user.uid]?.score)||0;
+  updates["players/"+user.uid+"/score"]=score+10;
  }
  await roomRef().update(updates);
 }
+
+/* -------------------------------------------------------
+   PRONUNCIATION: ONE SPEAKER, PRIVATE VOTES, HOST REVEAL
+------------------------------------------------------- */
+function renderPronunciation(ch,ci){
+ const pr=ch.pronunciation;
+ const speaker=currentSpeaker();
+ const speakerId=speaker?.[0];
+ const speakerName=speaker?.[1]?.name||"Traveller";
+ const isSpeaker=user.uid===speakerId;
+ const myVote=roomData.pronVotes?.[ci]?.[speakerId]?.[user.uid];
+ const result=roomData.pronResults?.[ci]?.[speakerId];
+ document.getElementById("pronTurnLabel").textContent="THIS ROUND'S SPEAKER";
+ document.getElementById("pronWord").textContent=pr.word;
+ document.getElementById("pronMeaning").textContent=pr.meaning;
+ document.getElementById("pronGuide").textContent=pr.guide;
+ document.getElementById("pronStatus").textContent=`${speakerName} is speaking. Everyone else, listen carefully.`;
+ document.getElementById("voteTitle").textContent=isSpeaker?"Your turn to speak — the others will vote":"Rate "+speakerName+"'s pronunciation";
+ document.getElementById("votingArea").classList.toggle("hidden",isSpeaker||!!result);
+ document.getElementById("voteButtons").querySelectorAll("button").forEach((b,i)=>{
+  b.classList.toggle("selected",Number(myVote)===i+1);
+  b.disabled=!!myVote||!!result;
+ });
+ document.getElementById("voteHint").textContent=isSpeaker
+  ?"You are the speaker. No voting for yourself! Enjoy your moment."
+  :myVote?"Your vote has been recorded. Hibo respects a decisive jury."
+  :"Choose one score from 1 to 5. You cannot vote for yourself.";
+ const votes=roomData.pronVotes?.[ci]?.[speakerId]||{};
+ const voters=Object.keys(votes).length;
+ const eligible=Math.max(0,Object.keys(roomData.players||{}).length-1);
+ document.getElementById("voteCount").textContent=`${voters} of ${eligible} possible votes received.`;
+ const resultBox=document.getElementById("pronResult");
+ if(result){
+  resultBox.classList.remove("hidden");
+  resultBox.innerHTML=`<div class="feedback good"><strong>Pronunciation result: ${result.average}/5</strong><br>${safe(speakerName)} earned ${result.points} points. ${safe(result.comment||"Well done!")}</div>`;
+ }else resultBox.classList.add("hidden");
+ const controls=document.getElementById("pronHostActions");
+ controls.innerHTML=isHost
+  ?`<button class="btn secondary" onclick="revealPronunciation()">Close voting & reveal result</button>`
+  :'<span class="muted">Waiting for the Game Master to reveal the result.</span>';
+}
+async function castVote(value){
+ if(!roomData||roomData.phase!=="pronunciation")return;
+ const speaker=currentSpeaker();if(!speaker)return;
+ const speakerId=speaker[0];
+ if(user.uid===speakerId)return alert("You are the speaker. You cannot vote for yourself.");
+ const existing=roomData.pronVotes?.[chapterIndex()]?.[speakerId]?.[user.uid];
+ if(existing)return alert("You have already voted.");
+ const updates={};
+ updates[`pronVotes/${chapterIndex()}/${speakerId}/${user.uid}`]=value;
+ await roomRef().update(updates);
+}
+async function revealPronunciation(){
+ if(!isHost||!roomData)return;
+ const ci=chapterIndex(),speaker=currentSpeaker();if(!speaker)return;
+ const speakerId=speaker[0],votes=roomData.pronVotes?.[ci]?.[speakerId]||{};
+ if(roomData.pronResults?.[ci]?.[speakerId])return;
+ const values=Object.values(votes).map(Number).filter(n=>n>=1&&n<=5);
+ if(!values.length)return alert("Wait for at least one vote before revealing the result.");
+ const avg=values.reduce((a,b)=>a+b,0)/values.length;
+ const average=Math.round(avg*10)/10;
+ const points=Math.round(avg*2);
+ const oldScore=Number(roomData.players?.[speakerId]?.score)||0;
+ const updates={};
+ updates[`pronResults/${ci}/${speakerId}`]={
+  average,points,voteCount:values.length,comment:average>=4.5?"A natural! Slay, habibti.":average>=3?"Good work. Practice makes progress.":"A brave first attempt. We go again next time."
+ };
+ updates[`players/${speakerId}/score`]=oldScore+points;
+ await roomRef().update(updates);
+}
+
+/* -------------------------------------------------------
+   LEADERBOARD AND GAME MASTER FLOW
+------------------------------------------------------- */
 function renderLeaderboard(){
- const players=Object.entries(roomData.players||{}).sort((a,b)=>(b[1].score||0)-(a[1].score||0));
- const html=players.map(([id,p],i)=>`<div class="leader-row"><span><span class="rank">${i+1}.</span> ${escapeHTML(p.name||"Traveller")}</span><span class="score">${p.score||0} pts</span></div>`).join("");
- document.getElementById("leaderboard").innerHTML=html;
+ const list=playerEntries().sort((a,b)=>(Number(b[1].score)||0)-(Number(a[1].score)||0));
+ document.getElementById("leaderboard").innerHTML=list.map(([id,p],i)=>
+  `<div class="leader-row"><span><span class="rank">${i+1}.</span><strong>${safe(p.name)}</strong></span><span class="score">${Number(p.score)||0} pts</span></div>`
+ ).join("")||'<p class="muted">No travellers yet.</p>';
 }
 async function hostNext(){
  if(!isHost||!roomData)return;
- const ci=Number(roomData.chapter)||0;
- if(roomData.phase==="lesson"){
-  await roomRef().update({phase:"quiz",question:0});
- }else{
-  const qi=Number(roomData.question)||0;
+ stopHistoric();
+ const ci=chapterIndex(),phase=roomData.phase||"lesson",qi=Number(roomData.question)||0;
+ if(phase==="lesson"){
+  await roomRef().update({phase:"quiz",question:0});return;
+ }
+ if(phase==="quiz"){
   if(qi<chapters[ci].questions.length-1){
-   await roomRef().update({question:qi+1});
-  }else if(ci<chapters.length-1){
-   await roomRef().update({chapter:ci+1,phase:"lesson",question:0});
-  }else{
-   await roomRef().update({status:"finished"});
+   await roomRef().update({question:qi+1});return;
   }
+  await roomRef().update({phase:"pronunciation"});return;
+ }
+ if(phase==="pronunciation"){
+  const speaker=currentSpeaker();
+  if(speaker&&!roomData.pronResults?.[ci]?.[speaker[0]]){
+   return alert("Reveal the pronunciation result before moving on.");
+  }
+  if(ci<chapters.length-1){
+   await roomRef().update({chapter:ci+1,phase:"lesson",question:0});return;
+  }
+  await roomRef().update({status:"finished"});return;
  }
 }
 function renderFinal(){
- const players=Object.entries(roomData.players||{}).sort((a,b)=>(b[1].score||0)-(a[1].score||0));
- document.getElementById("finalLeaderboard").innerHTML=players.map(([id,p],i)=>`<div class="leader-row"><span><span class="rank">${i+1}.</span> ${escapeHTML(p.name||"Traveller")}</span><span class="score">${p.score||0} pts</span></div>`).join("");
+ const list=playerEntries().sort((a,b)=>(Number(b[1].score)||0)-(Number(a[1].score)||0));
+ document.getElementById("finalLeaderboard").innerHTML=list.map(([id,p],i)=>
+  `<div class="leader-row"><span><span class="rank">${i+1}.</span><strong>${safe(p.name)}</strong></span><span class="score">${Number(p.score)||0} pts</span></div>`
+ ).join("");
  document.getElementById("finishedHostActions").classList.toggle("hidden",!isHost);
  document.getElementById("finishedPlayerText").classList.toggle("hidden",isHost);
+ document.getElementById("punishmentSecret").classList.toggle("hidden",list.length===0);
 }
-function showModal(title,message,action){
- document.getElementById("modalTitle").textContent=title;
- document.getElementById("modalText").textContent=message;
+
+/* -------------------------------------------------------
+   BONUS POINTS
+------------------------------------------------------- */
+function showBonusModal(){
+ if(!isHost)return;
+ const players=playerEntries();
+ document.getElementById("modalTitle").textContent="Award bonus points";
+ document.getElementById("modalText").textContent="Reward a good explanation, teamwork or a brilliant question.";
+ document.getElementById("modalExtra").innerHTML=`
+  <label>Traveller</label>
+  <select id="bonusPlayer" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;margin:8px 0 13px">
+   ${players.map(([id,p])=>`<option value="${id}">${safe(p.name)}</option>`).join("")}
+  </select>
+  <label>Points</label>
+  <input id="bonusPoints" type="number" min="1" max="20" value="5">
+  <label>Reason</label>
+  <input id="bonusReason" maxlength="90" placeholder="Great teamwork...">
+ `;
+ document.getElementById("modalConfirm").textContent="Award points";
  document.getElementById("modalConfirm").onclick=async()=>{
-  closeModal();await action();
+  const id=document.getElementById("bonusPlayer").value;
+  const points=Math.max(1,Math.min(20,Number(document.getElementById("bonusPoints").value)||5));
+  const reason=document.getElementById("bonusReason").value.trim()||"Game Master bonus";
+  const score=Number(roomData.players?.[id]?.score)||0;
+  await roomRef().child("players/"+id+"/score").set(score+points);
+  await roomRef().child("bonusLog").push({playerId:id,points,reason,at:Date.now()});
+  closeModal();
  };
- document.getElementById("confirmModal").classList.remove("hidden");
+ document.getElementById("modal").classList.remove("hidden");
 }
-function closeModal(){document.getElementById("confirmModal").classList.add("hidden")}
+
+/* -------------------------------------------------------
+   RESTART AND DELETE
+------------------------------------------------------- */
+function openModal(title,txt,action,confirmText="Confirm"){
+ document.getElementById("modalTitle").textContent=title;
+ document.getElementById("modalText").textContent=txt;
+ document.getElementById("modalExtra").innerHTML="";
+ document.getElementById("modalConfirm").textContent=confirmText;
+ document.getElementById("modalConfirm").onclick=async()=>{closeModal();await action()};
+ document.getElementById("modal").classList.remove("hidden");
+}
+function closeModal(){document.getElementById("modal").classList.add("hidden")}
 function showRestartConfirm(){
  if(!isHost)return;
- showModal("Restart this adventure?","All scores and answers in this room will be reset. The room code and players will stay the same.",restartGame);
+ openModal("Restart this expedition?","Scores, answers and pronunciation votes will be reset. The room code and travellers will stay.",restartGame,"Restart");
 }
 async function restartGame(){
  if(!isHost)return;
  const players={};
- Object.entries(roomData.players||{}).forEach(([id,p])=>{
-  players[id]={...p,score:0};
- });
+ Object.entries(roomData.players||{}).forEach(([id,p])=>players[id]={...p,score:0});
  await roomRef().update({
   status:"playing",chapter:0,phase:"lesson",question:0,
-  players,answers:{},restartedAt:Date.now()
+  players,answers:{},pronVotes:{},pronResults:{},bonusLog:{},
+  restartedAt:Date.now()
  });
 }
 function showDeleteConfirm(){
  if(!isHost)return;
- showModal("Delete this game?","This permanently deletes the room, its players, scores and answers. You cannot undo this.",deleteGame);
+ openModal("Delete this room?","This permanently removes the room, players, scores and answers. This cannot be undone.",deleteGame,"Delete room");
 }
 async function deleteGame(){
  if(!isHost)return;
  try{
+  stopHistoric();
   await roomRef().remove();
   if(roomListener)roomRef().off("value",roomListener);
-  roomListener=null;roomData=null;
-  forgetLocal();roomCode=null;isHost=false;
-  show("home");
- }catch(e){alert("Could not delete the game: "+e.message)}
+  roomListener=null;roomData=null;roomCode=null;
+  clearSession();showPage("home");
+ }catch(e){alert("Could not delete the room: "+e.message)}
 }
-async function toggleMusic(){
- const audio=document.getElementById("music");
- try{
-  if(!musicOn){await audio.play();musicOn=true;document.getElementById("musicButton").textContent="♫ Music on"}
-  else{audio.pause();musicOn=false;document.getElementById("musicButton").textContent="♫ Music"}
- }catch(e){alert("The music could not be played. Try again.");}
-}
+
+/* -------------------------------------------------------
+   SMALL INTERACTIONS
+------------------------------------------------------- */
 document.getElementById("roomInput").addEventListener("input",e=>e.target.value=e.target.value.toUpperCase());
-document.getElementById("confirmModal").addEventListener("click",e=>{if(e.target.id==="confirmModal")closeModal()});
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+document.getElementById("chapterPreview").innerHTML=chapters.map((c,i)=>`
+ <div class="chapter-card">
+  <div class="number">CHAPTER 0${i+1}</div>
+  <h3>${safe(c.title)}</h3>
+  <p>${safe(c.subtitle)}</p>
+ </div>`).join("");
 </script>
 </body>
 </html>
