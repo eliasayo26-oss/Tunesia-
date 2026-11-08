@@ -1,535 +1,717 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f4b82c">
-<title>Hibo's Tunisian Adventure</title>
+<meta name="theme-color" content="#087f9b">
+<title>Hibo's Tunisia — The Living Adventure</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap');
 
-:root {
-  --gold:#f5bb36;
-  --blue:#087e9c;
-  --deep:#07536e;
-  --cream:#fff9eb;
-  --red:#df5947;
-  --ink:#193744;
-  --white:#fff;
+:root{
+ --sea:#087f9b;
+ --deep:#07536b;
+ --turquoise:#39b9b2;
+ --sun:#ffc94f;
+ --coral:#f27660;
+ --sand:#f8e9c9;
+ --cream:#fffaf0;
+ --ink:#173d49;
+ --green:#67a878;
+ --white:#fff;
 }
 *{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:'DM Sans',sans-serif;
-  color:var(--ink);
-  background:var(--cream);
-  min-height:100vh;
-  background-image:radial-gradient(#e9d8b5 1px,transparent 1px);
-  background-size:20px 20px;
+ margin:0;background:var(--cream);color:var(--ink);
+ font-family:Nunito,sans-serif;overflow-x:hidden;
 }
-button,input,select{font:inherit}
-button{cursor:pointer;border:0}
-h1,h2,h3{font-family:'Fredoka',sans-serif}
-header{
-  background:var(--gold);
-  padding:17px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:5px solid var(--deep);
-}
-.logo{font-family:'Fredoka';font-size:24px;font-weight:700}
-.logo span{color:var(--deep)}
-.small{font-size:12px;font-weight:700;letter-spacing:1px}
-main{max-width:850px;margin:25px auto;padding:15px}
-.card{
-  background:white;
-  border:2px solid #eadfc9;
-  border-radius:22px;
-  padding:24px;
-  margin-bottom:18px;
-  box-shadow:0 5px 0 #e7dcc7;
-}
-.hero{
-  background:linear-gradient(140deg,#087e9c,#07536e);
-  color:white;
-  text-align:center;
-  padding:35px 22px;
-  border-radius:25px;
-  position:relative;
-  overflow:hidden;
-}
-.hero h1{font-size:clamp(32px,7vw,52px);margin:8px 0}
-.camel{font-size:65px}
-.hero p{line-height:1.6;max-width:540px;margin:auto}
-button.primary{
-  background:var(--gold);
-  color:var(--ink);
-  font-weight:800;
-  padding:14px 22px;
-  border-radius:13px;
-  margin-top:12px;
-  box-shadow:0 4px 0 #c48c1d;
-}
-button.secondary{
-  background:var(--blue);
-  color:white;
-  font-weight:700;
-  padding:12px 18px;
-  border-radius:12px;
-  margin:5px;
-}
-button.danger{background:var(--red);color:white}
-button:disabled{opacity:.45;cursor:not-allowed}
-input,select{
-  width:100%;
-  padding:14px;
-  border:2px solid #ddd2bd;
-  border-radius:12px;
-  margin:7px 0 14px;
-  background:white;
-  color:var(--ink);
-}
-label{font-weight:700;font-size:14px}
+button,input{font:inherit}
+button{cursor:pointer}
+h1,h2,h3{font-family:Fredoka,sans-serif}
+button:focus-visible,input:focus-visible{outline:3px solid var(--coral)}
 .hidden{display:none!important}
-.muted{color:#72818a;font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-.category{
-  padding:17px;
-  border-radius:16px;
-  background:#fff4d7;
-  border:1px solid #f0d99f;
+header{
+ background:var(--deep);color:white;padding:12px 5%;
+ display:flex;justify-content:space-between;align-items:center;
+ position:sticky;top:0;z-index:20;
 }
-.category strong{display:block;font-family:'Fredoka';font-size:19px;margin-bottom:5px}
-.question{font-family:'Fredoka';font-size:25px;line-height:1.3}
-.option{
-  display:block;width:100%;text-align:left;
-  background:#f7f5ef;border:2px solid #e7dfd0;
-  border-radius:13px;padding:15px;margin:9px 0;
-  font-weight:600;color:var(--ink);
+.brand{font:700 23px Fredoka;letter-spacing:1px}
+.brand span{color:var(--sun)}
+.header-right{font-size:12px;font-weight:900;letter-spacing:1px}
+main{max-width:1100px;margin:auto;padding:22px 16px 60px}
+button{border:0}
+.primary,.secondary,.back{
+ padding:13px 20px;border-radius:15px;font-weight:900;
+ transition:.2s;display:inline-block;
 }
-.option.selected{border-color:var(--blue);background:#e3f5f8}
-.option.correct{background:#dff5e5;border-color:#399b60}
-.option.wrong{background:#ffe6e0;border-color:var(--red)}
-.topline{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.progress{height:9px;background:#e8e2d6;border-radius:20px;overflow:hidden;margin:14px 0}
-.progress div{height:100%;background:var(--gold);transition:.3s}
-.score{font-family:'Fredoka';font-size:24px;color:var(--blue)}
-.player{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:13px;border-bottom:1px solid #eee7dc;gap:10px
+.primary{background:var(--sun);color:var(--deep);box-shadow:0 5px 0 #dba72e}
+.secondary{background:var(--sea);color:white;box-shadow:0 4px 0 var(--deep)}
+.back{background:white;color:var(--deep);border:2px solid #d7e6e3}
+.primary:hover,.secondary:hover,.back:hover{transform:translateY(-2px)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.hero{
+ background:linear-gradient(130deg,#087f9b,#07536b);
+ color:white;border-radius:30px;padding:35px 25px;
+ display:grid;grid-template-columns:1.1fr .9fr;
+ gap:20px;align-items:center;overflow:hidden;
+ position:relative;
 }
+.hero:after{
+ content:"";position:absolute;width:300px;height:300px;
+ border:2px dashed #ffffff45;border-radius:50%;
+ right:-100px;top:-100px;
+}
+.hero h1{font-size:clamp(36px,7vw,65px);line-height:1;margin:10px 0}
+.hero p{font-size:17px;line-height:1.6;max-width:550px}
+.hero-image{width:100%;height:270px;object-fit:cover;border-radius:25px}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:2px;color:var(--sun)}
+.card{
+ background:white;border-radius:24px;padding:23px;
+ margin:18px 0;border:1px solid #ebdfc9;
+ box-shadow:0 5px 0 #e8dcc6;
+}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+input{
+ width:100%;padding:14px;border:2px solid #e5d9c5;
+ border-radius:12px;margin:8px 0 15px;
+}
+label{font-weight:900;font-size:13px}
+.muted{color:#72838a;font-size:13px}
+.section-title{font-size:30px;margin:8px 0}
+.chapter{
+ overflow:hidden;background:white;border-radius:23px;
+ box-shadow:0 5px 0 #e8dcc6;cursor:pointer;
+ border:2px solid transparent;transition:.2s;
+}
+.chapter:hover{transform:translateY(-5px);border-color:var(--sun)}
+.chapter img{width:100%;height:155px;object-fit:cover;display:block}
+.chapter-info{padding:16px}
+.chapter-info h3{font-size:22px;margin:0 0 5px}
+.chapter-info p{font-size:13px;line-height:1.5;margin:0 0 12px}
+.chapter-number{font-size:11px;color:var(--coral);font-weight:900;letter-spacing:2px}
+.mascot{
+ display:flex;align-items:center;gap:13px;margin:20px 0;
+}
+.camel{
+ width:105px;height:105px;flex-shrink:0;
+ background:#ffe5a4;border-radius:50%;display:grid;place-items:center;
+ animation:bob 3s infinite ease-in-out;overflow:hidden;
+}
+.camel svg{width:100px;height:100px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.speech{
+ background:white;border:2px solid var(--sun);border-radius:20px;
+ padding:16px 18px;position:relative;flex:1;line-height:1.5;
+}
+.speech:before{
+ content:"";position:absolute;left:-10px;top:25px;
+ width:17px;height:17px;background:white;
+ border-left:2px solid var(--sun);border-bottom:2px solid var(--sun);
+ transform:rotate(45deg);
+}
+.speech strong{font-family:Fredoka;color:var(--coral)}
+.speech button{background:none;color:var(--sea);font-weight:900;padding:5px}
+.photo{
+ width:100%;height:250px;object-fit:cover;border-radius:19px;
+}
+.fact{
+ background:#fff3d6;border-left:6px solid var(--sun);
+ border-radius:12px;padding:16px;margin:15px 0;line-height:1.6;
+}
+.anecdote{
+ background:#e5f5f3;border-left:6px solid var(--turquoise);
+ padding:16px;border-radius:12px;margin:15px 0;line-height:1.6;
+}
+.lesson{
+ font-size:16px;line-height:1.8;
+}
+.lesson strong{color:var(--deep)}
+.word{
+ display:inline-block;background:#e2f3f4;border-radius:9px;
+ padding:9px 12px;margin:5px;font-weight:900;
+}
+.quiz-option{
+ display:block;width:100%;text-align:left;
+ background:#f7f5ee;border:2px solid #e6dfd2;
+ border-radius:14px;padding:15px;margin:10px 0;
+ font-weight:800;color:var(--ink);
+}
+.quiz-option:hover{border-color:var(--sea)}
+.quiz-option.correct{background:#e1f4e5;border-color:var(--green)}
+.quiz-option.wrong{background:#ffe5df;border-color:var(--coral)}
+.progress{height:10px;background:#e8e2d6;border-radius:20px;overflow:hidden;margin:15px 0}
+.progress div{height:100%;background:var(--sun);transition:.4s}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{background:#e4f4f4;color:var(--deep);padding:7px 12px;border-radius:20px;font-size:12px;font-weight:900}
+.player{display:flex;align-items:center;justify-content:space-between;padding:12px;border-bottom:1px solid #eee;gap:10px}
 .player:last-child{border:0}
-.rank{font-family:'Fredoka';font-size:20px;color:var(--red);width:30px}
-.pill{background:#e7f5f7;color:var(--deep);padding:6px 10px;border-radius:20px;font-size:12px;font-weight:800}
-.host{background:#fff0c9}
-footer{text-align:center;color:#8b887e;font-size:12px;padding:25px}
-#notice{padding:12px;background:#e7f5f7;border-radius:12px;margin:12px 0}
-.music{width:100%;padding:18px;background:#e6f5f8;border-radius:15px;margin:12px 0}
+.score{font:700 22px Fredoka;color:var(--sea)}
+.music-box{background:#e1f3f5;padding:18px;border-radius:18px;margin:16px 0}
+audio{width:100%;margin-top:10px}
+footer{text-align:center;padding:30px;color:#8b887e;font-size:12px}
+#toast{
+ position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+ background:var(--deep);color:white;padding:13px 20px;
+ border-radius:14px;z-index:100;display:none;
+ max-width:90%;text-align:center;
+}
+@media(max-width:650px){
+ .hero{grid-template-columns:1fr;padding:25px 20px}
+ .hero-image{height:190px}
+ .header-right{display:none}
+ .camel{width:78px;height:78px}
+ .camel svg{width:75px}
+ .speech{font-size:13px}
+ main{padding:15px 12px}
+}
 </style>
 </head>
 
 <body>
 <header>
-  <div class="logo">HIBO <span>★</span> TUNISIA</div>
-  <div class="small">A JOURNEY THROUGH TUNISIA</div>
+ <div class="brand">HIBO <span>✦</span> TUNISIA</div>
+ <div class="header-right">A LITTLE ADVENTURE. A LOT OF HISTORY.</div>
 </header>
 
 <main>
 <section id="home">
-  <div class="hero">
-    <div class="camel">🐪</div>
-    <div class="small">WELCOME, TRAVELLERS</div>
-    <h1>Hibo's Tunisian Adventure</h1>
-    <p>Six destinations. Stories, music, food, language and unexpected challenges. Follow Hibo and discover Tunisia together.</p>
+ <div class="hero">
+  <div>
+   <div class="eyebrow">WELCOME TO THE MAGICAL MAGHREB</div>
+   <h1>Discover Tunisia with Hibo!</h1>
+   <p>Forget boring lessons. Explore ancient cities, taste imaginary flavours, discover music, learn words and uncover stories.</p>
+   <p><strong>Six worlds. One caravan. Your adventure begins here.</strong></p>
   </div>
+  <img class="hero-image" src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=1000&q=85" alt="North African desert landscape">
+ </div>
 
-  <div class="grid" style="margin-top:20px">
-    <div class="card">
-      <h2>Start a new adventure</h2>
-      <p class="muted">For the Game Master only.</p>
-      <label>Your name</label>
-      <input id="hostName" value="Naziha" maxlength="20">
-      <button class="primary" onclick="createRoom()">CREATE GAME</button>
-    </div>
-    <div class="card">
-      <h2>Join an adventure</h2>
-      <p class="muted">Enter the room code given by the Game Master.</p>
-      <label>Your name</label>
-      <input id="playerName" placeholder="Your name" maxlength="20">
-      <label>Room code</label>
-      <input id="roomInput" placeholder="Example: HIBO25" maxlength="8" style="text-transform:uppercase">
-      <button class="secondary" onclick="joinRoom()">JOIN GAME</button>
-    </div>
+ <div class="mascot">
+  <div class="camel" id="homeCamel"></div>
+  <div class="speech"><strong>Hibo says:</strong><br>
+   "Finally! Travellers! I've been waiting so long that I almost became a fossil. Let's explore Tunisia!" 
+   <br><button onclick="hiboTalk()">Talk to Hibo →</button>
   </div>
-  <div id="homeError" class="muted"></div>
+ </div>
+
+ <div class="grid">
+  <div class="card">
+   <h2>Start a caravan</h2>
+   <p class="muted">Game Master — Naziha</p>
+   <label>Your name</label>
+   <input id="hostName" value="Naziha">
+   <button class="primary" onclick="createRoom()">CREATE A ROOM</button>
+  </div>
+  <div class="card">
+   <h2>Join your friends</h2>
+   <label>Your name</label>
+   <input id="playerName" placeholder="Your name">
+   <label>Room code</label>
+   <input id="roomInput" placeholder="HIBO123" maxlength="10">
+   <button class="secondary" onclick="joinRoom()">JOIN THE CARAVAN</button>
+  </div>
+ </div>
+ <p id="homeError" class="muted"></p>
 </section>
 
 <section id="lobby" class="hidden">
-  <div class="hero">
-    <div class="camel">🐪</div>
-    <h1>Welcome to the caravan!</h1>
-    <p>Hibo is waiting for everyone. Gather your travellers.</p>
-    <h2 id="roomCodeDisplay" style="letter-spacing:5px"></h2>
-  </div>
-  <div class="card">
-    <div class="topline">
-      <h2>Travellers</h2>
-      <span class="pill" id="playerCount">0 players</span>
-    </div>
-    <div id="lobbyPlayers"></div>
-    <div id="hostStart" class="hidden">
-      <p class="muted">When everyone has joined, start the adventure.</p>
-      <button class="primary" onclick="startGame()">START THE ADVENTURE</button>
-    </div>
-    <p id="waitingMessage" class="muted">Waiting for the Game Master...</p>
-  </div>
+ <button class="back" onclick="goHome()">← HOME</button>
+ <div class="hero" style="margin-top:15px">
+  <div><div class="eyebrow">THE CARAVAN IS GATHERING</div>
+  <h1>Ready, travellers?</h1>
+  <p>Share this room code with everyone.</p>
+  <h2 id="roomCode" style="letter-spacing:5px"></h2></div>
+  <img class="hero-image" src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?auto=format&fit=crop&w=800&q=85" alt="Desert caravan">
+ </div>
+ <div class="card">
+  <h2>Who's coming?</h2>
+  <div id="playersLobby"></div>
+  <button id="startBtn" class="primary hidden" onclick="startGame()">LET'S GO!</button>
+  <p id="waitText" class="muted">Waiting for the Game Master...</p>
+ </div>
 </section>
 
-<section id="game" class="hidden">
+<section id="explore" class="hidden">
+ <div class="topline">
+  <button class="back" onclick="backToLobby()">← LOBBY</button>
+  <span class="pill" id="exploreScore">0 POINTS</span>
+ </div>
+ <div class="mascot">
+  <div class="camel" id="exploreCamel"></div>
+  <div class="speech"><strong>Hibo:</strong><br><span id="exploreTalk">Welcome to Tunisia!</span><br><button onclick="hiboTalk()">Tell me something else →</button></div>
+ </div>
+ <h2 class="section-title">Choose your destination</h2>
+ <p class="muted">Learn something new before testing your knowledge.</p>
+ <div class="grid" id="chapterGrid"></div>
+ <div class="card">
+  <h2>Your caravan's ranking</h2>
+  <div id="exploreRanking"></div>
+ </div>
+</section>
+
+<section id="chapter" class="hidden">
+ <div class="topline">
+  <button class="back" onclick="backToExplore()">← ALL DESTINATIONS</button>
+  <span class="pill" id="chapterProgress"></span>
+ </div>
+ <div class="mascot">
+  <div class="camel" id="chapterCamel"></div>
+  <div class="speech"><strong>Hibo:</strong><br><span id="chapterGreeting"></span><br><button onclick="hiboTalk()">Hibo, tell me more!</button></div>
+ </div>
+ <div id="chapterBody"></div>
+ <div class="card">
   <div class="topline">
-    <span class="pill" id="chapterLabel">CHAPTER</span>
-    <span class="score" id="myScore">0 pts</span>
+   <button class="back" onclick="backToExplore()">← BACK</button>
+   <button class="primary" id="quizStart">TEST YOUR KNOWLEDGE →</button>
   </div>
-  <div class="progress"><div id="progressBar"></div></div>
-  <div class="card">
-    <div class="topline">
-      <span class="muted" id="stageLabel"></span>
-      <span class="pill" id="stageNumber"></span>
-    </div>
-    <h2 id="gameTitle"></h2>
-    <div id="gameContent"></div>
-    <div id="answerFeedback"></div>
-    <div id="hostControls" class="hidden">
-      <button class="primary" onclick="nextStage()" id="nextButton">NEXT</button>
-      <button class="secondary" onclick="showLeaderboard()">LEADERBOARD</button>
-    </div>
-  </div>
-  <div class="card">
-    <div class="topline"><h3>Live leaderboard</h3><span class="pill">LIVE</span></div>
-    <div id="gameLeaderboard"></div>
-  </div>
+ </div>
 </section>
 
-<section id="leaderboardScreen" class="hidden">
-  <div class="hero">
-    <div class="camel">🐪</div>
-    <h1>The caravan's ranking</h1>
-    <p>Every point counts. Who will become the Tunisian adventure champion?</p>
-  </div>
-  <div class="card">
-    <div id="finalLeaderboard"></div>
-    <button class="secondary" onclick="backToGame()">BACK TO GAME</button>
-  </div>
+<section id="quiz" class="hidden">
+ <div class="topline">
+  <button class="back" onclick="backToChapter()">← LESSON</button>
+  <span class="pill" id="quizCounter"></span>
+ </div>
+ <div class="card">
+  <div class="eyebrow">HIBO'S CHALLENGE</div>
+  <h2 id="quizQuestion"></h2>
+  <div id="quizOptions"></div>
+  <div id="quizFeedback"></div>
+  <button id="quizNext" class="primary hidden">NEXT QUESTION →</button>
+ </div>
+</section>
+
+<section id="challenge" class="hidden">
+ <button class="back" onclick="backToExplore()">← DESTINATIONS</button>
+ <div class="mascot">
+  <div class="camel" id="challengeCamel"></div>
+  <div class="speech"><strong>Hibo:</strong><br>Time to stop reading and start talking! Humans are strange. You can communicate without a database!</div>
+ </div>
+ <div class="card">
+  <div class="eyebrow">TABLE CHALLENGE</div>
+  <h2 id="challengeTitle"></h2>
+  <p id="challengeText" class="lesson"></p>
+  <p class="fact"><strong>Hibo's rule:</strong> Listen to each other. No phones while someone is speaking.</p>
+  <div id="challengeMusic"></div>
+  <button class="primary" onclick="completeChallenge()">WE DID IT! +2 POINTS</button>
+ </div>
 </section>
 
 <section id="finished" class="hidden">
-  <div class="hero">
-    <div class="camel">🐪</div>
-    <h1>Adventure completed!</h1>
-    <p>You've travelled through Tunisia, shared stories and discovered something new.</p>
-  </div>
-  <div class="card">
-    <h2>The final ranking</h2>
-    <div id="finalResults"></div>
-    <h3 id="winnerMessage"></h3>
-  </div>
+ <div class="hero">
+  <div><div class="eyebrow">THE END OF THE JOURNEY</div>
+  <h1>What an adventure!</h1>
+  <p>You've travelled through six worlds of Tunisian history, culture and music. Hibo is proud of you.</p></div>
+  <img class="hero-image" src="https://images.unsplash.com/photo-1548018560-c7196548e84d?auto=format&fit=crop&w=900&q=85" alt="Beautiful architecture">
+ </div>
+ <div class="card">
+  <h2>Final ranking</h2>
+  <div id="finalRanking"></div>
+  <h3 id="winner"></h3>
+ </div>
 </section>
 </main>
 
-<footer>HIBO'S TUNISIAN ADVENTURE · MADE WITH CURIOSITY</footer>
+<footer>HIBO'S TUNISIAN ADVENTURE · LEARN THROUGH CURIOSITY</footer>
+<div id="toast"></div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
-import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
-import {
-  getDatabase, ref, set, get, update, onValue,
-  runTransaction
-} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-database.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+import {getAuth,signInAnonymously,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+import {getDatabase,ref,set,get,update,onValue,runTransaction} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-database.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyASD1pxaYKoFRGsMviLXbWj1GCVy364nVM",
-  authDomain: "hibo-tunisia.firebaseapp.com",
-  databaseURL: "https://hibo-tunisia-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "hibo-tunisia",
-  storageBucket: "hibo-tunisia.firebasestorage.app",
-  messagingSenderId: "911212558983",
-  appId: "1:911212558983:web:a4911d3dc35b7ba45b9622",
-  measurementId: "G-G5N4Y7Y53B"
+const firebaseConfig={
+ apiKey:"AIzaSyASD1pxaYKoFRGsMviLXbWj1GCVy364nVM",
+ authDomain:"hibo-tunisia.firebaseapp.com",
+ databaseURL:"https://hibo-tunisia-default-rtdb.europe-west1.firebasedatabase.app",
+ projectId:"hibo-tunisia",
+ storageBucket:"hibo-tunisia.firebasestorage.app",
+ messagingSenderId:"911212558983",
+ appId:"1:911212558983:web:a4911d3dc35b7ba45b9622",
+ measurementId:"G-G5N4Y7Y53B"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getDatabase(app);
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getDatabase(app);
 
-let uid = null;
-let room = null;
-let isHost = false;
-let playerName = "";
-let roomData = {};
-let selectedAnswer = null;
-let unsubscribe = null;
+let uid=null,room=null,isHost=false,playerName="";
+let data={},currentChapter=0,questionIndex=0,unsub=null;
+let answered=false,challengeDone=false;
+let authReady=false;
 
-const chapters = [
- {name:"History & Carthage",questions:[
-  ["Which famous Carthaginian general crossed the Alps with elephants?",["Julius Caesar","Hannibal","Scipio","Augustus"],1,"Hannibal Barca led his army across the Alps during the Second Punic War."],
-  ["Which ancient city was the centre of Carthaginian power?",["Carthage","Athens","Rome","Alexandria"],0,"Carthage was one of the great powers of the ancient Mediterranean."],
-  ["In which year did Tunisia gain independence from France?",["1945","1956","1962","1970"],1,"Tunisia became independent on 20 March 1956."]
- ]},
- {name:"Music & Rhythm",questions:[
-  ["Which instrument is strongly associated with Tunisian Mezoued music?",["Bagpipes-like mizwad","Electric guitar","Harp","Flute"],0,"The mezoued is a traditional bagpipe-like instrument."],
-  ["Stambeli music has deep roots in which tradition?",["Andalusian court music only","Sub-Saharan African spiritual traditions","Rock music","Classical opera"],1,"Stambeli carries African spiritual and musical heritage."],
-  ["What is Malouf?",["A traditional musical genre","A Tunisian dessert","A type of pottery","A dance from Spain"],0,"Malouf is a traditional musical genre with Andalusian roots."]
- ]},
- {name:"Food & Flavours",questions:[
-  ["What is harissa?",["A sweet pastry","A spicy chilli paste","A cheese","A soup"],1,"Harissa is a famous Tunisian chilli paste."],
-  ["Which ingredient is central to many Tunisian couscous dishes?",["Couscous grains","Chocolate","Potatoes only","Rice noodles"],0,"Couscous is a staple of Tunisian cuisine."],
-  ["What is brik?",["A savoury pastry often filled with egg","A fruit drink","A sweet cake","A type of bread"],0,"Brik is a crisp pastry, often filled with egg and tuna."]
- ]},
- {name:"Culture & Daily Life",questions:[
-  ["What is a traditional Tunisian courtyard house often called?",["Dar","Palace","Villa","Riad only"],0,"Dar means house in Arabic."],
-  ["What colour combination is famous in Sidi Bou Said?",["Red and green","Blue and white","Black and gold","Purple and yellow"],1,"The village is famous for its white walls and blue doors."],
-  ["What does hospitality traditionally mean in Tunisian culture?",["Welcoming guests generously","Avoiding visitors","Eating alone","Never sharing tea"],0,"Hospitality and sharing food are important social values."]
- ]},
- {name:"Tounsi Language",questions:[
-  ["What does 'Aslema' mean?",["Goodbye","Hello","Thank you","Please"],1,"Aslema is a common Tunisian greeting."],
-  ["What does 'Chnowa?' mean?",["Where?","When?","What?","Why?"],2,"Chnowa means 'what?' in Tunisian Arabic."],
-  ["How do you say thank you in Tunisian Arabic?",["Yatik saha","Labes","Besslema","Chnowa"],0,"Yatik saha is a common way to say thank you."]
- ]},
- {name:"Places & Hidden Tunisia",questions:[
-  ["Where can you find the famous Roman amphitheatre of El Jem?",["Tunisia","Morocco","Egypt","Algeria"],0,"El Jem is home to one of the largest Roman amphitheatres."],
-  ["Which Tunisian island is famous for its beaches and traditional villages?",["Djerba","Sicily","Crete","Malta"],0,"Djerba is known for its beaches and distinctive heritage."],
-  ["Matmata is famous for what type of homes?",["Underground troglodyte homes","Floating houses","Glass skyscrapers","Tree houses"],0,"Matmata is famous for traditional homes built into the earth."]
- ]}
+const chapters=[
+{
+ title:"The Land of Carthage",subtitle:"HISTORY & ANCIENT CIVILISATIONS",
+ image:"https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=1000&q=85",
+ intro:"Before modern Tunisia, there was Carthage: a powerful city that changed Mediterranean history.",
+ lesson:`<h3>A city that challenged Rome</h3>
+ <p class="lesson">Carthage was founded by Phoenician settlers around the 9th century BCE. It became a major trading power, connecting Africa, Europe and the Mediterranean.</p>
+ <img class="photo" src="https://images.unsplash.com/photo-1590845947670-c009801ffa74?auto=format&fit=crop&w=1000&q=85" alt="Ancient ruins">
+ <h3>Meet Hannibal</h3><p class="lesson">Hannibal Barca is remembered for leading an army, including elephants, across the Alps to fight Rome. Imagine seeing elephants in the snow!</p>
+ <div class="fact"><strong>FACT:</strong> Carthage was one of the most important ancient cities in the western Mediterranean.</div>
+ <div class="anecdote"><strong>HIBO'S ANECDOTE:</strong> Hannibal's journey was so extraordinary that even today it is studied as a remarkable military operation. And yes, the elephants had to cross the mountains too.</div>
+ <h3>Modern Tunisia</h3><p class="lesson">Tunisia became independent from France on 20 March 1956. Habib Bourguiba became the country's first president after independence.</p>`,
+ greeting:"Ancient history! My favourite. Except the part where people keep trying to conquer my homeland. Rude.",
+ questions:[
+ ["Which ancient civilisation founded Carthage?",["Roman","Phoenician","Greek","Egyptian"],1,"Carthage was founded by Phoenician settlers."],
+ ["Who crossed the Alps with elephants?",["Hannibal","Julius Caesar","Alexander","Augustus"],0,"Hannibal Barca led the famous expedition."],
+ ["When did Tunisia gain independence?",["1945","1956","1965","1972"],1,"Tunisia became independent on 20 March 1956."]
+ ],
+ challenge:"Hannibal's impossible journey: imagine you are a reporter. Interview Hannibal about crossing the Alps with elephants. One person plays Hannibal, another asks three questions."
+},
+{
+ title:"The Rhythm of Tunisia",subtitle:"MUSIC & SOUND",
+ image:"https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&q=85",
+ intro:"Tunisia is not silent. Its music carries history, identity, celebration and memory.",
+ lesson:`<h3>Mezoued</h3><p class="lesson">Mezoued is a popular Tunisian music style associated with a traditional bagpipe-like instrument. It is energetic, rhythmic and deeply connected to popular celebrations.</p>
+ <h3>Malouf</h3><p class="lesson">Malouf is a traditional musical genre with Andalusian roots. It preserves musical traditions that travelled across the Mediterranean.</p>
+ <h3>Stambeli</h3><p class="lesson">Stambeli is a spiritual musical tradition with deep Sub-Saharan African roots. It uses rhythm, instruments and ritual performance.</p>
+ <div class="fact"><strong>FACT:</strong> Tunisian music is not one single sound. Different regions and communities have their own musical traditions.</div>
+ <div class="anecdote"><strong>HIBO'S ANECDOTE:</strong> Some traditional music is passed from one generation to another by listening and performing together. No playlist can replace that.</div>
+ <div class="music-box"><strong>Listen to a historical Tunisian recording</strong><audio controls preload="none"><source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Art-song_Maqam_Mezmum_%281931%29.ogg" type="audio/ogg"></audio><p class="muted">A traditional art-song recording from 1931.</p></div>`,
+ greeting:"Turn up the music! My ears are ready. My dancing skills, unfortunately, are under investigation.",
+ questions:[
+ ["What is the Mezoued?",["A traditional instrument and musical style","A dessert","A city","A type of clothing"],0,"Mezoued is associated with a bagpipe-like instrument."],
+ ["Malouf has historical roots connected to which tradition?",["Andalusian","Japanese","Brazilian","Nordic"],0,"Malouf carries Andalusian musical heritage."],
+ ["Stambeli has deep roots in which traditions?",["Sub-Saharan African","Scandinavian","Chinese","American"],0,"Stambeli has strong Sub-Saharan African roots."]
+ ],
+ challenge:"Music detective: listen to the recording together. Describe the mood, rhythm and sounds. Does it make you imagine a celebration, a ceremony or a journey?"
+},
+{
+ title:"A Table Full of Tunisia",subtitle:"FOOD & FLAVOURS",
+ image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85",
+ intro:"Food is a language. In Tunisia, it tells stories about family, geography, trade and hospitality.",
+ lesson:`<h3>Harissa: a little fire</h3><p class="lesson">Harissa is a spicy paste made mainly from chilli peppers, garlic and spices. It is one of the best-known ingredients in Tunisian cooking.</p>
+ <h3>Couscous</h3><p class="lesson">Couscous is a staple food, often served with vegetables, chickpeas, meat or fish. Recipes change from region to region and family to family.</p>
+ <h3>Brik</h3><p class="lesson">Brik is a thin pastry, often filled with egg and tuna, then fried until crisp.</p>
+ <div class="fact"><strong>FACT:</strong> Tunisia is famous for olive oil production. Olive trees are part of its landscape and agricultural history.</div>
+ <div class="anecdote"><strong>HIBO'S ANECDOTE:</strong> Asking someone for their family's couscous recipe can start a serious conversation. There is always someone who believes their grandmother's version is the only correct one.</div>`,
+ greeting:"Food! Finally, a subject I understand. I am a camel of excellent taste. My favourite dish is... everything.",
+ questions:[
+ ["What is harissa?",["A chilli paste","A cake","A cheese","A drink"],0,"Harissa is a spicy chilli paste."],
+ ["What is brik?",["A savoury pastry","A soup","A fruit","A type of tea"],0,"Brik is a crisp pastry often filled with egg."],
+ ["Which crop is especially important in Tunisia?",["Olives","Cocoa","Pineapples","Coffee"],0,"Olive cultivation is important in Tunisia."]
+ ],
+ challenge:"Food storyteller: choose one Tunisian dish and explain why someone should try it. Make your description so convincing that everyone gets hungry."
+},
+{
+ title:"People, Traditions & Everyday Life",subtitle:"CULTURE & CUSTOMS",
+ image:"https://images.unsplash.com/photo-1512632578888-169bbbc64f33?auto=format&fit=crop&w=1000&q=85",
+ intro:"Culture is not only monuments. It is how people welcome guests, celebrate, create and live.",
+ lesson:`<h3>Hospitality</h3><p class="lesson">Sharing food and welcoming guests are important social practices in many Tunisian families. Tea, conversation and generosity often go together.</p>
+ <h3>Architecture</h3><p class="lesson">Traditional houses may have inner courtyards, decorated doors and beautiful geometric patterns. Architecture adapts to climate, privacy and family life.</p>
+ <h3>Crafts</h3><p class="lesson">Ceramics, textiles, carpets, jewellery and traditional embroidery are part of Tunisia's rich artistic heritage.</p>
+ <div class="fact"><strong>FACT:</strong> The blue-and-white village of Sidi Bou Said is one of Tunisia's most recognisable places.</div>
+ <div class="anecdote"><strong>HIBO'S ANECDOTE:</strong> In a traditional house, the courtyard can be a private open-air world inside the home. A little secret garden protected from the street.</div>`,
+ greeting:"People, stories, traditions! Remember: a country is not just what you see in photographs. It is the people who live there.",
+ questions:[
+ ["What is Sidi Bou Said famous for?",["Blue and white architecture","Skyscrapers","Snow","Volcanoes"],0,"The village is famous for white walls and blue details."],
+ ["What does hospitality often involve?",["Sharing food and welcoming guests","Avoiding visitors","Staying silent","Eating alone"],0,"Hospitality is an important social value."],
+ ["What can traditional Tunisian crafts include?",["Ceramics and textiles","Only plastic toys","Only computers","Only glass towers"],0,"Craft traditions include ceramics, textiles and jewellery."]
+ ],
+ challenge:"Culture swap: each person shares one tradition from their own family or country. Find one similarity and one difference with Tunisia."
+},
+{
+ title:"Speak Like a Tunisian",subtitle:"LANGUAGE & TOUNSI",
+ image:"https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=1000&q=85",
+ intro:"A few words can open a door. Learn some Tunisian Arabic expressions and try them with your friends.",
+ lesson:`<h3>Let's speak Tounsi!</h3>
+ <p class="lesson">Tunisian Arabic, often called Tounsi, is the everyday spoken variety of Arabic in Tunisia. It includes influences from several languages and cultures.</p>
+ <div class="word">Aslema — Hello</div>
+ <div class="word">Chnowa? — What?</div>
+ <div class="word">Labes? — Are you well?</div>
+ <div class="word">Yatik saha — Thank you / well done</div>
+ <div class="word">Besslema — Goodbye</div>
+ <div class="word">Ey — Yes</div>
+ <div class="word">Le — No</div>
+ <div class="fact"><strong>FACT:</strong> Tunisian Arabic has influences from Arabic, Amazigh, French, Italian and other Mediterranean languages.</div>
+ <div class="anecdote"><strong>HIBO'S ANECDOTE:</strong> The same word can sound a little different depending on the speaker and region. Language is alive, not a museum object.</div>
+ <h3>Try this conversation</h3>
+ <p class="lesson"><strong>A:</strong> Aslema! Labes?<br><strong>B:</strong> Labes, hamdoullah. W inti?<br><strong>A:</strong> Labes, yatik saha!</p>`,
+ greeting:"Language lesson! Repeat after me. Aslema! And please don't laugh at my pronunciation. I am a camel, not a professor.",
+ questions:[
+ ["What does Aslema mean?",["Hello","Goodbye","Water","Food"],0,"Aslema is a greeting."],
+ ["What does Chnowa mean?",["What?","Where?","When?","Who?"],0,"Chnowa means what?"],
+ ["What does Besslema mean?",["Goodbye","Thank you","Hello","Please"],0,"Besslema is a way to say goodbye."]
+ ],
+ challenge:"Language teacher: teach your neighbour two expressions. Then have a tiny conversation using them. No reading aloud from the screen!"
+},
+{
+ title:"The Hidden Treasures",subtitle:"PLACES & LANDSCAPES",
+ image:"https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=1000&q=85",
+ intro:"From Roman monuments to desert villages, Tunisia contains landscapes that seem to belong to different worlds.",
+ lesson:`<h3>El Jem</h3><p class="lesson">El Jem is home to an enormous Roman amphitheatre, one of the most impressive monuments of Roman Africa.</p>
+ <img class="photo" src="https://images.unsplash.com/photo-1590845947670-c009801ffa74?auto=format&fit=crop&w=1000&q=85" alt="Ancient stone architecture">
+ <h3>Djerba</h3><p class="lesson">Djerba is an island known for its beaches, villages and diverse cultural heritage.</p>
+ <h3>Matmata</h3><p class="lesson">Matmata is famous for traditional underground homes dug into the earth, designed to help people live in a hot climate.</p>
+ <div class="fact"><strong>FACT:</strong> Tunisia has Mediterranean beaches, mountains, ancient ruins, salt lakes and Sahara landscapes.</div>
+ <div class="anecdote"><strong>HIBO'S ANECDOTE:</strong> In Matmata, some homes are built around a sunken courtyard. From the outside, you might not even guess that a house is there.</div>`,
+ greeting:"Pack your bags! We are going on an expedition. I have packed water, snacks and an unreasonable amount of curiosity.",
+ questions:[
+ ["Where is the famous amphitheatre of El Jem?",["Tunisia","Egypt","Greece","Morocco"],0,"El Jem is in Tunisia."],
+ ["What is Djerba?",["An island","A mountain","A desert city","A river"],0,"Djerba is a Tunisian island."],
+ ["What makes Matmata famous?",["Underground homes","Ice castles","Skyscrapers","Floating villages"],0,"Matmata is famous for its troglodyte homes."]
+ ],
+ challenge:"Postcard from Tunisia: choose one place from this chapter. Describe it to the others without saying its name. Can they guess?"
+}
 ];
 
-const challenges = [
- {name:"The Music Detective",text:"Listen to this traditional Tunisian recording. Discuss what you hear: instruments, rhythm and atmosphere. Then choose one person to describe it to the group.",music:true},
- {name:"The Food Story",text:"Choose a Tunisian dish. Explain its ingredients and convince the others that they should try it. No reading from the internet!"},
- {name:"The Cultural Ambassador",text:"Explain one thing about Tunisian hospitality or daily life to the table. Make your neighbours curious!"},
- {name:"The Language Teacher",text:"Teach your neighbour one Tunisian Arabic expression. Say it aloud and explain when people use it."},
- {name:"The Great Debate",text:"Is food the best way to discover a culture? Choose a side and defend your opinion. Everyone must speak."},
- {name:"The Last Postcard",text:"Imagine you are sending a postcard from Tunisia. Describe one place you visited and why the others should go there."}
+const hiboLines=[
+ "I once tried to race a scooter. The scooter won. We don't talk about it.",
+ "Did you know? Curiosity is the best travel guide. Much better than me, probably.",
+ "I am not stubborn. I simply have a very strong relationship with my opinions.",
+ "A good story deserves a second cup of tea.",
+ "Please don't call me a horse. I have standards.",
+ "History is full of surprises. Unlike my lunch, which is always delicious.",
+ "You are doing well, traveller. Even if your geography is questionable."
 ];
 
-const stages = [];
-chapters.forEach((chapter,i)=>{
- chapter.questions.forEach((q,j)=>stages.push({type:"question",chapter:i,number:j,question:q}));
- stages.push({type:"challenge",chapter:i,challenge:challenges[i]});
+function camelSVG(){
+ return `<svg viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg">
+ <ellipse cx="62" cy="91" rx="37" ry="7" fill="#d69a43"/>
+ <path d="M30 70 Q18 52 34 40 Q43 31 50 42 Q59 23 72 40 Q83 50 82 65 L94 72 Q102 80 96 87 L85 87 L80 76 L65 76 L63 91 L53 91 L51 75 L38 76 L36 91 L27 91 L27 73Z" fill="#c98a45" stroke="#8d592a" stroke-width="2"/>
+ <path d="M83 57 Q91 44 95 32 L103 28 L108 32 L104 39 Q100 45 101 54 L110 62 L105 68 L91 65Z" fill="#c98a45" stroke="#8d592a" stroke-width="2"/>
+ <circle cx="103" cy="38" r="2.4" fill="#173d49"/>
+ <path d="M105 52 Q110 54 113 51" fill="none" stroke="#713e2b" stroke-width="2" stroke-linecap="round"/>
+ <path d="M95 28 L91 18 L99 23 L104 17 L106 29" fill="#c98a45" stroke="#8d592a" stroke-width="2"/>
+ <path d="M32 44 Q22 29 43 32 Q54 19 64 35" fill="#f5c56d" opacity=".7"/>
+ <path d="M31 58 Q48 67 70 57" fill="none" stroke="#f6d48a" stroke-width="3"/>
+ <circle cx="103" cy="38" r="1" fill="white"/>
+ </svg>`;
+}
+["homeCamel","exploreCamel","chapterCamel","challengeCamel"].forEach(id=>{
+ const el=document.getElementById(id);if(el)el.innerHTML=camelSVG();
 });
 
 function show(id){
- ["home","lobby","game","leaderboardScreen","finished"].forEach(x=>document.getElementById(x).classList.add("hidden"));
+ ["home","lobby","explore","chapter","quiz","challenge","finished"].forEach(x=>document.getElementById(x).classList.add("hidden"));
  document.getElementById(id).classList.remove("hidden");
+ window.scrollTo({top:0,behavior:"smooth"});
 }
-function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function roomRef(){return ref(db,"rooms/"+room);}
-function playerRef(id=uid){return ref(db,`rooms/${room}/players/${id}`);}
-function currentStage(){return stages[roomData.currentIndex||0];}
+function toast(t){
+ const el=document.getElementById("toast");el.textContent=t;el.style.display="block";
+ setTimeout(()=>el.style.display="none",2600);
+}
+function esc(t){
+ return String(t??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function roomRef(){return ref(db,"rooms/"+room)}
+function meRef(){return ref(db,`rooms/${room}/players/${uid}`)}
+function me(){return data.players?.[uid]||{}}
+function hiboTalk(){
+ const line=hiboLines[Math.floor(Math.random()*hiboLines.length)];
+ const target=document.getElementById("exploreTalk")||document.getElementById("chapterGreeting");
+ if(target)target.textContent=line;
+ toast("Hibo has something to say.");
+}
+function goHome(){
+ if(unsub){unsub();unsub=null}
+ localStorage.removeItem("hiboSession");
+ room=null;isHost=false;data={};show("home");
+}
+function backToLobby(){if(isHost)show("lobby");else show("explore")}
+function backToExplore(){show("explore")}
+function backToChapter(){show("chapter")}
+function backToGame(){show("explore")}
+function error(t){document.getElementById("homeError").textContent=t}
 
-async function ready(){
- if(!uid) throw new Error("Authentication is not ready. Refresh the page.");
-}
 async function createRoom(){
+ if(!uid)return error("Please wait a moment and try again.");
  try{
-  await ready();
   playerName=document.getElementById("hostName").value.trim()||"Naziha";
-  room="HIBO"+Math.random().toString(36).substring(2,6).toUpperCase();
+  room="HIBO"+Math.random().toString(36).slice(2,6).toUpperCase();
   isHost=true;
-  const initial={
-   hostUid:uid,hostName:playerName,status:"lobby",
-   currentIndex:0,createdAt:Date.now(),
-   players:{[uid]:{name:playerName,score:0,isHost:true,joinedAt:Date.now()}}
-  };
-  await set(roomRef(),initial);
-  localStorage.setItem("hiboSession",JSON.stringify({room,uid,isHost,playerName}));
-  listen();
- }catch(e){error(e.message);}
+  await set(roomRef(),{
+   hostUid:uid,status:"lobby",createdAt:Date.now(),
+   currentChapter:0,
+   players:{[uid]:{name:playerName,score:0,isHost:true}}
+  });
+  saveSession();listen();
+ }catch(e){error(e.message)}
 }
 async function joinRoom(){
+ if(!uid)return error("Please wait a moment and try again.");
  try{
-  await ready();
   playerName=document.getElementById("playerName").value.trim();
   room=document.getElementById("roomInput").value.trim().toUpperCase();
-  if(!playerName||!room) return error("Please enter your name and room code.");
-  const snap=await get(ref(db,"rooms/"+room));
-  if(!snap.exists()) return error("Room not found. Check the code.");
-  const data=snap.val();
-  if(data.status==="finished") return error("This adventure has already finished.");
-  if(Object.keys(data.players||{}).length>=6 && !data.players[uid]) return error("This room is full.");
+  if(!playerName||!room)return error("Enter your name and the room code.");
+  const snap=await get(roomRef());
+  if(!snap.exists())return error("Room not found. Check the code.");
+  const d=snap.val();
+  if(d.status==="finished")return error("This adventure has ended.");
+  if(Object.keys(d.players||{}).length>=6&&!d.players?.[uid])return error("This room is full.");
   isHost=false;
-  await set(playerRef(),{name:playerName,score:0,joinedAt:Date.now()});
-  localStorage.setItem("hiboSession",JSON.stringify({room,uid,isHost,playerName}));
-  listen();
- }catch(e){error(e.message);}
+  await set(ref(db,`rooms/${room}/players/${uid}`),{name:playerName,score:0});
+  saveSession();listen();
+ }catch(e){error(e.message)}
 }
-function error(msg){document.getElementById("homeError").textContent=msg;}
+function saveSession(){
+ localStorage.setItem("hiboSession",JSON.stringify({room,uid,isHost,playerName}));
+}
 function listen(){
- if(unsubscribe) unsubscribe();
- unsubscribe=onValue(roomRef(),snap=>{
-  if(!snap.exists()){error("This room no longer exists.");return;}
-  roomData=snap.val();
-  if(roomData.status==="lobby") renderLobby();
-  else if(roomData.status==="playing") renderGame();
-  else if(roomData.status==="finished") renderFinished();
+ if(unsub)unsub();
+ unsub=onValue(roomRef(),snap=>{
+  if(!snap.exists()){goHome();return}
+  data=snap.val();
+  if(data.status==="lobby")renderLobby();
+  else if(data.status==="playing"){
+   if(document.getElementById("lobby").classList.contains("hidden")===false)show("explore");
+   renderExplore();
+  }
+  else if(data.status==="finished")renderFinished();
  });
 }
 function renderLobby(){
  show("lobby");
- document.getElementById("roomCodeDisplay").textContent=room;
- const players=Object.entries(roomData.players||{});
- document.getElementById("playerCount").textContent=players.length+" travellers";
- document.getElementById("lobbyPlayers").innerHTML=players.map(([id,p])=>
- `<div class="player"><strong>${safe(p.name)}</strong>${p.isHost?'<span class="pill">GAME MASTER</span>':'<span class="pill">TRAVELLER</span>'}</div>`
+ document.getElementById("roomCode").textContent=room;
+ document.getElementById("playersLobby").innerHTML=Object.entries(data.players||{}).map(([id,p])=>
+ `<div class="player"><strong>${esc(p.name)}</strong><span class="pill">${p.isHost?"GAME MASTER":"TRAVELLER"}</span></div>`
  ).join("");
- document.getElementById("hostStart").classList.toggle("hidden",!isHost);
- document.getElementById("waitingMessage").classList.toggle("hidden",isHost);
+ document.getElementById("startBtn").classList.toggle("hidden",!isHost);
+ document.getElementById("waitText").classList.toggle("hidden",isHost);
 }
 async function startGame(){
  if(!isHost)return;
- await update(roomRef(),{status:"playing",currentIndex:0});
+ await update(roomRef(),{status:"playing",currentChapter:0});
+ show("explore");renderExplore();
 }
-function renderGame(){
- show("game");
- const index=roomData.currentIndex||0;
- const stage=stages[index];
- if(!stage){if(isHost)finishGame();return;}
- const chapter=chapters[stage.chapter];
- document.getElementById("chapterLabel").textContent=chapter.name.toUpperCase();
- document.getElementById("stageNumber").textContent=(index+1)+" / "+stages.length;
- document.getElementById("progressBar").style.width=((index+1)/stages.length*100)+"%";
- document.getElementById("stageLabel").textContent=stage.type==="question"?"KNOWLEDGE CHALLENGE":"TABLE CHALLENGE";
- document.getElementById("hostControls").classList.toggle("hidden",!isHost);
- document.getElementById("nextButton").textContent=index===stages.length-1?"FINISH ADVENTURE":"NEXT STAGE";
- const me=(roomData.players||{})[uid];
- document.getElementById("myScore").textContent=(me?.score||0)+" pts";
- renderLeaderboard("gameLeaderboard");
- const content=document.getElementById("gameContent");
- const feedback=document.getElementById("answerFeedback");
- feedback.innerHTML="";
- if(stage.type==="question"){
-  const [question,options,correct,explanation]=stage.question;
-  document.getElementById("gameTitle").textContent=question;
-  const already=me?.answers?.[index]!==undefined;
-  content.innerHTML=options.map((o,i)=>
-   `<button class="option ${already&&i===correct?'correct':''}" ${already?'disabled':''} data-answer="${i}">${safe(o)}</button>`
-  ).join("");
-  content.querySelectorAll("[data-answer]").forEach(btn=>btn.addEventListener("click",()=>answer(Number(btn.dataset.answer),correct,explanation,index)));
-  if(already) feedback.innerHTML=`<div id="notice">You have already answered this question. ${safe(explanation)}</div>`;
- }else{
-  document.getElementById("gameTitle").textContent=stage.challenge.name;
-  content.innerHTML=`<div class="music">${safe(stage.challenge.text)}
-  ${stage.challenge.music?'<br><br><audio controls preload="none" style="width:100%"><source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Art-song_Maqam_Mezmum_%281931%29.ogg" type="audio/ogg">Your browser does not support audio.</audio>':''}</div>
-  <h3>Who is performing?</h3>
-  <select id="performer"><option value="">Choose a speaker</option>${Object.entries(roomData.players||{}).map(([id,p])=>`<option value="${safe(id)}">${safe(p.name)}</option>`).join("")}</select>
-  <button class="secondary" id="setPerformer">Set performer</button>
-  <div id="performerInfo"></div>
-  <div id="voting"></div>
-  ${isHost?'<button class="primary" id="award">Award 2 bonus points</button>':''}`;
-  document.getElementById("setPerformer").onclick=()=>setPerformer(index);
-  if(isHost) document.getElementById("award").onclick=()=>awardBonus(index);
-  renderChallenge(index);
- }
+function renderExplore(){
+ show("explore");
+ const score=me().score||0;
+ document.getElementById("exploreScore").textContent=score+" POINTS";
+ document.getElementById("chapterGrid").innerHTML=chapters.map((c,i)=>{
+ const done=me().completed?.[i];
+ return `<article class="chapter" onclick="openChapter(${i})">
+ <img src="${c.image}" alt="${esc(c.title)}">
+ <div class="chapter-info"><div class="chapter-number">DESTINATION 0${i+1}</div>
+ <h3>${esc(c.title)}</h3><p>${esc(c.intro)}</p>
+ <span class="pill">${done?"COMPLETED":"EXPLORE THIS WORLD →"}</span></div></article>`;
+ }).join("");
+ renderRanking("exploreRanking");
 }
-async function answer(choice,correct,explanation,index){
- const my=playerRef();
- const result=await runTransaction(my,current=>{
-  if(!current)return current;
-  current.answers=current.answers||{};
-  if(current.answers[index]!==undefined)return current;
-  current.answers[index]=choice;
-  if(choice===correct)current.score=(current.score||0)+2;
-  return current;
+function openChapter(i){
+ currentChapter=i;
+ const c=chapters[i];
+ show("chapter");
+ document.getElementById("chapterProgress").textContent="DESTINATION "+(i+1)+" / 6";
+ document.getElementById("chapterGreeting").textContent=c.greeting;
+ document.getElementById("chapterBody").innerHTML=`
+ <div class="eyebrow">${esc(c.subtitle)}</div>
+ <h1 style="font-size:clamp(30px,6vw,48px)">${esc(c.title)}</h1>
+ <img class="photo" src="${c.image}" alt="${esc(c.title)}">
+ <p class="lesson">${esc(c.intro)}</p>
+ <div class="card">${c.lesson}</div>`;
+ document.getElementById("quizStart").onclick=()=>startQuiz();
+}
+function startQuiz(){
+ questionIndex=0;answered=false;
+ show("quiz");renderQuestion();
+}
+function renderQuestion(){
+ const q=chapters[currentChapter].questions[questionIndex];
+ document.getElementById("quizCounter").textContent=`QUESTION ${questionIndex+1} / ${chapters[currentChapter].questions.length}`;
+ document.getElementById("quizQuestion").textContent=q[0];
+ document.getElementById("quizFeedback").innerHTML="";
+ document.getElementById("quizNext").classList.add("hidden");
+ document.getElementById("quizOptions").innerHTML=q[1].map((o,i)=>
+ `<button class="quiz-option" data-choice="${i}">${esc(o)}</button>`
+ ).join("");
+ document.querySelectorAll(".quiz-option").forEach(b=>b.onclick=()=>selectAnswer(Number(b.dataset.choice)));
+}
+async function selectAnswer(choice){
+ if(answered)return;
+ answered=true;
+ const q=chapters[currentChapter].questions[questionIndex];
+ const correct=choice===q[2];
+ document.querySelectorAll(".quiz-option").forEach((b,i)=>{
+  b.disabled=true;
+  if(i===q[2])b.classList.add("correct");
+  else if(i===choice)b.classList.add("wrong");
  });
- if(result.committed){
-  document.getElementById("answerFeedback").innerHTML=
-  `<div id="notice">${choice===correct?"Correct! +2 points.":"Not quite!"} ${safe(explanation)}</div>`;
-  renderGame();
+ if(correct){
+  await runTransaction(meRef(),p=>{
+   if(!p)return p;
+   p.answers=p.answers||{};
+   const key=currentChapter+"_"+questionIndex;
+   if(p.answers[key])return p;
+   p.answers[key]=true;p.score=(p.score||0)+2;return p;
+  });
  }
+ document.getElementById("quizFeedback").innerHTML=
+ `<div class="${correct?"fact":"anecdote"}"><strong>${correct?"Excellent! +2 points!":"Not quite!"}</strong><br>${esc(q[3])}</div>`;
+ document.getElementById("quizNext").classList.remove("hidden");
+ document.getElementById("quizNext").textContent=questionIndex===2?"FINISH QUIZ →":"NEXT QUESTION →";
+ document.getElementById("quizNext").onclick=nextQuestion;
 }
-async function setPerformer(index){
- const performer=document.getElementById("performer").value;
- if(!performer)return alert("Choose a performer first.");
- await update(ref(db,`rooms/${room}/challenges/${index}`),{performer});
- renderChallenge(index);
-}
-function renderChallenge(index){
- const data=roomData.challenges?.[index]||{};
- const players=roomData.players||{};
- const info=document.getElementById("performerInfo");
- const voting=document.getElementById("voting");
- if(data.performer&&players[data.performer]){
-  info.innerHTML=`<div id="notice"><strong>${safe(players[data.performer].name)}</strong> is performing! Listen, discuss and vote.</div>`;
-  if(data.performer===uid){
-   voting.innerHTML="<p class='muted'>You are performing. You cannot vote for yourself.</p>";
-  }else{
-   const already=players[uid]?.votes?.[index]!==undefined;
-   voting.innerHTML=`<button class="primary" ${already?'disabled':''} id="voteButton">${already?"VOTE RECORDED":"VOTE FOR THIS PERFORMANCE"}</button>`;
-   if(!already)document.getElementById("voteButton").onclick=()=>vote(index,data.performer);
-  }
- }else{
-  info.innerHTML="<p class='muted'>The Game Master can choose the performer.</p>";
-  voting.innerHTML="";
- }
-}
-async function vote(index,performer){
- const result=await runTransaction(playerRef(),current=>{
-  if(!current)return current;
-  current.votes=current.votes||{};
-  if(current.votes[index]!==undefined)return current;
-  current.votes[index]=performer;
-  return current;
- });
- if(result.committed)alert("Your vote has been recorded!");
-}
-async function awardBonus(index){
- if(!isHost)return;
- const data=roomData.challenges?.[index];
- if(!data?.performer)return alert("Choose a performer first.");
- const player=ref(db,`rooms/${room}/players/${data.performer}`);
- await runTransaction(player,p=>{
+async function nextQuestion(){
+ if(questionIndex<2){questionIndex++;answered=false;renderQuestion();return}
+ await runTransaction(meRef(),p=>{
   if(!p)return p;
-  p.bonuses=p.bonuses||{};
-  if(p.bonuses[index])return p;
-  p.bonuses[index]=true;
+  p.completed=p.completed||{};
+  p.completed[currentChapter]=true;
+  return p;
+ });
+ showChallenge();
+}
+function showChallenge(){
+ const c=chapters[currentChapter];
+ show("challenge");
+ document.getElementById("challengeTitle").textContent=c.title+" — Table Challenge";
+ document.getElementById("challengeText").textContent=c.challenge;
+ const music=currentChapter===1?
+ `<div class="music-box"><strong>Listen again together</strong><audio controls><source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Art-song_Maqam_Mezmum_%281931%29.ogg" type="audio/ogg"></audio></div>`:"";
+ document.getElementById("challengeMusic").innerHTML=music;
+ challengeDone=false;
+}
+async function completeChallenge(){
+ if(challengeDone)return;
+ challengeDone=true;
+ await runTransaction(meRef(),p=>{
+  if(!p)return p;
+  p.challenges=p.challenges||{};
+  if(p.challenges[currentChapter])return p;
+  p.challenges[currentChapter]=true;
   p.score=(p.score||0)+2;
   return p;
  });
- alert("2 bonus points awarded!");
+ toast("Challenge completed! +2 points.");
+ renderExplore();
 }
-async function nextStage(){
- if(!isHost)return;
- const next=(roomData.currentIndex||0)+1;
- if(next>=stages.length) await finishGame();
- else await update(roomRef(),{currentIndex:next});
+function renderRanking(id){
+ const players=Object.values(data.players||{}).sort((a,b)=>(b.score||0)-(a.score||0));
+ document.getElementById(id).innerHTML=players.map((p,i)=>
+ `<div class="player"><strong>${i+1}. ${esc(p.name)}</strong><span class="score">${p.score||0} pts</span></div>`
+ ).join("");
 }
 async function finishGame(){
  if(!isHost)return;
  await update(roomRef(),{status:"finished"});
 }
-function renderLeaderboard(id){
- const players=Object.values(roomData.players||{}).sort((a,b)=>(b.score||0)-(a.score||0));
- document.getElementById(id).innerHTML=players.map((p,i)=>
- `<div class="player"><span class="rank">${i+1}</span><strong>${safe(p.name)}</strong><span class="score">${p.score||0} pts</span></div>`
- ).join("");
-}
-function showLeaderboard(){
- show("leaderboardScreen");
- renderLeaderboard("finalLeaderboard");
-}
-function backToGame(){show("game");renderGame();}
 function renderFinished(){
  show("finished");
- const players=Object.values(roomData.players||{}).sort((a,b)=>(b.score||0)-(a.score||0));
- document.getElementById("finalResults").innerHTML=players.map((p,i)=>
- `<div class="player"><span class="rank">${i+1}</span><strong>${safe(p.name)}</strong><span class="score">${p.score||0} pts</span></div>`
+ const players=Object.values(data.players||{}).sort((a,b)=>(b.score||0)-(a.score||0));
+ document.getElementById("finalRanking").innerHTML=players.map((p,i)=>
+ `<div class="player"><strong>${i+1}. ${esc(p.name)}</strong><span class="score">${p.score||0} pts</span></div>`
  ).join("");
- document.getElementById("winnerMessage").textContent=players.length?players[0].name+" is the Tunisian Adventure Champion!":"Adventure completed!";
+ document.getElementById("winner").textContent=players.length?players[0].name+" is the champion!":"Well done, travellers!";
 }
+window.createRoom=createRoom;
+window.joinRoom=joinRoom;
+window.startGame=startGame;
+window.openChapter=openChapter;
+window.hiboTalk=hiboTalk;
+window.goHome=goHome;
+window.backToLobby=backToLobby;
+window.backToExplore=backToExplore;
+window.backToChapter=backToChapter;
+window.completeChallenge=completeChallenge;
+
 onAuthStateChanged(auth,async user=>{
  if(user){
   uid=user.uid;
+  authReady=true;
   const saved=localStorage.getItem("hiboSession");
   if(saved){
    try{
@@ -537,7 +719,7 @@ onAuthStateChanged(auth,async user=>{
     if(s.uid===uid){
      room=s.room;isHost=s.isHost;playerName=s.playerName;
      const snap=await get(roomRef());
-     if(snap.exists()){listen();return;}
+     if(snap.exists()){listen();return}
     }
    }catch(e){}
   }
@@ -545,12 +727,6 @@ onAuthStateChanged(auth,async user=>{
   signInAnonymously(auth).catch(e=>error(e.message));
  }
 });
-window.createRoom=createRoom;
-window.joinRoom=joinRoom;
-window.startGame=startGame;
-window.nextStage=nextStage;
-window.showLeaderboard=showLeaderboard;
-window.backToGame=backToGame;
 </script>
 </body>
-  </html>
+</html>
